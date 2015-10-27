@@ -1,4 +1,4 @@
-/*! (c) 2015 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
+/*! (c) 2016 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("react"), require("react-dom"));
@@ -8,11 +8,7 @@
 		exports["ReactWidgets"] = factory(require("react"), require("react-dom"));
 	else
 		root["ReactWidgets"] = factory(root["React"], root["ReactDOM"]);
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 })(this, function(__WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_32__) {
-=======
-})(this, function(__WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_43__) {
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,29 +69,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = babelHelpers._extends({}, configure, {
 	  DropdownList: __webpack_require__(22),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  Combobox: __webpack_require__(57),
-	  Calendar: __webpack_require__(61),
-	  DateTimePicker: __webpack_require__(75),
-	  NumberPicker: __webpack_require__(78),
-	  Multiselect: __webpack_require__(81),
-	  SelectList: __webpack_require__(84),
+	  Combobox: __webpack_require__(61),
+	  Calendar: __webpack_require__(65),
+	  DateTimePicker: __webpack_require__(79),
+	  NumberPicker: __webpack_require__(82),
+	  Multiselect: __webpack_require__(85),
+	  SelectList: __webpack_require__(88),
 
 	  utils: {
-	    ReplaceTransitionGroup: __webpack_require__(73),
-	    SlideTransition: __webpack_require__(72)
-=======
-	  Combobox: __webpack_require__(72),
-	  Calendar: __webpack_require__(76),
-	  DateTimePicker: __webpack_require__(90),
-	  NumberPicker: __webpack_require__(93),
-	  Multiselect: __webpack_require__(96),
-	  SelectList: __webpack_require__(99),
-
-	  utils: {
-	    ReplaceTransitionGroup: __webpack_require__(88),
-	    SlideTransition: __webpack_require__(87)
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    ReplaceTransitionGroup: __webpack_require__(77),
+	    SlideTransition: __webpack_require__(76)
 	  }
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -212,8 +195,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(this, function (global) {
 	  var babelHelpers = global;
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
 	  babelHelpers.inherits = function (subClass, superClass) {
 	    if (typeof superClass !== "function" && superClass !== null) {
 	      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
@@ -248,7 +229,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  })();
 
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	  babelHelpers.createDecoratedObject = function (descriptors) {
 	    var target = {};
 
@@ -332,15 +312,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return target;
 	  };
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
 
 	  babelHelpers.classCallCheck = function (instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
 	      throw new TypeError("Cannot call a class as a function");
 	    }
 	  };
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	})
 
 /***/ },
@@ -491,7 +468,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  if (duration <= 0) setTimeout(done.bind(null, fakeEvent), 0);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	  return {
 	    cancel: function cancel() {
 	      if (fired) return;
@@ -501,8 +477,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  };
 
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	  function done(event) {
 	    if (event.target !== event.currentTarget) return;
 
@@ -974,7 +948,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	function createWrapper() {
 	  var dummy = {};
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	  if (process.env.NODE_ENV !== 'production') {
 	    ['formats', 'parse', 'format', 'firstOfWeek', 'precision'].forEach(function (name) {
 	      return Object.defineProperty(dummy, name, {
@@ -985,16 +958,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    });
 	  }
-=======
-	  ['formats', 'parse', 'format', 'firstOfWeek', 'precision'].forEach(function (name) {
-	    return Object.defineProperty(dummy, name, {
-	      enumerable: true,
-	      get: function get() {
-	        throw new Error('[React Widgets] You are attempting to use a widget that requires localization ' + '(Calendar, DateTimePicker, NumberPicker). ' + 'However there is no localizer set. Please configure a localizer. \n\n' + 'see http://jquense.github.io/react-widgets/docs/#/i18n for more info.');
-	      }
-	    });
-	  });
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	  return dummy;
 	}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -1010,8 +973,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * This source code is licensed under the BSD-style license found in the
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule invariant
 	 */
 
 	'use strict';
@@ -1045,9 +1006,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var args = [a, b, c, d, e, f];
 	      var argIndex = 0;
 	      error = new Error(
-	        'Invariant Violation: ' +
 	        format.replace(/%s/g, function() { return args[argIndex++]; })
 	      );
+	      error.name = 'Invariant Violation';
 	    }
 
 	    error.framesToPop = 1; // we don't care about invariant's own frame
@@ -1118,7 +1079,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var result;
 	    if (Array.isArray(arr)) {
 	      arr.every(function (val, idx) {
-	        if (cb.call(thisArg, val, idx, arr)) return (result = val, false);
+	        if (cb.call(thisArg, val, idx, arr)) return result = val, false;
 	        return true;
 	      });
 	      return result;
@@ -1210,7 +1171,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _Popup = __webpack_require__(27);
 
 	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
@@ -1239,52 +1199,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
 
+	var _TetheredPopup = __webpack_require__(48);
+
+	var _TetheredPopup2 = babelHelpers.interopRequireDefault(_TetheredPopup);
+
 	var _utilDataHelpers = __webpack_require__(37);
 
 	var _utilInteraction = __webpack_require__(39);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _reactWindowMixins = __webpack_require__(27);
-
-	var _Popup = __webpack_require__(38);
-
-	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
-
-	var _utilCompat = __webpack_require__(42);
-
-	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _List = __webpack_require__(46);
-
-	var _List2 = babelHelpers.interopRequireDefault(_List);
-
-	var _ListGroupable = __webpack_require__(52);
-
-	var _ListGroupable2 = babelHelpers.interopRequireDefault(_ListGroupable);
-
-	var _utilValidateListInterface = __webpack_require__(54);
-
-	var _utilValidateListInterface2 = babelHelpers.interopRequireDefault(_utilValidateListInterface);
-
-	var _uncontrollable = __webpack_require__(55);
-
-	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
-
-	var _TetheredPopup = __webpack_require__(58);
-
-	var _TetheredPopup2 = babelHelpers.interopRequireDefault(_TetheredPopup);
-
-	var _utilDataHelpers = __webpack_require__(48);
-
-	var _utilInteraction = __webpack_require__(62);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var omit = _util_2['default'].omit;
 	var pick = _util_2['default'].pick;
@@ -1318,22 +1241,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  delay: _react2['default'].PropTypes.number,
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  dropUp: _react2['default'].PropTypes.bool,
-	  duration: _react2['default'].PropTypes.number, //popup
-
-	  disabled: _utilPropTypes2['default'].disabled.acceptsArray,
-	  readOnly: _utilPropTypes2['default'].readOnly.acceptsArray,
-=======
 	  tetherPopup: _react2['default'].PropTypes.bool,
 
 	  dropUp: _react2['default'].PropTypes.bool,
 	  duration: _react2['default'].PropTypes.number, //popup
 
-	  disabled: _utilPropTypes2['default'].disabled,
-
-	  readOnly: _utilPropTypes2['default'].readOnly,
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	  disabled: _utilPropTypes2['default'].disabled.acceptsArray,
+	  readOnly: _utilPropTypes2['default'].readOnly.acceptsArray,
 
 	  messages: _react2['default'].PropTypes.shape({
 	    open: _utilPropTypes2['default'].message,
@@ -1351,11 +1265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	    return [__webpack_require__(48), __webpack_require__(49), __webpack_require__(50), __webpack_require__(51), __webpack_require__(56), __webpack_require__(41)()];
-=======
-	    return [_reactWindowMixins.OnResize, __webpack_require__(63), __webpack_require__(64), __webpack_require__(65), __webpack_require__(66), __webpack_require__(71), __webpack_require__(51)()];
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    return [__webpack_require__(52), __webpack_require__(53), __webpack_require__(54), __webpack_require__(55), __webpack_require__(60), __webpack_require__(41)()];
 	  }
 	}, {
 	  key: 'propTypes',
@@ -1372,12 +1282,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      data: [],
 	      searchTerm: '',
 	      messages: msgs(),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	      ariaActiveDescendantKey: 'dropdownlist'
-=======
 	      ariaActiveDescendantKey: 'dropdownlist',
 	      tetherPopup: false
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    };
 	  }
 	}, {
@@ -1444,14 +1350,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var placeholder = _props2.placeholder;
 	    var value = _props2.value;
 	    var open = _props2.open;
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var ValueComponent = _props2.valueComponent;
-=======
-	    var disabled = _props2.disabled;
-	    var readOnly = _props2.readOnly;
-	    var ValueComponent = _props2.valueComponent;
-	    var tetherPopup = _props2.tetherPopup;
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    var List = _props2.listComponent;
 
 	    List = List || groupBy && _ListGroupable2['default'] || _List2['default'];
@@ -1466,11 +1365,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var focused = _state.focused;
 
 	    var items = this._data(),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        disabled = _utilInteraction.isDisabled(this.props),
 	        readOnly = _utilInteraction.isReadOnly(this.props),
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        valueItem = _utilDataHelpers.dataItem(data, value, valueField),
 	        // take value from the raw data
 	    listID = _utilWidgetHelpers.instanceId(this, '__listbox');
@@ -1478,10 +1374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var shouldRenderList = _utilWidgetHelpers.isFirstFocusedRender(this) || open;
 
 	    messages = msgs(messages);
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
 	    var PopupComponent = tetherPopup ? _TetheredPopup2['default'] : _Popup2['default'];
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	    return _react2['default'].createElement(
 	      'div',
@@ -1494,18 +1387,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'aria-owns': listID,
 	        'aria-busy': !!busy,
 	        'aria-live': !open && 'polite',
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
-	        //aria-activedescendant={activeID}
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        'aria-autocomplete': 'list',
 	        'aria-disabled': disabled,
 	        'aria-readonly': readOnly,
 	        onKeyDown: this._keyDown,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        onKeyPress: this._keyPress,
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        onClick: this._click,
 	        onFocus: this._focus.bind(null, true),
 	        onBlur: this._focus.bind(null, false),
@@ -1541,23 +1427,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        ) : this.props.valueComponent ? _react2['default'].createElement(ValueComponent, { item: valueItem }) : _utilDataHelpers.dataText(valueItem, textField)
 	      ),
 	      _react2['default'].createElement(
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	        _Popup2['default'],
-=======
 	        PopupComponent,
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        babelHelpers._extends({}, popupProps, {
 	          onOpen: function () {
 	            return _this.focus();
 	          },
 	          onOpening: function () {
 	            return _this.refs.list.forceUpdate();
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	          }
-=======
-	          },
-	          onRequestClose: this.close
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        }),
 	        _react2['default'].createElement(
 	          'div',
@@ -1674,13 +1551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if (key === 'ArrowUp') {
 	      if (alt) closeWithFocus();else if (isOpen) this.setState({ focusedItem: list.prev(focusedItem) });else change(list.prev(selectedItem));
 	      e.preventDefault();
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    }
-=======
-	    } else if (!(this.props.filter && isOpen)) this.search(String.fromCharCode(e.keyCode), function (item) {
-	      isOpen ? _this4.setState({ focusedItem: item }) : change(item);
-	    });
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	    function change(item, fromList) {
 	      if (!item) return;
@@ -1688,7 +1559,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	}, {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	  key: '_keyPress',
 	  decorators: [_utilInteraction.widgetEditable],
 	  value: function _keyPress(e) {
@@ -1706,11 +1576,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  key: 'change',
 	  value: function change(data) {
 	    if (!_utilDataHelpers.valueMatcher(data, this.props.value, this.props.valueField)) {
-=======
-	  key: 'change',
-	  value: function change(data) {
-	    if (!_util_2['default'].isShallowEqual(data, this.props.value)) {
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      _utilWidgetHelpers.notify(this.props.onChange, data);
 	      _utilWidgetHelpers.notify(this.props.onSearch, '');
 	      this.close();
@@ -1731,7 +1596,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'search',
 	  value: function search(character, cb) {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var _this6 = this;
 
 	    var word = ((this._searchTerm || '') + character).toLowerCase();
@@ -1746,20 +1610,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	          item = list.next(_this6.state[key], word);
 
 	      _this6._searchTerm = '';
-=======
-	    var _this5 = this;
-
-	    var word = ((this._searchTerm || '') + character).toLowerCase();
-
-	    this._searchTerm = word;
-
-	    this.setTimeout('search', function () {
-	      var list = _this5.refs.list,
-	          key = _this5.props.open ? 'focusedItem' : 'selectedItem',
-	          item = list.next(_this5.state[key], word);
-
-	      _this5._searchTerm = '';
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      if (item) cb(item);
 	    }, this.props.delay);
 	  }
@@ -1865,12 +1715,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-=======
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
-	  Copyright (c) 2015 Jed Watson.
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -1882,7 +1728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 
 		function classNames () {
-			var classes = '';
+			var classes = [];
 
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -1891,34 +1737,28 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
 		} else if (true) {
 			// register as 'classnames', consistent with npm package name
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-=======
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 		} else {
 			window.classNames = classNames;
 		}
@@ -1929,7 +1769,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	'use strict';
 
 	var babelHelpers = __webpack_require__(2);
@@ -1969,9 +1808,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var TRANSLATION_MAP = _utilConfiguration2['default'].animate.TRANSLATION_MAP;
 
-	  if (TRANSLATION_MAP && TRANSLATION_MAP[prop]) return (_ref = {}, _ref[transform] = TRANSLATION_MAP[prop] + '(' + value + ')', _ref);
+	  if (TRANSLATION_MAP && TRANSLATION_MAP[prop]) return _ref = {}, _ref[transform] = TRANSLATION_MAP[prop] + '(' + value + ')', _ref;
 
-	  return (_ref2 = {}, _ref2[prop] = value, _ref2);
+	  return _ref2 = {}, _ref2[prop] = value, _ref2;
 	}
 
 	var PopupContent = _react2['default'].createClass({
@@ -2096,707 +1935,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (this.state.height !== height) {
 	      el.style.height = height + 'px';
-=======
-	module.exports = {
-	  OnResize: __webpack_require__(28),
-	  OnScroll: __webpack_require__(36),
-	  OnUnload: __webpack_require__(37)
-	};
-
-
-
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*global window */
-
-	var throttle = __webpack_require__(29);
-
-	module.exports = {
-	  getInitialState: function() {
-	    var defaults = { window: { height: 0, width: 0 }, document: { height: 0, width: 0 } };
-	    return !this.onResize ? defaults : null;
-	  },
-
-	  componentDidMount: function() {
-	    if (!this.onResize) {
-	      this.onResize = function() {
-	        this.setState({
-	          window: { height: window.innerHeight, width: window.innerWidth },
-	          document: { height: document.body.clientHeight, width: document.body.clientWidth }
-	        });
-	      }.bind(this);
-	    }
-
-	    this.onResize();
-	    this.onResizeThrottled = throttle(this.onResize, 10);
-	    window.addEventListener("resize", this.onResizeThrottled);
-	  },
-
-	  componentWillUnmount: function() {
-	    window.removeEventListener("resize", this.onResizeThrottled);
-	  }
-	};
-
-
-
-/***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="npm" -o ./npm/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-	var debounce = __webpack_require__(30),
-	    isFunction = __webpack_require__(31),
-	    isObject = __webpack_require__(32);
-
-	/** Used as an internal `_.debounce` options object */
-	var debounceOptions = {
-	  'leading': false,
-	  'maxWait': 0,
-	  'trailing': false
-	};
-
-	/**
-	 * Creates a function that, when executed, will only call the `func` function
-	 * at most once per every `wait` milliseconds. Provide an options object to
-	 * indicate that `func` should be invoked on the leading and/or trailing edge
-	 * of the `wait` timeout. Subsequent calls to the throttled function will
-	 * return the result of the last `func` call.
-	 *
-	 * Note: If `leading` and `trailing` options are `true` `func` will be called
-	 * on the trailing edge of the timeout only if the the throttled function is
-	 * invoked more than once during the `wait` timeout.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Functions
-	 * @param {Function} func The function to throttle.
-	 * @param {number} wait The number of milliseconds to throttle executions to.
-	 * @param {Object} [options] The options object.
-	 * @param {boolean} [options.leading=true] Specify execution on the leading edge of the timeout.
-	 * @param {boolean} [options.trailing=true] Specify execution on the trailing edge of the timeout.
-	 * @returns {Function} Returns the new throttled function.
-	 * @example
-	 *
-	 * // avoid excessively updating the position while scrolling
-	 * var throttled = _.throttle(updatePosition, 100);
-	 * jQuery(window).on('scroll', throttled);
-	 *
-	 * // execute `renewToken` when the click event is fired, but not more than once every 5 minutes
-	 * jQuery('.interactive').on('click', _.throttle(renewToken, 300000, {
-	 *   'trailing': false
-	 * }));
-	 */
-	function throttle(func, wait, options) {
-	  var leading = true,
-	      trailing = true;
-
-	  if (!isFunction(func)) {
-	    throw new TypeError;
-	  }
-	  if (options === false) {
-	    leading = false;
-	  } else if (isObject(options)) {
-	    leading = 'leading' in options ? options.leading : leading;
-	    trailing = 'trailing' in options ? options.trailing : trailing;
-	  }
-	  debounceOptions.leading = leading;
-	  debounceOptions.maxWait = wait;
-	  debounceOptions.trailing = trailing;
-
-	  return debounce(func, wait, debounceOptions);
-	}
-
-	module.exports = throttle;
-
-
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="npm" -o ./npm/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-	var isFunction = __webpack_require__(31),
-	    isObject = __webpack_require__(32),
-	    now = __webpack_require__(34);
-
-	/* Native method shortcuts for methods with the same name as other `lodash` methods */
-	var nativeMax = Math.max;
-
-	/**
-	 * Creates a function that will delay the execution of `func` until after
-	 * `wait` milliseconds have elapsed since the last time it was invoked.
-	 * Provide an options object to indicate that `func` should be invoked on
-	 * the leading and/or trailing edge of the `wait` timeout. Subsequent calls
-	 * to the debounced function will return the result of the last `func` call.
-	 *
-	 * Note: If `leading` and `trailing` options are `true` `func` will be called
-	 * on the trailing edge of the timeout only if the the debounced function is
-	 * invoked more than once during the `wait` timeout.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Functions
-	 * @param {Function} func The function to debounce.
-	 * @param {number} wait The number of milliseconds to delay.
-	 * @param {Object} [options] The options object.
-	 * @param {boolean} [options.leading=false] Specify execution on the leading edge of the timeout.
-	 * @param {number} [options.maxWait] The maximum time `func` is allowed to be delayed before it's called.
-	 * @param {boolean} [options.trailing=true] Specify execution on the trailing edge of the timeout.
-	 * @returns {Function} Returns the new debounced function.
-	 * @example
-	 *
-	 * // avoid costly calculations while the window size is in flux
-	 * var lazyLayout = _.debounce(calculateLayout, 150);
-	 * jQuery(window).on('resize', lazyLayout);
-	 *
-	 * // execute `sendMail` when the click event is fired, debouncing subsequent calls
-	 * jQuery('#postbox').on('click', _.debounce(sendMail, 300, {
-	 *   'leading': true,
-	 *   'trailing': false
-	 * });
-	 *
-	 * // ensure `batchLog` is executed once after 1 second of debounced calls
-	 * var source = new EventSource('/stream');
-	 * source.addEventListener('message', _.debounce(batchLog, 250, {
-	 *   'maxWait': 1000
-	 * }, false);
-	 */
-	function debounce(func, wait, options) {
-	  var args,
-	      maxTimeoutId,
-	      result,
-	      stamp,
-	      thisArg,
-	      timeoutId,
-	      trailingCall,
-	      lastCalled = 0,
-	      maxWait = false,
-	      trailing = true;
-
-	  if (!isFunction(func)) {
-	    throw new TypeError;
-	  }
-	  wait = nativeMax(0, wait) || 0;
-	  if (options === true) {
-	    var leading = true;
-	    trailing = false;
-	  } else if (isObject(options)) {
-	    leading = options.leading;
-	    maxWait = 'maxWait' in options && (nativeMax(wait, options.maxWait) || 0);
-	    trailing = 'trailing' in options ? options.trailing : trailing;
-	  }
-	  var delayed = function() {
-	    var remaining = wait - (now() - stamp);
-	    if (remaining <= 0) {
-	      if (maxTimeoutId) {
-	        clearTimeout(maxTimeoutId);
-	      }
-	      var isCalled = trailingCall;
-	      maxTimeoutId = timeoutId = trailingCall = undefined;
-	      if (isCalled) {
-	        lastCalled = now();
-	        result = func.apply(thisArg, args);
-	        if (!timeoutId && !maxTimeoutId) {
-	          args = thisArg = null;
-	        }
-	      }
-	    } else {
-	      timeoutId = setTimeout(delayed, remaining);
-	    }
-	  };
-
-	  var maxDelayed = function() {
-	    if (timeoutId) {
-	      clearTimeout(timeoutId);
-	    }
-	    maxTimeoutId = timeoutId = trailingCall = undefined;
-	    if (trailing || (maxWait !== wait)) {
-	      lastCalled = now();
-	      result = func.apply(thisArg, args);
-	      if (!timeoutId && !maxTimeoutId) {
-	        args = thisArg = null;
-	      }
-	    }
-	  };
-
-	  return function() {
-	    args = arguments;
-	    stamp = now();
-	    thisArg = this;
-	    trailingCall = trailing && (timeoutId || !leading);
-
-	    if (maxWait === false) {
-	      var leadingCall = leading && !timeoutId;
-	    } else {
-	      if (!maxTimeoutId && !leading) {
-	        lastCalled = stamp;
-	      }
-	      var remaining = maxWait - (stamp - lastCalled),
-	          isCalled = remaining <= 0;
-
-	      if (isCalled) {
-	        if (maxTimeoutId) {
-	          maxTimeoutId = clearTimeout(maxTimeoutId);
-	        }
-	        lastCalled = stamp;
-	        result = func.apply(thisArg, args);
-	      }
-	      else if (!maxTimeoutId) {
-	        maxTimeoutId = setTimeout(maxDelayed, remaining);
-	      }
-	    }
-	    if (isCalled && timeoutId) {
-	      timeoutId = clearTimeout(timeoutId);
-	    }
-	    else if (!timeoutId && wait !== maxWait) {
-	      timeoutId = setTimeout(delayed, wait);
-	    }
-	    if (leadingCall) {
-	      isCalled = true;
-	      result = func.apply(thisArg, args);
-	    }
-	    if (isCalled && !timeoutId && !maxTimeoutId) {
-	      args = thisArg = null;
-	    }
-	    return result;
-	  };
-	}
-
-	module.exports = debounce;
-
-
-/***/ },
-/* 31 */
-/***/ function(module, exports) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="npm" -o ./npm/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-
-	/**
-	 * Checks if `value` is a function.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Objects
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if the `value` is a function, else `false`.
-	 * @example
-	 *
-	 * _.isFunction(_);
-	 * // => true
-	 */
-	function isFunction(value) {
-	  return typeof value == 'function';
-	}
-
-	module.exports = isFunction;
-
-
-/***/ },
-/* 32 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="npm" -o ./npm/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-	var objectTypes = __webpack_require__(33);
-
-	/**
-	 * Checks if `value` is the language type of Object.
-	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Objects
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if the `value` is an object, else `false`.
-	 * @example
-	 *
-	 * _.isObject({});
-	 * // => true
-	 *
-	 * _.isObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObject(1);
-	 * // => false
-	 */
-	function isObject(value) {
-	  // check if the value is the ECMAScript language type of Object
-	  // http://es5.github.io/#x8
-	  // and avoid a V8 bug
-	  // http://code.google.com/p/v8/issues/detail?id=2291
-	  return !!(value && objectTypes[typeof value]);
-	}
-
-	module.exports = isObject;
-
-
-/***/ },
-/* 33 */
-/***/ function(module, exports) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="npm" -o ./npm/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-
-	/** Used to determine if values are of the language type Object */
-	var objectTypes = {
-	  'boolean': false,
-	  'function': true,
-	  'object': true,
-	  'number': false,
-	  'string': false,
-	  'undefined': false
-	};
-
-	module.exports = objectTypes;
-
-
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="npm" -o ./npm/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-	var isNative = __webpack_require__(35);
-
-	/**
-	 * Gets the number of milliseconds that have elapsed since the Unix epoch
-	 * (1 January 1970 00:00:00 UTC).
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Utilities
-	 * @example
-	 *
-	 * var stamp = _.now();
-	 * _.defer(function() { console.log(_.now() - stamp); });
-	 * // => logs the number of milliseconds it took for the deferred function to be called
-	 */
-	var now = isNative(now = Date.now) && now || function() {
-	  return new Date().getTime();
-	};
-
-	module.exports = now;
-
-
-/***/ },
-/* 35 */
-/***/ function(module, exports) {
-
-	/**
-	 * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-	 * Build: `lodash modularize modern exports="npm" -o ./npm/`
-	 * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <http://lodash.com/license>
-	 */
-
-	/** Used for native method references */
-	var objectProto = Object.prototype;
-
-	/** Used to resolve the internal [[Class]] of values */
-	var toString = objectProto.toString;
-
-	/** Used to detect if a method is native */
-	var reNative = RegExp('^' +
-	  String(toString)
-	    .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-	    .replace(/toString| for [^\]]+/g, '.*?') + '$'
-	);
-
-	/**
-	 * Checks if `value` is a native function.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if the `value` is a native function, else `false`.
-	 */
-	function isNative(value) {
-	  return typeof value == 'function' && reNative.test(value);
-	}
-
-	module.exports = isNative;
-
-
-/***/ },
-/* 36 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*global window */
-
-	var throttle = __webpack_require__(29);
-
-	module.exports = {
-	  getInitialState: function() {
-	    return !this.onScroll ? { scroll: { x: 0, y: 0 } } : null;
-	  },
-
-	  componentDidMount: function() {
-	    if (!this.onScroll) {
-	      this.onScroll = function() {
-	        this.setState({ scroll: { x: window.pageXOffset, y: window.pageYOffset } });
-	      }.bind(this);
-	    }
-
-	    this.onScroll();
-	    this.onScrollThrottled = throttle(this.onScroll, 10);
-	    window.addEventListener("scroll", this.onScrollThrottled);
-	  },
-
-	  componentWillUnmount: function() {
-	    window.removeEventListener("scroll", this.onScrollThrottled);
-	  }
-	};
-
-
-/***/ },
-/* 37 */
-/***/ function(module, exports) {
-
-	/*global window */
-
-	module.exports = {
-	  componentDidMount: function() {
-	    if (this.onUnload) {
-	      window.addEventListener("unload", this.onUnload);
-	    }
-	    if (this.onBeforeUnload) {
-	      window.addEventListener("beforeunload", this.onBeforeUnload);
-	    }
-	  },
-
-	  componentWillUnmount: function() {
-	    if (this.onUnload) {
-	      window.removeEventListener("unload", this.onUnload);
-	    }
-	    if (this.onBeforeUnload) {
-	      window.removeEventListener("beforeunload", this.onBeforeUnload);
-	    }
-	  }
-	};
-
-
-/***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var babelHelpers = __webpack_require__(2);
-
-	var _react = __webpack_require__(21);
-
-	var _react2 = babelHelpers.interopRequireDefault(_react);
-
-	var _domHelpersStyle = __webpack_require__(7);
-
-	var _domHelpersStyle2 = babelHelpers.interopRequireDefault(_domHelpersStyle);
-
-	var _domHelpersQueryHeight = __webpack_require__(39);
-
-	var _domHelpersQueryHeight2 = babelHelpers.interopRequireDefault(_domHelpersQueryHeight);
-
-	var _utilConfiguration = __webpack_require__(4);
-
-	var _utilConfiguration2 = babelHelpers.interopRequireDefault(_utilConfiguration);
-
-	var _classnames = __webpack_require__(26);
-
-	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
-
-	var _utilCompat = __webpack_require__(42);
-
-	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
-
-	var transform = _utilConfiguration2['default'].animate.transform;
-
-	function properties(prop, value) {
-	  var _ref, _ref2;
-
-	  var TRANSLATION_MAP = _utilConfiguration2['default'].animate.TRANSLATION_MAP;
-
-	  if (TRANSLATION_MAP && TRANSLATION_MAP[prop]) return (_ref = {}, _ref[transform] = TRANSLATION_MAP[prop] + '(' + value + ')', _ref);
-
-	  return (_ref2 = {}, _ref2[prop] = value, _ref2);
-	}
-
-	var PopupContent = _react2['default'].createClass({
-	  displayName: 'PopupContent',
-
-	  render: function render() {
-	    var child = this.props.children;
-
-	    if (!child) return _react2['default'].createElement('span', { className: 'rw-popup rw-widget' });
-
-	    child = _react2['default'].Children.only(this.props.children);
-
-	    return _react.cloneElement(child, {
-	      className: _classnames2['default'](child.props.className, 'rw-popup rw-widget')
-	    });
-	  }
-	});
-
-	module.exports = _react2['default'].createClass({
-
-	  displayName: 'Popup',
-
-	  propTypes: {
-	    open: _react2['default'].PropTypes.bool,
-	    dropUp: _react2['default'].PropTypes.bool,
-	    duration: _react2['default'].PropTypes.number,
-
-	    onRequestClose: _react2['default'].PropTypes.func.isRequired,
-	    onClosing: _react2['default'].PropTypes.func,
-	    onOpening: _react2['default'].PropTypes.func,
-	    onClose: _react2['default'].PropTypes.func,
-	    onOpen: _react2['default'].PropTypes.func
-	  },
-
-	  getInitialState: function getInitialState() {
-	    return {};
-	  },
-
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      duration: 200,
-	      open: false,
-	      onClosing: function onClosing() {},
-	      onOpening: function onOpening() {},
-	      onClose: function onClose() {},
-	      onOpen: function onOpen() {}
-	    };
-	  },
-
-	  // componentDidMount(){
-	  //   !this.props.open && this.close(0)
-	  // },
-	  componentWillMount: function componentWillMount() {
-	    !this.props.open && (this._initialPosition = true);
-	  },
-
-	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	    this.setState({
-	      contentChanged: childKey(nextProps.children) !== childKey(this.props.children)
-	    });
-	  },
-
-	  componentDidUpdate: function componentDidUpdate(pvProps) {
-	    var closing = pvProps.open && !this.props.open,
-	        opening = !pvProps.open && this.props.open,
-	        open = this.props.open;
-
-	    if (opening) this.open();else if (closing) this.close();else if (open) this.height();
-	  },
-
-	  render: function render() {
-	    var _props = this.props;
-	    var className = _props.className;
-	    var open = _props.open;
-	    var dropUp = _props.dropUp;
-	    var props = babelHelpers.objectWithoutProperties(_props, ['className', 'open', 'dropUp']);
-	    var display = open ? 'block' : void 0;
-
-	    if (this._initialPosition) {
-	      display = 'none';
-	    }
-
-	    return _react2['default'].createElement(
-	      'div',
-	      babelHelpers._extends({}, props, {
-	        style: babelHelpers._extends({
-	          display: display,
-	          height: this.state.height
-	        }, props.style),
-	        className: _classnames2['default'](className, 'rw-popup-container', { 'rw-dropup': dropUp })
-	      }),
-	      _react2['default'].createElement(
-	        PopupContent,
-	        { ref: 'content' },
-	        this.props.children
-	      )
-	    );
-	  },
-
-	  reset: function reset() {
-	    var container = _utilCompat2['default'].findDOMNode(this),
-	        content = _utilCompat2['default'].findDOMNode(this.refs.content),
-	        style = { display: 'block', overflow: 'hidden' };
-
-	    _domHelpersStyle2['default'](container, style);
-	    this.height();
-	    _domHelpersStyle2['default'](content, properties('top', this.props.dropUp ? '100%' : '-100%'));
-	  },
-
-	  height: function height() {
-	    var el = _utilCompat2['default'].findDOMNode(this),
-	        content = _utilCompat2['default'].findDOMNode(this.refs.content),
-	        margin = parseInt(_domHelpersStyle2['default'](content, 'margin-top'), 10) + parseInt(_domHelpersStyle2['default'](content, 'margin-bottom'), 10);
-
-	    var height = _domHelpersQueryHeight2['default'](content) + (isNaN(margin) ? 0 : margin);
-
-	    if (this.state.height !== height) {
-	      el.style.height = height + 'px';
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      this.setState({ height: height });
 	    }
 	  },
 
 	  open: function open() {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var _this = this;
 
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    var self = this,
 	        anim = _utilCompat2['default'].findDOMNode(this),
 	        el = _utilCompat2['default'].findDOMNode(this.refs.content);
 
 	    this.ORGINAL_POSITION = _domHelpersStyle2['default'](el, 'position');
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    this.transitionState = OPENING;
-=======
-	    this._isOpening = true;
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	    if (this._initialPosition) {
 	      this._initialPosition = false;
@@ -2808,51 +1959,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    anim.className += ' rw-popup-animating';
 	    el.style.position = 'absolute';
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    this._transition = _utilConfiguration2['default'].animate(el, { top: 0 }, self.props.duration, 'ease', function () {
 	      if (_this.transitionState !== OPENING) return;
 
 	      _this.transitionState = NONE;
-=======
-	    _utilConfiguration2['default'].animate(el, { top: 0 }, self.props.duration, 'ease', function () {
-	      if (!self._isOpening) return;
-
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      anim.className = anim.className.replace(/ ?rw-popup-animating/g, '');
 
 	      el.style.position = self.ORGINAL_POSITION;
 	      anim.style.overflow = 'visible';
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	      _this.ORGINAL_POSITION = null;
 
 	      _this.props.onOpen();
-=======
-	      self.ORGINAL_POSITION = null;
-
-	      self.props.onOpen();
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    });
 	  },
 
 	  close: function close(dur) {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var _this2 = this;
 
 	    var el = _utilCompat2['default'].findDOMNode(this.refs.content),
-=======
-	    var self = this,
-	        el = _utilCompat2['default'].findDOMNode(this.refs.content),
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        anim = _utilCompat2['default'].findDOMNode(this);
 
 	    this.ORGINAL_POSITION = _domHelpersStyle2['default'](el, 'position');
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    this.transitionState = CLOSING;
 
-=======
-	    this._isOpening = false;
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    this.height();
 	    this.props.onClosing();
 
@@ -2860,27 +1990,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    anim.className += ' rw-popup-animating';
 	    el.style.position = 'absolute';
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    this._transition = _utilConfiguration2['default'].animate(el, { top: this.props.dropUp ? '100%' : '-100%' }, dur === undefined ? this.props.duration : dur, 'ease', function () {
 	      if (_this2.transitionState !== CLOSING) return;
 
 	      _this2.transitionState = NONE;
-=======
-	    _utilConfiguration2['default'].animate(el, { top: this.props.dropUp ? '100%' : '-100%' }, dur === undefined ? this.props.duration : dur, 'ease', function () {
-	      if (self._isOpening) return;
-
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      el.style.position = self.ORGINAL_POSITION;
 	      anim.className = anim.className.replace(/ ?rw-popup-animating/g, '');
 
 	      anim.style.display = 'none';
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	      _this2.ORGINAL_POSITION = null;
 	      _this2.props.onClose();
-=======
-	      self.ORGINAL_POSITION = null;
-	      self.props.onClose();
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    });
 	  }
 
@@ -2894,22 +2013,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 28 */
-=======
-/* 39 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var offset = __webpack_require__(29),
 	    getWindow = __webpack_require__(30);
-=======
-	var offset = __webpack_require__(40),
-	    getWindow = __webpack_require__(41);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	module.exports = function height(node, client) {
 	  var win = getWindow(node);
@@ -2917,20 +2027,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 29 */
-=======
-/* 40 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var contains = __webpack_require__(25),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    getWindow = __webpack_require__(30),
-=======
-	    getWindow = __webpack_require__(41),
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    ownerDocument = __webpack_require__(24);
 
 	module.exports = function offset(node) {
@@ -2960,11 +2062,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 30 */
-=======
-/* 41 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2974,11 +2072,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 31 */
-=======
-/* 42 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2989,11 +2083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _reactDom = __webpack_require__(32);
-=======
-	var _reactDom = __webpack_require__(43);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _reactDom2 = babelHelpers.interopRequireDefault(_reactDom);
 
@@ -3012,7 +2102,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 32 */
 /***/ function(module, exports) {
 
@@ -3020,15 +2109,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 33 */
-=======
-/* 43 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_43__;
-
-/***/ },
-/* 44 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3043,11 +2123,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _localizers2 = babelHelpers.interopRequireDefault(_localizers);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _filter = __webpack_require__(34);
-=======
-	var _filter = __webpack_require__(45);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _filter2 = babelHelpers.interopRequireDefault(_filter);
 
@@ -3116,11 +2192,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 34 */
-=======
-/* 45 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports) {
 
 	"use strict";
@@ -3166,11 +2238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 35 */
-=======
-/* 46 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3183,7 +2251,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _ListOption = __webpack_require__(36);
 
 	var _ListOption2 = babelHelpers.interopRequireDefault(_ListOption);
@@ -3193,17 +2260,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
 	var _utilCompat = __webpack_require__(31);
-=======
-	var _ListOption = __webpack_require__(47);
-
-	var _ListOption2 = babelHelpers.interopRequireDefault(_ListOption);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _utilCompat = __webpack_require__(42);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
@@ -3215,17 +2271,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilDataHelpers = __webpack_require__(37);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
 
 	var _utilInteraction = __webpack_require__(39);
-=======
-	var _utilDataHelpers = __webpack_require__(48);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var optionId = function optionId(id, idx) {
 	  return id + '__option__' + idx;
@@ -3235,11 +2285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'List',
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	  mixins: [__webpack_require__(40), __webpack_require__(41)()],
-=======
-	  mixins: [__webpack_require__(50), __webpack_require__(51)()],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	  propTypes: {
 	    data: _react2['default'].PropTypes.array,
@@ -3249,7 +2295,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    optionComponent: _utilPropTypes2['default'].elementType,
 	    itemComponent: _utilPropTypes2['default'].elementType,
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    selected: _react2['default'].PropTypes.any,
 	    focused: _react2['default'].PropTypes.any,
 	    valueField: _utilPropTypes2['default'].accessor,
@@ -3257,14 +2302,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    disabled: _utilPropTypes2['default'].disabled.acceptsArray,
 	    readOnly: _utilPropTypes2['default'].readOnly.acceptsArray,
-=======
-	    selectedIndex: _react2['default'].PropTypes.number,
-	    focusedIndex: _react2['default'].PropTypes.number,
-	    valueField: _react2['default'].PropTypes.string,
-	    textField: _utilPropTypes2['default'].accessor,
-
-	    optionID: _react2['default'].PropTypes.func,
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	    messages: _react2['default'].PropTypes.shape({
 	      emptyList: _utilPropTypes2['default'].message
@@ -3273,10 +2310,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
-	      optID: '',
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      onSelect: function onSelect() {},
 	      optionComponent: _ListOption2['default'],
 	      ariaActiveDescendantKey: 'list',
@@ -3316,12 +2349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var onSelect = _props2.onSelect;
 	    var ItemComponent = _props2.itemComponent;
 	    var Option = _props2.optionComponent;
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var props = babelHelpers.objectWithoutProperties(_props2, ['className', 'role', 'data', 'textField', 'valueField', 'focused', 'selected', 'messages', 'onSelect', 'itemComponent', 'optionComponent']);
-=======
-	    var optionID = _props2.optionID;
-	    var props = babelHelpers.objectWithoutProperties(_props2, ['className', 'role', 'data', 'textField', 'valueField', 'focused', 'selected', 'messages', 'onSelect', 'itemComponent', 'optionComponent', 'optionID']);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    var id = _utilWidgetHelpers.instanceId(this);
 	    var items;
 
@@ -3330,13 +2358,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      { className: 'rw-list-empty' },
 	      _util_2['default'].result(messages.emptyList, this.props)
 	    ) : data.map(function (item, idx) {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	      var currentId = optionId(id, idx),
 	          isDisabled = _utilInteraction.isDisabledItem(item, props),
 	          isReadOnly = _utilInteraction.isReadOnlyItem(item, props);
-=======
-	      var currentId = optionId(id, idx);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	      return _react2['default'].createElement(
 	        Option,
@@ -3344,28 +2368,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	          key: 'item_' + idx,
 	          id: currentId,
 	          dataItem: item,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	          disabled: isDisabled,
 	          readOnly: isReadOnly,
 	          focused: focused === item,
 	          selected: selected === item,
 	          onClick: isDisabled || isReadOnly ? undefined : onSelect.bind(null, item)
-=======
-	          focused: focused === item,
-	          selected: selected === item,
-	          onClick: onSelect.bind(null, item)
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        },
 	        ItemComponent ? _react2['default'].createElement(ItemComponent, {
 	          item: item,
 	          value: _utilDataHelpers.dataValue(item, valueField),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	          text: _utilDataHelpers.dataText(item, textField),
 	          disabled: isDisabled,
 	          readOnly: isReadOnly
-=======
-	          text: _utilDataHelpers.dataText(item, textField)
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        }) : _utilDataHelpers.dataText(item, textField)
 	      );
 	    });
@@ -3400,11 +2414,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 36 */
-=======
-/* 47 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3427,13 +2437,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  propTypes: {
 	    dataItem: _react2['default'].PropTypes.any,
 	    focused: _react2['default'].PropTypes.bool,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    selected: _react2['default'].PropTypes.bool,
 	    disabled: _react2['default'].PropTypes.bool,
 	    readOnly: _react2['default'].PropTypes.bool
-=======
-	    selected: _react2['default'].PropTypes.bool
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	  },
 
 	  render: function render() {
@@ -3442,7 +2448,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var children = _props.children;
 	    var focused = _props.focused;
 	    var selected = _props.selected;
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var disabled = _props.disabled;
 	    var readOnly = _props.readOnly;
 	    var props = babelHelpers.objectWithoutProperties(_props, ['className', 'children', 'focused', 'selected', 'disabled', 'readOnly']);
@@ -3452,24 +2457,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      'rw-state-selected': selected,
 	      'rw-state-disabled': disabled,
 	      'rw-state-readonly': readOnly
-=======
-	    var props = babelHelpers.objectWithoutProperties(_props, ['className', 'children', 'focused', 'selected']);
-
-	    var classes = {
-	      'rw-state-focus': focused,
-	      'rw-state-selected': selected
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    };
 
 	    return _react2['default'].createElement(
 	      'li',
 	      babelHelpers._extends({
 	        role: 'option',
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        tabIndex: !(disabled || readOnly) ? '-1' : undefined,
-=======
-	        tabIndex: '-1',
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        'aria-selected': !!selected,
 	        className: _classnames2['default']('rw-list-option', className, classes)
 	      }, props),
@@ -3482,11 +2476,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 37 */
-=======
-/* 48 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3529,14 +2519,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return -1;
 	}
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	/**
 	 * I don't know that the shallow equal makes sense here but am too afraid to
 	 * remove it.
 	 */
 
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	function valueMatcher(a, b, valueField) {
 	  return _.isShallowEqual(dataValue(a, valueField), dataValue(b, valueField));
 	}
@@ -3558,11 +2545,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 38 */
-=======
-/* 49 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3590,7 +2573,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3672,16 +2654,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 40 */
-=======
-/* 50 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var babelHelpers = __webpack_require__(2);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	exports.__esModule = true;
 
 	var _utilFilter = __webpack_require__(34);
@@ -3762,88 +2740,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 41 */
-=======
-	var _react = __webpack_require__(21);
-
-	var _react2 = babelHelpers.interopRequireDefault(_react);
-
-	var _utilFilter = __webpack_require__(45);
-
-	var _utilFilter2 = babelHelpers.interopRequireDefault(_utilFilter);
-
-	var _utilDataHelpers = __webpack_require__(48);
-
-	module.exports = {
-
-	  propTypes: {
-	    textField: _react2['default'].PropTypes.string
-	  },
-
-	  first: function first() {
-	    return this._data()[0];
-	  },
-
-	  last: function last() {
-	    var data = this._data();
-	    return data[data.length - 1];
-	  },
-
-	  prev: function prev(item, word) {
-	    var textField = this.props.textField,
-	        data = this._data(),
-	        idx = data.indexOf(item);
-
-	    if (idx === -1) idx = data.length;
-
-	    return word ? findPrevInstance(textField, data, word, idx) : --idx < 0 ? data[0] : data[idx];
-	  },
-
-	  next: function next(item, word) {
-	    var textField = this.props.textField,
-	        data = this._data(),
-	        idx = data.indexOf(item);
-
-	    return word ? findNextInstance(textField, data, word, idx) : ++idx === data.length ? data[data.length - 1] : data[idx];
-	  }
-
-	};
-
-	function findNextInstance(textField, data, word, startIndex) {
-	  var matches = _utilFilter2['default'].startsWith,
-	      idx = -1,
-	      len = data.length,
-	      foundStart,
-	      itemText;
-
-	  word = word.toLowerCase();
-
-	  while (++idx < len) {
-	    foundStart = foundStart || idx > startIndex;
-	    itemText = foundStart && _utilDataHelpers.dataText(data[idx], textField).toLowerCase();
-
-	    if (foundStart && matches(itemText, word)) return data[idx];
-	  }
-	}
-
-	function findPrevInstance(textField, data, word, startIndex) {
-	  var matches = _utilFilter2['default'].startsWith,
-	      idx = data.length,
-	      foundStart,
-	      itemText;
-
-	  word = word.toLowerCase();
-
-	  while (--idx >= 0) {
-	    foundStart = foundStart || idx < startIndex;
-	    itemText = foundStart && _utilDataHelpers.dataText(data[idx], textField).toLowerCase();
-
-	    if (foundStart && matches(itemText, word)) return data[idx];
-	  }
-	}
-
-/***/ },
-/* 51 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3856,11 +2752,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilCompat = __webpack_require__(31);
-=======
-	var _utilCompat = __webpack_require__(42);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
@@ -3932,11 +2824,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 42 */
-=======
-/* 52 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3949,7 +2837,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _ListOption = __webpack_require__(36);
 
 	var _ListOption2 = babelHelpers.interopRequireDefault(_ListOption);
@@ -3959,17 +2846,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
 	var _utilCompat = __webpack_require__(31);
-=======
-	var _ListOption = __webpack_require__(47);
-
-	var _ListOption2 = babelHelpers.interopRequireDefault(_ListOption);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _utilCompat = __webpack_require__(42);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
@@ -3981,7 +2857,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _warning = __webpack_require__(43);
 
 	var _warning2 = babelHelpers.interopRequireDefault(_warning);
@@ -3991,15 +2866,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilWidgetHelpers = __webpack_require__(38);
 
 	var _utilInteraction = __webpack_require__(39);
-=======
-	var _warning = __webpack_require__(53);
-
-	var _warning2 = babelHelpers.interopRequireDefault(_warning);
-
-	var _utilDataHelpers = __webpack_require__(48);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var optionId = function optionId(id, idx) {
 	  return id + '__option__' + idx;
@@ -4009,11 +2875,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'List',
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	  mixins: [__webpack_require__(40), __webpack_require__(41)()],
-=======
-	  mixins: [__webpack_require__(50), __webpack_require__(51)()],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	  propTypes: {
 	    data: _react2['default'].PropTypes.array,
@@ -4027,18 +2889,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    selected: _react2['default'].PropTypes.any,
 	    focused: _react2['default'].PropTypes.any,
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    valueField: _utilPropTypes2['default'].accessor,
 	    textField: _utilPropTypes2['default'].accessor,
 
 	    disabled: _utilPropTypes2['default'].disabled.acceptsArray,
 	    readOnly: _utilPropTypes2['default'].readOnly.acceptsArray,
-=======
-	    valueField: _react2['default'].PropTypes.string,
-	    textField: _utilPropTypes2['default'].accessor,
-
-	    optID: _react2['default'].PropTypes.string,
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	    groupBy: _utilPropTypes2['default'].accessor,
 
@@ -4049,10 +2904,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
-	      optID: '',
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      onSelect: function onSelect() {},
 	      data: [],
 	      optionComponent: _ListOption2['default'],
@@ -4167,13 +3018,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var ItemComponent = _props2.itemComponent;
 	    var Option = _props2.optionComponent;
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var currentID = optionId(_utilWidgetHelpers.instanceId(this), idx),
 	        isDisabled = _utilInteraction.isDisabledItem(item, this.props),
 	        isReadOnly = _utilInteraction.isReadOnlyItem(item, this.props);
-=======
-	    var currentID = optionId(_utilWidgetHelpers.instanceId(this), idx);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	    if (focused === item) this._currentActiveID = currentID;
 
@@ -4185,24 +3032,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        dataItem: item,
 	        focused: focused === item,
 	        selected: selected === item,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        disabled: isDisabled,
 	        readOnly: isReadOnly,
 	        onClick: isDisabled || isReadOnly ? undefined : onSelect.bind(null, item)
-=======
-	        onClick: onSelect.bind(null, item)
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      },
 	      ItemComponent ? _react2['default'].createElement(ItemComponent, {
 	        item: item,
 	        value: _utilDataHelpers.dataValue(item, valueField),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        text: _utilDataHelpers.dataText(item, textField),
 	        disabled: isDisabled,
 	        readOnly: isReadOnly
-=======
-	        text: _utilDataHelpers.dataText(item, textField)
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      }) : _utilDataHelpers.dataText(item, textField)
 	    );
 	  },
@@ -4271,11 +3110,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 43 */
-=======
-/* 53 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -4342,11 +3177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 44 */
-=======
-/* 54 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -4374,11 +3205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 45 */
-=======
-/* 55 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4387,11 +3214,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _createUncontrollable = __webpack_require__(46);
-=======
-	var _createUncontrollable = __webpack_require__(56);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _createUncontrollable2 = _interopRequireDefault(_createUncontrollable);
 
@@ -4410,18 +3233,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  component._values[propName] = value;
-	  component.forceUpdate();
+
+	  if (component.isMounted()) component.forceUpdate();
 	}
 
 	exports['default'] = _createUncontrollable2['default']([mixin], set);
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 46 */
-=======
-/* 56 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4442,11 +3262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utils = __webpack_require__(47);
-=======
-	var _utils = __webpack_require__(57);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var utils = _interopRequireWildcard(_utils);
 
@@ -4539,6 +3355,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    component.ControlledComponent = Component;
 
+	    /**
+	     * useful when wrapping a Component and you want to control
+	     * everything
+	     */
+	    component.deferControlTo = function (newComponent, additions, nextMethods) {
+	      if (additions === undefined) additions = {};
+
+	      return uncontrollable(newComponent, _extends({}, controlledValues, additions), nextMethods);
+	    };
+
 	    return component;
 
 	    function setAndNotify(propName, value) {
@@ -4565,11 +3391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /* 47 */
-=======
-/* 57 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -4586,7 +3408,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.each = each;
 	exports.has = has;
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	var _react = __webpack_require__(21);
@@ -4688,108 +3509,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 48 */
-=======
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _react = __webpack_require__(21);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _invariant = __webpack_require__(19);
-
-	var _invariant2 = _interopRequireDefault(_invariant);
-
-	function customPropType(handler, propType, name) {
-
-	  return function (props, propName) {
-
-	    if (props[propName] !== undefined) {
-	      if (!props[handler]) {
-	        return new Error('You have provided a `' + propName + '` prop to ' + '`' + name + '` without an `' + handler + '` handler. This will render a read-only field. ' + 'If the field should be mutable use `' + defaultKey(propName) + '`. Otherwise, set `' + handler + '`');
-	      }
-
-	      return propType && propType(props, propName, name);
-	    }
-	  };
-	}
-
-	function uncontrolledPropTypes(controlledValues, basePropTypes, displayName) {
-	  var propTypes = {};
-
-	  if (process.env.NODE_ENV !== 'production' && basePropTypes) {
-	    transform(controlledValues, function (obj, handler, prop) {
-	      var type = basePropTypes[prop];
-
-	      _invariant2['default'](typeof handler === 'string' && handler.trim().length, 'Uncontrollable - [%s]: the prop `%s` needs a valid handler key name in order to make it uncontrollable', displayName, prop);
-
-	      obj[prop] = customPropType(handler, type, displayName);
-
-	      if (type !== undefined) obj[defaultKey(prop)] = type;
-	    }, propTypes);
-	  }
-
-	  return propTypes;
-	}
-
-	var version = _react2['default'].version.split('.').map(parseFloat);
-
-	exports.version = version;
-
-	function getType(component) {
-	  if (version[0] === 0 && version[1] >= 13) return component;
-
-	  return component.type;
-	}
-
-	function getValue(props, name) {
-	  var linkPropName = getLinkName(name);
-
-	  if (linkPropName && !isProp(props, name) && isProp(props, linkPropName)) return props[linkPropName].value;
-
-	  return props[name];
-	}
-
-	function isProp(props, prop) {
-	  return props[prop] !== undefined;
-	}
-
-	function getLinkName(name) {
-	  return name === 'value' ? 'valueLink' : name === 'checked' ? 'checkedLink' : null;
-	}
-
-	function defaultKey(key) {
-	  return 'default' + key.charAt(0).toUpperCase() + key.substr(1);
-	}
-
-	function chain(thisArg, a, b) {
-	  return function chainedFunction() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    a && a.call.apply(a, [thisArg].concat(args));
-	    b && b.call.apply(b, [thisArg].concat(args));
-	  };
-	}
-
-	function transform(obj, cb, seed) {
-	  each(obj, cb.bind(null, seed = seed || (Array.isArray(obj) ? [] : {})));
-	  return seed;
-	}
-
-	function each(obj, cb, thisArg) {
-	  if (Array.isArray(obj)) return obj.forEach(cb, thisArg);
-
-	  for (var key in obj) if (has(obj, key)) cb.call(thisArg, obj[key], key, obj);
-	}
-
-	function has(o, k) {
-	  return o ? Object.prototype.hasOwnProperty.call(o, k) : false;
-	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ },
-/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4804,7 +3523,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _domHelpersStyle2 = babelHelpers.interopRequireDefault(_domHelpersStyle);
 
-	var _domHelpersQueryHeight = __webpack_require__(39);
+	var _domHelpersQueryHeight = __webpack_require__(28);
 
 	var _domHelpersQueryHeight2 = babelHelpers.interopRequireDefault(_domHelpersQueryHeight);
 
@@ -4816,17 +3535,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-	var _utilCompat = __webpack_require__(42);
+	var _utilCompat = __webpack_require__(31);
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
-	var _TetherTarget = __webpack_require__(59);
+	var _TetherTarget = __webpack_require__(49);
 
 	var _TetherTarget2 = babelHelpers.interopRequireDefault(_TetherTarget);
-
-	var _reactDom = __webpack_require__(43);
-
-	var _reactDom2 = babelHelpers.interopRequireDefault(_reactDom);
 
 	var transform = _utilConfiguration2['default'].animate.transform;
 
@@ -4835,9 +3550,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var TRANSLATION_MAP = _utilConfiguration2['default'].animate.TRANSLATION_MAP;
 
-	  if (TRANSLATION_MAP && TRANSLATION_MAP[prop]) return (_ref = {}, _ref[transform] = TRANSLATION_MAP[prop] + '(' + value + ')', _ref);
+	  if (TRANSLATION_MAP && TRANSLATION_MAP[prop]) return _ref = {}, _ref[transform] = TRANSLATION_MAP[prop] + '(' + value + ')', _ref;
 
-	  return (_ref2 = {}, _ref2[prop] = value, _ref2);
+	  return _ref2 = {}, _ref2[prop] = value, _ref2;
 	}
 
 	var PopupContent = _react2['default'].createClass({
@@ -4909,7 +3624,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var placeholder = _refs.placeholder;
 	    var wrap = _refs.wrap;
 
-	    var placeholderEl = _reactDom2['default'].findDOMNode(placeholder);
+	    var placeholderEl = _utilCompat2['default'].findDOMNode(placeholder);
 	    var width = placeholderEl.offsetWidth;
 
 	    this.setState({ width: width });
@@ -4921,7 +3636,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var placeholder = this.refs.placeholder;
 
-	    var placeholderEl = _reactDom2['default'].findDOMNode(placeholder);
+	    var placeholderEl = _utilCompat2['default'].findDOMNode(placeholder);
 
 	    var width = placeholderEl.offsetWidth;
 
@@ -4969,7 +3684,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (!placeholder) return false;
 
-	    var el = _reactDom2['default'].findDOMNode(placeholder);
+	    var el = _utilCompat2['default'].findDOMNode(placeholder);
 	    var width = el.offsetWidth;
 
 	    if (width !== this.state.width) this.setState({ width: width });
@@ -5039,7 +3754,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 59 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5052,13 +3767,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-	var _utilTetherElement = __webpack_require__(60);
+	var _utilTetherElement = __webpack_require__(50);
 
 	var _utilTetherElement2 = babelHelpers.interopRequireDefault(_utilTetherElement);
 
-	var _reactDom = __webpack_require__(43);
+	var _utilCompat = __webpack_require__(31);
 
-	var _reactDom2 = babelHelpers.interopRequireDefault(_reactDom);
+	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
 	var TetherTarget = (function (_React$Component) {
 	  babelHelpers.inherits(TetherTarget, _React$Component);
@@ -5084,7 +3799,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var tether = _props.tether;
 	    var tetherOptions = _props.options;
 
-	    var options = babelHelpers._extends({}, tetherOptions, { target: _reactDom2['default'].findDOMNode(this) });
+	    var options = babelHelpers._extends({}, tetherOptions, { target: _utilCompat2['default'].findDOMNode(this) });
 	    this.tethered = new _utilTetherElement2['default'](tether, options);
 	  };
 
@@ -5120,7 +3835,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 60 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5129,7 +3844,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-	var _tether = __webpack_require__(61);
+	var _tether = __webpack_require__(51);
 
 	var _tether2 = babelHelpers.interopRequireDefault(_tether);
 
@@ -5137,7 +3852,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(43);
+	var _reactDom = __webpack_require__(32);
 
 	var _reactDom2 = babelHelpers.interopRequireDefault(_reactDom);
 
@@ -5178,7 +3893,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 61 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.1.0 */
@@ -6899,88 +5614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 62 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.isDisabled = isDisabled;
-	exports.isReadOnly = isReadOnly;
-	exports.isDisabledItem = isDisabledItem;
-	exports.isReadOnlyItem = isReadOnlyItem;
-	exports.contains = contains;
-	exports.move = move;
-
-	var _dataHelpers = __webpack_require__(48);
-
-	function isDisabled(props) {
-	  return props.disabled === true || props.disabled === 'disabled';
-	}
-
-	function isReadOnly(props) {
-	  return props.readOnly === true || props.readOnly === 'readOnly';
-	}
-
-	function isDisabledItem(item, props) {
-	  return isDisabled(props) || contains(item, props.disabled, props.valueField);
-	}
-
-	function isReadOnlyItem(item, props) {
-	  return isReadOnly(props) || contains(item, props.readOnly, props.valueField);
-	}
-
-	function contains(item, values, valueField) {
-	  return Array.isArray(values) ? values.some(function (value) {
-	    return _dataHelpers.valueMatcher(item, value, valueField);
-	  }) : _dataHelpers.valueMatcher(item, values, valueField);
-	}
-
-	function move(dir, item, props, list) {
-	  var isDisabledOrReadonly = function isDisabledOrReadonly(item) {
-	    return isDisabledItem(item, props) || isReadOnlyItem(item, props);
-	  },
-	      stop = dir === 'next' ? list.last() : list.first(),
-	      next = list[dir](item);
-
-	  while (next !== stop && isDisabledOrReadonly(next)) next = list[dir](next);
-
-	  return isDisabledOrReadonly(next) ? item : next;
-	}
-
-	var widgetEnabled = interactionDecorator(true);
-
-	exports.widgetEnabled = widgetEnabled;
-	var widgetEditable = interactionDecorator(false);
-
-	exports.widgetEditable = widgetEditable;
-	function interactionDecorator(disabledOnly) {
-	  function wrap(method) {
-	    return function decoratedMethod() {
-	      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	        args[_key] = arguments[_key];
-	      }
-
-	      if (!(isDisabled(this.props) || !disabledOnly && isReadOnly(this.props))) return method.apply(this, args);
-	    };
-	  }
-
-	  return function decorate(target, key, desc) {
-	    if (desc.initializer) {
-	      (function () {
-	        var init = desc.initializer;
-	        desc.initializer = function () {
-	          return wrap(init());
-	        };
-	      })();
-	    } else desc.value = wrap(desc.value);
-	    return desc;
-	  };
-	}
-
-/***/ },
-/* 63 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7011,11 +5645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 49 */
-=======
-/* 64 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7030,11 +5660,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 50 */
-=======
-/* 65 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7045,7 +5671,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilFilter = __webpack_require__(34);
 
 	var _utilFilter2 = babelHelpers.interopRequireDefault(_utilFilter);
@@ -7055,17 +5680,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
 	var _utilDataHelpers = __webpack_require__(37);
-=======
-	var _utilFilter = __webpack_require__(45);
-
-	var _utilFilter2 = babelHelpers.interopRequireDefault(_utilFilter);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _utilDataHelpers = __webpack_require__(48);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var dflt = function dflt(f) {
 	  return f === true ? 'startsWith' : f ? f : 'eq';
@@ -7095,7 +5709,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!searchTerm || !searchTerm.trim() || this.props.filter && searchTerm.length < (this.props.minLength || 1)) return -1;
 
 	    items.every(function (item, i) {
-	      if (matches(item, searchTerm, i)) return (idx = i, false);
+	      if (matches(item, searchTerm, i)) return idx = i, false;
 
 	      return true;
 	    });
@@ -7127,11 +5741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 51 */
-=======
-/* 66 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7140,11 +5750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _domHelpersUtilScrollTo = __webpack_require__(52);
-=======
-	var _domHelpersUtilScrollTo = __webpack_require__(67);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _domHelpersUtilScrollTo = __webpack_require__(56);
 
 	var _domHelpersUtilScrollTo2 = babelHelpers.interopRequireDefault(_domHelpersUtilScrollTo);
 
@@ -7175,29 +5781,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 52 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var getOffset = __webpack_require__(29),
 	    height = __webpack_require__(28),
-	    getScrollParent = __webpack_require__(53),
-	    scrollTop = __webpack_require__(54),
-	    raf = __webpack_require__(55),
+	    getScrollParent = __webpack_require__(57),
+	    scrollTop = __webpack_require__(58),
+	    raf = __webpack_require__(59),
 	    getWindow = __webpack_require__(30);
-=======
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var getOffset = __webpack_require__(40),
-	    height = __webpack_require__(39),
-	    getScrollParent = __webpack_require__(68),
-	    scrollTop = __webpack_require__(69),
-	    raf = __webpack_require__(70),
-	    getWindow = __webpack_require__(41);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	module.exports = function scrollTo(selected, scrollParent) {
 	    var offset = getOffset(selected),
@@ -7244,21 +5837,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 53 */
-=======
-/* 68 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var css = __webpack_require__(7),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    height = __webpack_require__(28);
-=======
-	    height = __webpack_require__(39);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	module.exports = function scrollPrarent(node) {
 	  var position = css(node, 'position'),
@@ -7281,19 +5866,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 54 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var getWindow = __webpack_require__(30);
-=======
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var getWindow = __webpack_require__(41);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	module.exports = function scrollTop(node, val) {
 	  var win = getWindow(node);
@@ -7304,11 +5881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 55 */
-=======
-/* 70 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7359,11 +5932,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = compatRaf;
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 56 */
-=======
-/* 71 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7396,11 +5965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 57 */
-=======
-/* 72 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7421,7 +5986,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilFilter = __webpack_require__(34);
 
 	var _utilFilter2 = babelHelpers.interopRequireDefault(_utilFilter);
@@ -7430,11 +5994,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
 
-	var _WidgetButton = __webpack_require__(58);
+	var _WidgetButton = __webpack_require__(62);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
-	var _ComboboxInput = __webpack_require__(59);
+	var _ComboboxInput = __webpack_require__(63);
 
 	var _ComboboxInput2 = babelHelpers.interopRequireDefault(_ComboboxInput);
 
@@ -7467,53 +6031,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilInteraction = __webpack_require__(39);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _utilFilter = __webpack_require__(45);
-
-	var _utilFilter2 = babelHelpers.interopRequireDefault(_utilFilter);
-
-	var _Popup = __webpack_require__(38);
-
-	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
-
-	var _WidgetButton = __webpack_require__(73);
-
-	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
-
-	var _ComboboxInput = __webpack_require__(74);
-
-	var _ComboboxInput2 = babelHelpers.interopRequireDefault(_ComboboxInput);
-
-	var _utilCompat = __webpack_require__(42);
-
-	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _List = __webpack_require__(46);
-
-	var _List2 = babelHelpers.interopRequireDefault(_List);
-
-	var _ListGroupable = __webpack_require__(52);
-
-	var _ListGroupable2 = babelHelpers.interopRequireDefault(_ListGroupable);
-
-	var _utilValidateListInterface = __webpack_require__(54);
-
-	var _utilValidateListInterface2 = babelHelpers.interopRequireDefault(_utilValidateListInterface);
-
-	var _uncontrollable = __webpack_require__(55);
-
-	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
-
-	var _utilDataHelpers = __webpack_require__(48);
-
-	var _utilInteraction = __webpack_require__(62);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var defaultSuggest = function defaultSuggest(f) {
 	  return f === true ? 'startsWith' : f ? f : 'eq';
@@ -7544,13 +6061,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onSelect: _react2['default'].PropTypes.func,
 
 	  autoFocus: _react2['default'].PropTypes.bool,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	  disabled: _utilPropTypes2['default'].disabled.acceptsArray,
 	  readOnly: _utilPropTypes2['default'].readOnly.acceptsArray,
-=======
-	  disabled: _utilPropTypes2['default'].disabled,
-	  readOnly: _utilPropTypes2['default'].readOnly,
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	  suggest: _utilPropTypes2['default'].filter,
 	  filter: _utilPropTypes2['default'].filter,
@@ -7577,11 +6089,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	    return [__webpack_require__(48), __webpack_require__(50), __webpack_require__(51), __webpack_require__(56), __webpack_require__(41)('input')];
-=======
-	    return [__webpack_require__(63), __webpack_require__(65), __webpack_require__(66), __webpack_require__(71), __webpack_require__(51)('input')];
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    return [__webpack_require__(52), __webpack_require__(54), __webpack_require__(55), __webpack_require__(60), __webpack_require__(41)('input')];
 	  }
 	}, {
 	  key: 'propTypes',
@@ -7681,11 +6189,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var placeholder = _props2.placeholder;
 	    var value = _props2.value;
 	    var open = _props2.open;
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
-	    var disabled = _props2.disabled;
-	    var readOnly = _props2.readOnly;
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    var List = _props2.listComponent;
 
 	    List = List || groupBy && _ListGroupable2['default'] || _List2['default'];
@@ -7700,11 +6203,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var focused = _state.focused;
 
 	    var items = this._data(),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        disabled = _utilInteraction.isDisabled(this.props),
 	        readOnly = _utilInteraction.isReadOnly(this.props),
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        valueItem = _utilDataHelpers.dataItem(data, value, valueField),
 	        // take value from the raw data
 	    inputID = _utilWidgetHelpers.instanceId(this, '_input'),
@@ -7775,12 +6275,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        babelHelpers._extends({}, popupProps, {
 	          onOpening: function () {
 	            return _this.refs.list.forceUpdate();
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	          }
-=======
-	          },
-	          onRequestClose: this.close
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        }),
 	        _react2['default'].createElement(
 	          'div',
@@ -7981,11 +6476,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 58 */
-=======
-/* 73 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8021,11 +6512,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 59 */
-=======
-/* 74 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8038,19 +6525,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _utilCaret = __webpack_require__(60);
+	var _utilCaret = __webpack_require__(64);
 
 	var _utilCaret2 = babelHelpers.interopRequireDefault(_utilCaret);
 
 	var _utilCompat = __webpack_require__(31);
-=======
-	var _utilCaret = __webpack_require__(75);
-
-	var _utilCaret2 = babelHelpers.interopRequireDefault(_utilCaret);
-
-	var _utilCompat = __webpack_require__(42);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
@@ -8129,11 +6608,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 60 */
-=======
-/* 75 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 64 */
 /***/ function(module, exports) {
 
 	/*eslint-disable no-empty */
@@ -8191,11 +6666,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 61 */
-=======
-/* 76 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8214,65 +6685,36 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilCompat = __webpack_require__(31);
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
-	var _Header = __webpack_require__(62);
+	var _Header = __webpack_require__(66);
 
 	var _Header2 = babelHelpers.interopRequireDefault(_Header);
 
-	var _Footer = __webpack_require__(64);
+	var _Footer = __webpack_require__(68);
 
 	var _Footer2 = babelHelpers.interopRequireDefault(_Footer);
 
-	var _Month = __webpack_require__(65);
+	var _Month = __webpack_require__(69);
 
 	var _Month2 = babelHelpers.interopRequireDefault(_Month);
 
-	var _Year = __webpack_require__(69);
+	var _Year = __webpack_require__(73);
 
 	var _Year2 = babelHelpers.interopRequireDefault(_Year);
 
-	var _Decade = __webpack_require__(70);
+	var _Decade = __webpack_require__(74);
 
 	var _Decade2 = babelHelpers.interopRequireDefault(_Decade);
 
-	var _Century = __webpack_require__(71);
-=======
-	var _utilCompat = __webpack_require__(42);
-
-	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
-
-	var _Header = __webpack_require__(77);
-
-	var _Header2 = babelHelpers.interopRequireDefault(_Header);
-
-	var _Footer = __webpack_require__(79);
-
-	var _Footer2 = babelHelpers.interopRequireDefault(_Footer);
-
-	var _Month = __webpack_require__(80);
-
-	var _Month2 = babelHelpers.interopRequireDefault(_Month);
-
-	var _Year = __webpack_require__(84);
-
-	var _Year2 = babelHelpers.interopRequireDefault(_Year);
-
-	var _Decade = __webpack_require__(85);
-
-	var _Decade2 = babelHelpers.interopRequireDefault(_Decade);
-
-	var _Century = __webpack_require__(86);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _Century = __webpack_require__(75);
 
 	var _Century2 = babelHelpers.interopRequireDefault(_Century);
 
 	var _utilLocalizers = __webpack_require__(18);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
@@ -8281,34 +6723,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
 
-	var _SlideTransition = __webpack_require__(72);
+	var _SlideTransition = __webpack_require__(76);
 
 	var _SlideTransition2 = babelHelpers.interopRequireDefault(_SlideTransition);
 
-	var _utilDates = __webpack_require__(66);
+	var _utilDates = __webpack_require__(70);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
-	var _utilConstants = __webpack_require__(68);
-=======
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _uncontrollable = __webpack_require__(55);
-
-	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
-
-	var _SlideTransition = __webpack_require__(87);
-
-	var _SlideTransition2 = babelHelpers.interopRequireDefault(_SlideTransition);
-
-	var _utilDates = __webpack_require__(81);
-
-	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
-
-	var _utilConstants = __webpack_require__(83);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _utilConstants = __webpack_require__(72);
 
 	var _utilConstants2 = babelHelpers.interopRequireDefault(_utilConstants);
 
@@ -8318,15 +6741,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//values, omit
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilWidgetHelpers = __webpack_require__(38);
 
 	var _utilInteraction = __webpack_require__(39);
-=======
-	var _utilWidgetHelpers = __webpack_require__(49);
-
-	var _utilInteraction = __webpack_require__(62);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var dir = _utilConstants2['default'].directions,
 	    values = function values(obj) {
@@ -8411,11 +6828,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	    return [__webpack_require__(48), __webpack_require__(49), __webpack_require__(56), __webpack_require__(41)()];
-=======
-	    return [__webpack_require__(63), __webpack_require__(64), __webpack_require__(71), __webpack_require__(51)()];
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    return [__webpack_require__(52), __webpack_require__(53), __webpack_require__(60), __webpack_require__(41)()];
 	  }
 	}, {
 	  key: 'propTypes',
@@ -8736,7 +7149,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, msgs);
 	}
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	exports['default'] = _uncontrollable2['default'](Calendar, {
 	  value: 'onChange',
 	  viewDate: 'onViewDateChange',
@@ -8745,14 +7157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 62 */
-=======
-	exports['default'] = _uncontrollable2['default'](Calendar, { value: 'onChange' });
-	module.exports = exports['default'];
-
-/***/ },
-/* 77 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8765,11 +7170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _WidgetButton = __webpack_require__(58);
-=======
-	var _WidgetButton = __webpack_require__(73);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _WidgetButton = __webpack_require__(62);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
@@ -8792,11 +7193,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    })
 	  },
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  mixins: [__webpack_require__(49), __webpack_require__(63)],
-=======
-	  mixins: [__webpack_require__(64), __webpack_require__(78)],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	  mixins: [__webpack_require__(53), __webpack_require__(67)],
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
@@ -8872,11 +7269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 63 */
-=======
-/* 78 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8903,11 +7296,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 64 */
-=======
-/* 79 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8918,11 +7307,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _WidgetButton = __webpack_require__(58);
-=======
-	var _WidgetButton = __webpack_require__(73);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _WidgetButton = __webpack_require__(62);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
@@ -8960,11 +7345,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 65 */
-=======
-/* 80 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8981,21 +7362,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _utilDates = __webpack_require__(66);
-=======
-	var _utilDates = __webpack_require__(81);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _utilDates = __webpack_require__(70);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
 	var _utilLocalizers = __webpack_require__(18);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
-=======
-	var _utilPropTypes = __webpack_require__(44);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
@@ -9003,11 +7376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var dayFormat = function dayFormat(props) {
 	  return _utilLocalizers.date.getFormat('weekday', props.dayFormat);
@@ -9050,11 +7419,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    isEqual: isEqual
 	  },
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  mixins: [__webpack_require__(63), __webpack_require__(41)()],
-=======
-	  mixins: [__webpack_require__(78), __webpack_require__(51)()],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	  mixins: [__webpack_require__(67), __webpack_require__(41)()],
 
 	  propTypes: propTypes,
 
@@ -9173,11 +7538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 66 */
-=======
-/* 81 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9186,19 +7547,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _dateArithmetic = __webpack_require__(67);
+	var _dateArithmetic = __webpack_require__(71);
 
 	var _dateArithmetic2 = babelHelpers.interopRequireDefault(_dateArithmetic);
 
-	var _constants = __webpack_require__(68);
-=======
-	var _dateArithmetic = __webpack_require__(82);
-
-	var _dateArithmetic2 = babelHelpers.interopRequireDefault(_dateArithmetic);
-
-	var _constants = __webpack_require__(83);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _constants = __webpack_require__(72);
 
 	var _constants2 = babelHelpers.interopRequireDefault(_constants);
 
@@ -9299,11 +7652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 67 */
-=======
-/* 82 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 71 */
 /***/ function(module, exports) {
 
 	var MILI    = 'milliseconds'
@@ -9476,11 +7825,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 68 */
-=======
-/* 83 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9516,11 +7861,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 69 */
-=======
-/* 84 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9537,11 +7878,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _utilDates = __webpack_require__(66);
-=======
-	var _utilDates = __webpack_require__(81);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _utilDates = __webpack_require__(70);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -9551,19 +7888,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var format = function format(props) {
 	  return _utilLocalizers.date.getFormat('month', props.monthFormat);
@@ -9592,11 +7921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'YearView',
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  mixins: [__webpack_require__(63), __webpack_require__(41)()],
-=======
-	  mixins: [__webpack_require__(78), __webpack_require__(51)()],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	  mixins: [__webpack_require__(67), __webpack_require__(41)()],
 
 	  propTypes: propTypes,
 
@@ -9693,11 +8018,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 70 */
-=======
-/* 85 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9714,11 +8035,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _utilDates = __webpack_require__(66);
-=======
-	var _utilDates = __webpack_require__(81);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _utilDates = __webpack_require__(70);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -9728,19 +8045,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var propTypes = {
 	  optionID: _react2['default'].PropTypes.func,
@@ -9766,11 +8075,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'DecadeView',
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  mixins: [__webpack_require__(49), __webpack_require__(63), __webpack_require__(41)()],
-=======
-	  mixins: [__webpack_require__(64), __webpack_require__(78), __webpack_require__(51)()],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	  mixins: [__webpack_require__(53), __webpack_require__(67), __webpack_require__(41)()],
 
 	  propTypes: propTypes,
 
@@ -9877,11 +8182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 71 */
-=======
-/* 86 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9898,11 +8199,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _utilDates = __webpack_require__(66);
-=======
-	var _utilDates = __webpack_require__(81);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _utilDates = __webpack_require__(70);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -9912,19 +8209,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var format = function format(props) {
 	  return _utilLocalizers.date.getFormat('decade', props.decadeFormat);
@@ -9952,11 +8241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'CenturyView',
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  mixins: [__webpack_require__(49), __webpack_require__(63), __webpack_require__(41)()],
-=======
-	  mixins: [__webpack_require__(64), __webpack_require__(78), __webpack_require__(51)()],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	  mixins: [__webpack_require__(53), __webpack_require__(67), __webpack_require__(41)()],
 
 	  propTypes: propTypes,
 
@@ -10072,11 +8357,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 72 */
-=======
-/* 87 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10084,17 +8365,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var babelHelpers = __webpack_require__(2);
 
 	var React = __webpack_require__(21),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	    ReplaceTransitionGroup = __webpack_require__(73),
+	    ReplaceTransitionGroup = __webpack_require__(77),
 	    compat = __webpack_require__(31),
 	    css = __webpack_require__(7),
-	    getWidth = __webpack_require__(74),
-=======
-	    ReplaceTransitionGroup = __webpack_require__(88),
-	    compat = __webpack_require__(42),
-	    css = __webpack_require__(7),
-	    getWidth = __webpack_require__(89),
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    getWidth = __webpack_require__(78),
 	    config = __webpack_require__(4);
 
 	var SlideChildGroup = React.createClass({
@@ -10210,11 +8484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 73 */
-=======
-/* 88 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10227,15 +8497,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(21),
 	    css = __webpack_require__(7),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    height = __webpack_require__(28),
-	    width = __webpack_require__(74),
+	    width = __webpack_require__(78),
 	    compat = __webpack_require__(31),
-=======
-	    height = __webpack_require__(39),
-	    width = __webpack_require__(89),
-	    compat = __webpack_require__(42),
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    _ = __webpack_require__(20);
 
 	module.exports = React.createClass({
@@ -10414,22 +8678,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 74 */
-=======
-/* 89 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var offset = __webpack_require__(29),
 	    getWindow = __webpack_require__(30);
-=======
-	var offset = __webpack_require__(40),
-	    getWindow = __webpack_require__(41);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	module.exports = function width(node, client) {
 	  var win = getWindow(node);
@@ -10437,11 +8692,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 75 */
-=======
-/* 90 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10466,11 +8717,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilCompat = __webpack_require__(31);
-=======
-	var _utilCompat = __webpack_require__(42);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
@@ -10480,18 +8727,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//pick, omit, has
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _utilDates = __webpack_require__(66);
-=======
-	var _utilDates = __webpack_require__(81);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _utilDates = __webpack_require__(70);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
 	var _utilLocalizers = __webpack_require__(18);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _utilConstants = __webpack_require__(68);
+	var _utilConstants = __webpack_require__(72);
 
 	var _utilConstants2 = babelHelpers.interopRequireDefault(_utilConstants);
 
@@ -10499,19 +8741,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
 
-	var _Calendar2 = __webpack_require__(61);
+	var _Calendar2 = __webpack_require__(65);
 
 	var _Calendar3 = babelHelpers.interopRequireDefault(_Calendar2);
 
-	var _TimeList = __webpack_require__(76);
+	var _TimeList = __webpack_require__(80);
 
 	var _TimeList2 = babelHelpers.interopRequireDefault(_TimeList);
 
-	var _DateInput = __webpack_require__(77);
+	var _DateInput = __webpack_require__(81);
 
 	var _DateInput2 = babelHelpers.interopRequireDefault(_DateInput);
 
-	var _WidgetButton = __webpack_require__(58);
+	var _WidgetButton = __webpack_require__(62);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
@@ -10526,43 +8768,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilInteraction = __webpack_require__(39);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _utilConstants = __webpack_require__(83);
-
-	var _utilConstants2 = babelHelpers.interopRequireDefault(_utilConstants);
-
-	var _Popup = __webpack_require__(38);
-
-	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
-
-	var _Calendar2 = __webpack_require__(76);
-
-	var _Calendar3 = babelHelpers.interopRequireDefault(_Calendar2);
-
-	var _TimeList = __webpack_require__(91);
-
-	var _TimeList2 = babelHelpers.interopRequireDefault(_TimeList);
-
-	var _DateInput = __webpack_require__(92);
-
-	var _DateInput2 = babelHelpers.interopRequireDefault(_DateInput);
-
-	var _WidgetButton = __webpack_require__(73);
-
-	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _uncontrollable = __webpack_require__(55);
-
-	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
-
-	var _utilInteraction = __webpack_require__(62);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var views = _utilConstants2['default'].calendarViews;
 	var popups = _utilConstants2['default'].datePopups;
@@ -10632,17 +8837,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	    return [__webpack_require__(48), __webpack_require__(49), __webpack_require__(51), __webpack_require__(56), __webpack_require__(41)('valueInput', function (key, id) {
-=======
-	    return [__webpack_require__(63), __webpack_require__(64), __webpack_require__(66), __webpack_require__(71), __webpack_require__(51)('valueInput', function (key, id) {
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    return [__webpack_require__(52), __webpack_require__(53), __webpack_require__(55), __webpack_require__(60), __webpack_require__(41)('valueInput', function (key, id) {
 	      var open = this.props.open;
 	      var current = this.ariaActiveDescendant();
 	      var calIsActive = open === popups.CALENDAR && key === 'calendar';
 	      var timeIsActive = open === popups.TIME && key === 'timelist';
 
-	      if (!current || (timeIsActive || calIsActive)) return id;
+	      if (!current || timeIsActive || calIsActive) return id;
 	    })];
 	  }
 	}, {
@@ -10738,10 +8939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        ref: 'element',
 	        tabIndex: '-1',
 	        onKeyDown: this._keyDown,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        onKeyPress: this._keyPress,
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        onFocus: this._focus.bind(null, true),
 	        onBlur: this._focus.bind(null, false),
 	        className: _classnames2['default'](className, 'rw-datetimepicker', 'rw-widget', (_cx = {
@@ -10815,10 +9013,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        {
 	          dropUp: dropUp,
 	          open: timeIsOpen,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
-	          onRequestClose: this.close,
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	          duration: duration,
 	          onOpening: function () {
 	            return _this.refs.timePopup.forceUpdate();
@@ -10852,12 +9046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          className: 'rw-calendar-popup',
 	          dropUp: dropUp,
 	          open: calendarIsOpen,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	          duration: duration
-=======
-	          duration: duration,
-	          onRequestClose: this.close
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        },
 	        shouldRenderList && _react2['default'].createElement(Calendar, babelHelpers._extends({}, calProps, {
 	          ref: 'calPopup',
@@ -10919,7 +9108,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	}, {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	  key: '_keyPress',
 	  decorators: [_utilInteraction.widgetEditable],
 	  value: function _keyPress(e) {
@@ -10930,8 +9118,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.open === popups.TIME) this.refs.timePopup._keyPress(e);
 	  }
 	}, {
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	  key: '_focus',
 	  decorators: [_utilInteraction.widgetEnabled],
 	  value: function _focus(focused, e) {
@@ -11062,11 +9248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 76 */
-=======
-/* 91 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11079,29 +9261,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _utilDates = __webpack_require__(66);
+	var _utilDates = __webpack_require__(70);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
 	var _List = __webpack_require__(35);
-=======
-	var _utilDates = __webpack_require__(81);
-
-	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
-
-	var _List = __webpack_require__(46);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _List2 = babelHelpers.interopRequireDefault(_List);
 
 	var _utilLocalizers = __webpack_require__(18);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
-=======
-	var _utilPropTypes = __webpack_require__(44);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
@@ -11125,11 +9295,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    culture: _react2['default'].PropTypes.string
 	  },
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  mixins: [__webpack_require__(48)],
-=======
-	  mixins: [__webpack_require__(63)],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	  mixins: [__webpack_require__(52)],
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
@@ -11256,14 +9422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  _keyDown: function _keyDown(e) {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var key = e.key,
-=======
-	    var _this = this;
-
-	    var key = e.key,
-	        character = String.fromCharCode(e.keyCode),
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        focusedItem = this.state.focusedItem,
 	        list = this.refs.list;
 
@@ -11273,7 +9432,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if (key === 'ArrowUp') {
 	      e.preventDefault();
 	      this.setState({ focusedItem: list.prev(focusedItem) });
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    }
 	  },
 
@@ -11285,15 +9443,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.search(String.fromCharCode(e.which), function (item) {
 	      _this.isMounted() && _this.setState({ focusedItem: item });
 	    });
-=======
-	    } else {
-	      e.preventDefault();
-
-	      this.search(character, function (item) {
-	        _this.setState({ focusedItem: item });
-	      });
-	    }
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	  },
 
 	  scrollTo: function scrollTo() {
@@ -11320,11 +9469,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 77 */
-=======
-/* 92 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11341,21 +9486,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilCompat = __webpack_require__(31);
-=======
-	var _utilCompat = __webpack_require__(42);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
 	var _utilLocalizers = __webpack_require__(18);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
-=======
-	var _utilPropTypes = __webpack_require__(44);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
@@ -11458,11 +9595,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 78 */
-=======
-/* 93 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11483,7 +9616,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilCompat = __webpack_require__(31);
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
@@ -11496,60 +9628,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
 
-	var _utilConstants = __webpack_require__(68);
+	var _utilConstants = __webpack_require__(72);
 
 	var _utilConstants2 = babelHelpers.interopRequireDefault(_utilConstants);
 
-	var _utilRepeater = __webpack_require__(79);
-=======
-	var _utilCompat = __webpack_require__(42);
-
-	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _uncontrollable = __webpack_require__(55);
-
-	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
-
-	var _utilConstants = __webpack_require__(83);
-
-	var _utilConstants2 = babelHelpers.interopRequireDefault(_utilConstants);
-
-	var _utilRepeater = __webpack_require__(94);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	var _utilRepeater = __webpack_require__(83);
 
 	var _utilRepeater2 = babelHelpers.interopRequireDefault(_utilRepeater);
 
 	var _utilLocalizers = __webpack_require__(18);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	var _NumberInput = __webpack_require__(80);
+	var _NumberInput = __webpack_require__(84);
 
 	var _NumberInput2 = babelHelpers.interopRequireDefault(_NumberInput);
 
-	var _WidgetButton = __webpack_require__(58);
+	var _WidgetButton = __webpack_require__(62);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
 	var _utilInteraction = __webpack_require__(39);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _NumberInput = __webpack_require__(95);
-
-	var _NumberInput2 = babelHelpers.interopRequireDefault(_NumberInput);
-
-	var _WidgetButton = __webpack_require__(73);
-
-	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
-
-	var _utilInteraction = __webpack_require__(62);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var directions = _utilConstants2['default'].directions;
 
@@ -11598,11 +9697,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	    return [__webpack_require__(48), __webpack_require__(49), __webpack_require__(56)];
-=======
-	    return [__webpack_require__(63), __webpack_require__(64), __webpack_require__(71)];
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    return [__webpack_require__(52), __webpack_require__(53), __webpack_require__(60)];
 	  }
 	}, {
 	  key: 'propTypes',
@@ -11670,11 +9765,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            className: _classnames2['default']({ 'rw-state-active': this.state.active === directions.UP }),
 	            onMouseDown: this._mouseDown.bind(null, directions.UP),
 	            onMouseUp: this._mouseUp.bind(null, directions.UP),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	            onMouseLeave: this._mouseUp.bind(null, directions.UP),
-=======
-	            onMouseOut: this._mouseUp.bind(null, directions.UP),
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	            onClick: this._focus.bind(null, true),
 	            disabled: val === this.props.max || this.props.disabled,
 	            'aria-disabled': val === this.props.max || this.props.disabled },
@@ -11695,11 +9786,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            className: _classnames2['default']({ 'rw-state-active': this.state.active === directions.DOWN }),
 	            onMouseDown: this._mouseDown.bind(null, directions.DOWN),
 	            onMouseUp: this._mouseUp.bind(null, directions.DOWN),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	            onMouseLeave: this._mouseUp.bind(null, directions.DOWN),
-=======
-	            onMouseOut: this._mouseUp.bind(null, directions.DOWN),
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	            onClick: this._focus.bind(null, true),
 	            disabled: val === this.props.min || this.props.disabled,
 	            'aria-disabled': val === this.props.min || this.props.disabled },
@@ -11781,10 +9868,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: function _keyDown(e) {
 	    var key = e.key;
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-=======
-	    console.log('hiii');
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    _utilWidgetHelpers.notify(this.props.onKeyDown, [e]);
 
 	    if (e.defaultPrevented) return;
@@ -11857,11 +9940,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//allow for styling, focus stealing keeping me from the normal what have you
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 79 */
-=======
-/* 94 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 83 */
 /***/ function(module, exports) {
 
 	// my tests in ie11/chrome/FF indicate that keyDown repeats
@@ -11889,11 +9968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 80 */
-=======
-/* 95 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11906,11 +9981,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
-=======
-	var _utilPropTypes = __webpack_require__(44);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
@@ -12041,11 +10112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 81 */
-=======
-/* 96 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12066,16 +10133,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _util_2 = babelHelpers.interopRequireDefault(_util_);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _Popup = __webpack_require__(27);
 
 	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
 
-	var _MultiselectInput = __webpack_require__(82);
+	var _MultiselectInput = __webpack_require__(86);
 
 	var _MultiselectInput2 = babelHelpers.interopRequireDefault(_MultiselectInput);
 
-	var _MultiselectTagList = __webpack_require__(83);
+	var _MultiselectTagList = __webpack_require__(87);
 
 	var _MultiselectTagList2 = babelHelpers.interopRequireDefault(_MultiselectTagList);
 
@@ -12104,54 +10170,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilInteraction = __webpack_require__(39);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _Popup = __webpack_require__(38);
-
-	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
-
-	var _MultiselectInput = __webpack_require__(97);
-
-	var _MultiselectInput2 = babelHelpers.interopRequireDefault(_MultiselectInput);
-
-	var _MultiselectTagList = __webpack_require__(98);
-
-	var _MultiselectTagList2 = babelHelpers.interopRequireDefault(_MultiselectTagList);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _List = __webpack_require__(46);
-
-	var _List2 = babelHelpers.interopRequireDefault(_List);
-
-	var _ListGroupable = __webpack_require__(52);
-
-	var _ListGroupable2 = babelHelpers.interopRequireDefault(_ListGroupable);
-
-	var _utilValidateListInterface = __webpack_require__(54);
-
-	var _utilValidateListInterface2 = babelHelpers.interopRequireDefault(_utilValidateListInterface);
-
-	var _uncontrollable = __webpack_require__(55);
-
-	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
-
-	var _utilDataHelpers = __webpack_require__(48);
-
-	var _utilInteraction = __webpack_require__(62);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var compatCreate = function compatCreate(props, msgs) {
 	  return typeof msgs.createNew === 'function' ? msgs.createNew(props) : [_react2['default'].createElement(
 	    'strong',
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    { key: 'dumb' },
-=======
-	    null,
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    '"' + props.searchTerm + '"'
 	  ), ' ' + msgs.createNew];
 	};
@@ -12213,11 +10236,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	    return [__webpack_require__(48), __webpack_require__(50), __webpack_require__(51), __webpack_require__(56), __webpack_require__(41)('input', function (key, id) {
-=======
-	    return [__webpack_require__(63), __webpack_require__(65), __webpack_require__(66), __webpack_require__(71), __webpack_require__(51)('input', function (key, id) {
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    return [__webpack_require__(52), __webpack_require__(54), __webpack_require__(55), __webpack_require__(60), __webpack_require__(41)('input', function (key, id) {
 	      var myKey = this.props.ariaActiveDescendantKey;
 
 	      var createIsActive = (!this._data().length || this.state.focusedItem === null) && key === myKey;
@@ -12427,12 +10446,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        babelHelpers._extends({}, popupProps, {
 	          onOpening: function () {
 	            return _this.refs.list.forceUpdate();
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	          }
-=======
-	          },
-	          onRequestClose: this.close
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        }),
 	        _react2['default'].createElement(
 	          'div',
@@ -12594,7 +10608,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      if (altKey) this.close();else if (isOpen) this.setState(babelHelpers._extends({ focusedItem: prev }, nullTag));
 	    } else if (key === 'End') {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	      e.preventDefault();
 	      if (isOpen) this.setState(babelHelpers._extends({ focusedItem: list.last() }, nullTag));else tagList && this.setState({ focusedTag: tagList.last() });
 	    } else if (key === 'Home') {
@@ -12604,12 +10617,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      e.preventDefault();
 	      ctrlKey && this.props.onCreate || focusedItem === null ? this._onCreate(this.props.searchTerm) : this._onSelect(this.state.focusedItem);
 	    } else if (key === 'Escape') isOpen ? this.close() : tagList && this.setState(nullTag);else if (noSearch && key === 'ArrowLeft') tagList && this.setState({ focusedTag: tagList.prev(focusedTag) });else if (noSearch && key === 'ArrowRight') tagList && this.setState({ focusedTag: tagList.next(focusedTag) });else if (noSearch && key === 'Delete') tagList && tagList.remove(focusedTag);else if (noSearch && key === 'Backspace') tagList && tagList.removeNext();
-=======
-	      if (isOpen) this.setState(babelHelpers._extends({ focusedItem: list.last() }, nullTag));else tagList && this.setState({ focusedTag: tagList.last() });
-	    } else if (key === 'Home') {
-	      if (isOpen) this.setState(babelHelpers._extends({ focusedItem: list.first() }, nullTag));else tagList && this.setState({ focusedTag: tagList.first() });
-	    } else if (isOpen && key === 'Enter') ctrlKey && this.props.onCreate || focusedItem === null ? this._onCreate(this.props.searchTerm) : this._onSelect(this.state.focusedItem);else if (key === 'Escape') isOpen ? this.close() : tagList && this.setState(nullTag);else if (noSearch && key === 'ArrowLeft') tagList && this.setState({ focusedTag: tagList.prev(focusedTag) });else if (noSearch && key === 'ArrowRight') tagList && this.setState({ focusedTag: tagList.next(focusedTag) });else if (noSearch && key === 'Delete') tagList && tagList.remove(focusedTag);else if (noSearch && key === 'Backspace') tagList && tagList.removeNext();
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	  }
 	}, {
 	  key: 'change',
@@ -12689,11 +10696,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 82 */
-=======
-/* 97 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12706,19 +10709,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilCompat = __webpack_require__(31);
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
 	var _utilPropTypes = __webpack_require__(33);
-=======
-	var _utilCompat = __webpack_require__(42);
-
-	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
-
-	var _utilPropTypes = __webpack_require__(44);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
 
@@ -12764,11 +10759,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 83 */
-=======
-/* 98 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12789,7 +10780,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _utilPropTypes = __webpack_require__(33);
 
 	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
@@ -12799,17 +10789,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilDataHelpers = __webpack_require__(37);
 
 	var _utilInteraction = __webpack_require__(39);
-=======
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
-
-	var _utilDataHelpers = __webpack_require__(48);
-
-	var _utilInteraction = __webpack_require__(62);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var optionId = function optionId(id, idx) {
 	  return id + '__option__' + idx;
@@ -12819,11 +10798,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'MultiselectTagList',
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	  mixins: [__webpack_require__(49), __webpack_require__(41)()],
-=======
-	  mixins: [__webpack_require__(64), __webpack_require__(51)()],
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	  mixins: [__webpack_require__(53), __webpack_require__(41)()],
 
 	  propTypes: {
 	    value: _react2['default'].PropTypes.array,
@@ -12977,11 +10952,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/* 84 */
-=======
-/* 99 */
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13002,7 +10973,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	var _uncontrollable = __webpack_require__(45);
 
 	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
@@ -13031,7 +11001,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilValidateListInterface2 = babelHelpers.interopRequireDefault(_utilValidateListInterface);
 
-	var _domHelpersUtilScrollTo = __webpack_require__(52);
+	var _domHelpersUtilScrollTo = __webpack_require__(56);
 
 	var _domHelpersUtilScrollTo2 = babelHelpers.interopRequireDefault(_domHelpersUtilScrollTo);
 
@@ -13040,37 +11010,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilInteraction = __webpack_require__(39);
 
 	var _utilWidgetHelpers = __webpack_require__(38);
-=======
-	var _uncontrollable = __webpack_require__(55);
-
-	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
-
-	var _utilCompat = __webpack_require__(42);
-
-	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
-
-	var _utilPropTypes = __webpack_require__(44);
-
-	var _utilPropTypes2 = babelHelpers.interopRequireDefault(_utilPropTypes);
-
-	var _List = __webpack_require__(46);
-
-	var _List2 = babelHelpers.interopRequireDefault(_List);
-
-	var _utilValidateListInterface = __webpack_require__(54);
-
-	var _utilValidateListInterface2 = babelHelpers.interopRequireDefault(_utilValidateListInterface);
-
-	var _domHelpersUtilScrollTo = __webpack_require__(67);
-
-	var _domHelpersUtilScrollTo2 = babelHelpers.interopRequireDefault(_domHelpersUtilScrollTo);
-
-	var _utilDataHelpers = __webpack_require__(48);
-
-	var _utilInteraction = __webpack_require__(62);
-
-	var _utilWidgetHelpers = __webpack_require__(49);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	var omit = _util_2['default'].omit;
 	var pick = _util_2['default'].pick;
@@ -13116,11 +11055,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-	    return [__webpack_require__(48), __webpack_require__(56), __webpack_require__(41)()];
-=======
-	    return [__webpack_require__(63), __webpack_require__(71), __webpack_require__(51)()];
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
+	    return [__webpack_require__(52), __webpack_require__(60), __webpack_require__(41)()];
 	  }
 	}, {
 	  key: 'getDefaultProps',
@@ -13181,16 +11116,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var className = _props.className;
 	    var tabIndex = _props.tabIndex;
 	    var busy = _props.busy;
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	    var groupBy = _props.groupBy;
 	    var List = _props.listComponent;
 
 	    List = List || groupBy && _ListGroupable2['default'] || _List2['default'];
-=======
-	    var List = _props.listComponent;
-
-	    List = List || _List2['default'];
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	    var elementProps = omit(this.props, Object.keys(propTypes));
 	    var listProps = pick(this.props, Object.keys(List.propTypes));
@@ -13209,10 +11138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      'div',
 	      babelHelpers._extends({}, elementProps, {
 	        onKeyDown: this._keyDown,
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        onKeyPress: this._keyPress,
-=======
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        onFocus: this._focus.bind(null, true),
 	        onBlur: this._focus.bind(null, false),
 	        role: 'radiogroup',
@@ -13264,15 +11190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var multiple = _props2.multiple;
 	    var list = this.refs.list;
 	    var focusedItem = this.state.focusedItem;
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 
-=======
-	    var props = this.props;
-
-	    var moveItem = function moveItem(dir, item) {
-	      return _utilInteraction.move(dir, item, props, list);
-	    };
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    var change = function change(item) {
 	      if (item) _this._change(item, multiple ? !_utilInteraction.contains(item, _this._values(), valueField) // toggle value
 	      : true);
@@ -13285,26 +11203,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (key === 'End') {
 	      e.preventDefault();
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	      if (multiple) this.setState({ focusedItem: list.last() });else change(list.last());
 	    } else if (key === 'Home') {
 	      e.preventDefault();
 
 	      if (multiple) this.setState({ focusedItem: list.first() });else change(list.first());
-=======
-	      if (multiple) this.setState({ focusedItem: moveItem('prev', null) });else change(moveItem('prev', null));
-	    } else if (key === 'Home') {
-	      e.preventDefault();
-
-	      if (multiple) this.setState({ focusedItem: moveItem('next', null) });else change(moveItem('next', null));
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    } else if (key === 'Enter' || key === ' ') {
 	      e.preventDefault();
 	      change(focusedItem);
 	    } else if (key === 'ArrowDown' || key === 'ArrowRight') {
 	      e.preventDefault();
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	      if (multiple) this.setState({ focusedItem: list.next(focusedItem) });else change(list.next(focusedItem));
 	    } else if (key === 'ArrowUp' || key === 'ArrowLeft') {
 	      e.preventDefault();
@@ -13328,21 +11237,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'selectAll',
 	  value: function selectAll() {
-=======
-	      if (multiple) this.setState({ focusedItem: moveItem('next', focusedItem) });else change(moveItem('next', focusedItem));
-	    } else if (key === 'ArrowUp' || key === 'ArrowLeft') {
-	      e.preventDefault();
-
-	      if (multiple) this.setState({ focusedItem: moveItem('prev', focusedItem) });else change(moveItem('prev', focusedItem));
-	    } else if (multiple && e.keyCode === 65 && e.ctrlKey) {
-	      e.preventDefault();
-	      this._selectAll();
-	    } else this.search(String.fromCharCode(e.keyCode));
-	  }
-	}, {
-	  key: '_selectAll',
-	  value: function _selectAll() {
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    var _this2 = this;
 
 	    var _props3 = this.props;
@@ -13411,14 +11305,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _this4 = this;
 
 	    var word = ((this._searchTerm || '') + character).toLowerCase(),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	        list = this.refs.list,
 	        multiple = this.props.multiple;
 
 	    if (!character) return;
-=======
-	        list = this.refs.list;
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 
 	    this._searchTerm = word;
 
@@ -13427,13 +11317,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      _this4._searchTerm = '';
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	      if (focusedItem) {
 	        !multiple ? _this4._change(focusedItem, true) : _this4.setState({ focusedItem: focusedItem });
 	      }
-=======
-	      if (focusedItem) _this4.setState({ focusedItem: focusedItem });
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	    }, this.props.delay);
 	  }
 	}, {
@@ -13457,16 +11343,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    render: function render() {
 	      var _props4 = this.props;
 	      var children = _props4.children;
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	      var disabled = _props4.disabled;
 	      var readonly = _props4.readonly;
 	      var item = _props4.dataItem;
-=======
-	      var focused = _props4.focused;
-	      var selected = _props4.selected;
-	      var item = _props4.dataItem;
-	      var props = babelHelpers.objectWithoutProperties(_props4, ['children', 'focused', 'selected', 'dataItem']);
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	      var _parent$props = parent.props;
 	      var multiple = _parent$props.multiple;
 	      var _parent$props$name = _parent$props.name;
@@ -13474,7 +11353,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var checked = _utilInteraction.contains(item, parent._values(), parent.props.valueField),
 	          change = parent._change.bind(null, item),
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	          type = multiple ? 'checkbox' : 'radio';
 
 	      return _react2['default'].createElement(
@@ -13482,25 +11360,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        babelHelpers._extends({}, this.props, {
 	          role: type,
 	          'aria-checked': !!checked
-=======
-	          disabled = _utilInteraction.isDisabledItem(item, parent.props),
-	          readonly = _utilInteraction.isReadOnlyItem(item, parent.props),
-	          type = multiple ? 'checkbox' : 'radio';
-
-	      return _react2['default'].createElement(
-	        'li',
-	        babelHelpers._extends({}, props, {
-	          tabIndex: '-1',
-	          role: type,
-	          'aria-checked': !!checked,
-	          'aria-disabled': disabled || readonly,
-	          className: _classnames2['default']('rw-list-option', {
-	            'rw-state-focus': focused,
-	            'rw-state-selected': selected,
-	            'rw-state-disabled': disabled,
-	            'rw-state-readonly': readonly
-	          })
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	        }),
 	        _react2['default'].createElement(
 	          'label',
@@ -13525,11 +11384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 	exports['default'] = _uncontrollable2['default'](SelectList, { value: 'onChange' }, ['selectAll']);
-=======
-	exports['default'] = _uncontrollable2['default'](SelectList, { value: 'onChange' });
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 	module.exports = exports['default'];
 
 /***/ }

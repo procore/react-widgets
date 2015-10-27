@@ -1,7 +1,4 @@
-/*! (c) 2015 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/******/ (function(modules) { // webpackBootstrap
-=======
+/*! (c) 2016 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("react"), require("ReactWidgets"));
@@ -11,9 +8,8 @@
 		exports["ReactWidgets"] = factory(require("react"), require("ReactWidgets"));
 	else
 		root["ReactWidgets"] = factory(root["React"], root["ReactWidgets"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_100__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_89__) {
 return /******/ (function(modules) { // webpackBootstrap
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -69,7 +65,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(21);
 
-	var _configure = __webpack_require__(100);
+	var _configure = __webpack_require__(89);
 
 	var _configure2 = babelHelpers.interopRequireDefault(_configure);
 
@@ -410,10 +406,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 
-/***/ 100:
+/***/ 89:
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_100__;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_89__;
 
 /***/ }
 

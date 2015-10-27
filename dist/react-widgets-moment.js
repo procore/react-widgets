@@ -1,7 +1,4 @@
-/*! (c) 2015 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/******/ (function(modules) { // webpackBootstrap
-=======
+/*! (c) 2016 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("ReactWidgets"));
@@ -11,9 +8,8 @@
 		exports["ReactWidgets"] = factory(require("ReactWidgets"));
 	else
 		root["ReactWidgets"] = factory(root["ReactWidgets"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_100__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_89__) {
 return /******/ (function(modules) { // webpackBootstrap
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -66,7 +62,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-	var _configure = __webpack_require__(100);
+	var _configure = __webpack_require__(89);
 
 	var _configure2 = babelHelpers.interopRequireDefault(_configure);
 
@@ -116,7 +112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 
 	    parse: function parse(value, format, culture) {
-	      return getMoment(culture, value, format).toDate();
+	      return value ? getMoment(culture, value, format).toDate() : null;
 	    },
 
 	    format: function format(value, _format, culture) {
@@ -274,10 +270,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 
-/***/ 100:
+/***/ 89:
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_100__;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_89__;
 
 /***/ }
 

@@ -1,7 +1,4 @@
-/*! (c) 2015 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
-<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
-/******/ (function(modules) { // webpackBootstrap
-=======
+/*! (c) 2016 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("ReactWidgets"));
@@ -11,9 +8,8 @@
 		exports["ReactWidgets"] = factory(require("ReactWidgets"));
 	else
 		root["ReactWidgets"] = factory(root["ReactWidgets"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_100__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_89__) {
 return /******/ (function(modules) { // webpackBootstrap
->>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -67,15 +63,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.__esModule = true;
 	exports['default'] = simpleNumber;
 
-	var _configure = __webpack_require__(100);
+	var _configure = __webpack_require__(89);
 
 	var _configure2 = babelHelpers.interopRequireDefault(_configure);
 
-	var _formatNumberWithString = __webpack_require__(101);
+	var _formatNumberWithString = __webpack_require__(90);
 
 	var _formatNumberWithString2 = babelHelpers.interopRequireDefault(_formatNumberWithString);
 
-	var _deconstructNumberFormat = __webpack_require__(102);
+	var _deconstructNumberFormat = __webpack_require__(91);
 
 	var _deconstructNumberFormat2 = babelHelpers.interopRequireDefault(_deconstructNumberFormat);
 
@@ -268,20 +264,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 
-/***/ 100:
+/***/ 89:
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_100__;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_89__;
 
 /***/ },
 
-/***/ 101:
+/***/ 90:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var deconstructNumberFormat = __webpack_require__(102);
-	var formatFactory = __webpack_require__(103);
+	var deconstructNumberFormat = __webpack_require__(91);
+	var formatFactory = __webpack_require__(92);
 
 	exports = module.exports = function formatNumberWithString(value, requiredFormat, overrideOptions) {
 
@@ -318,7 +314,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 
-/***/ 102:
+/***/ 91:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -524,7 +520,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 
-/***/ 103:
+/***/ 92:
 /***/ function(module, exports) {
 
 	
