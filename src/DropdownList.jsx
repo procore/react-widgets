@@ -3,6 +3,7 @@ import activeElement from 'dom-helpers/activeElement';
 import contains from'dom-helpers/query/contains';
 import cx from 'classnames';
 import _  from './util/_';
+import { OnResize } from 'react-window-mixins';
 import Popup           from './Popup';
 import compat          from './util/compat';
 import CustomPropTypes from './util/propTypes';
@@ -10,6 +11,7 @@ import PlainList       from './List';
 import GroupableList   from './ListGroupable';
 import validateList    from './util/validateListInterface';
 import createUncontrolledWidget from 'uncontrollable';
+import TetheredPopUp from './TetheredPopup';
 
 import { dataItem, dataText, dataIndexOf, valueMatcher } from './util/dataHelpers';
 import { widgetEditable, widgetEnabled, isDisabled, isReadOnly } from './util/interaction';
@@ -45,6 +47,8 @@ var propTypes = {
 
   delay:          React.PropTypes.number,
 
+  tetherPopup:   React.PropTypes.bool,
+
   dropUp:         React.PropTypes.bool,
   duration:       React.PropTypes.number, //popup
 
@@ -64,6 +68,7 @@ var DropdownList = React.createClass({
   displayName: 'DropdownList',
 
   mixins: [
+    OnResize,
     require('./mixins/TimeoutMixin'),
     require('./mixins/PureRenderMixin'),
     require('./mixins/DataFilterMixin'),
@@ -82,7 +87,8 @@ var DropdownList = React.createClass({
       data: [],
       searchTerm: '',
       messages: msgs(),
-      ariaActiveDescendantKey: 'dropdownlist'
+      ariaActiveDescendantKey: 'dropdownlist',
+      tetherPopup: false,
     }
   },
 
@@ -142,7 +148,8 @@ var DropdownList = React.createClass({
 
     let shouldRenderList = isFirstFocusedRender(this) || open;
 
-    messages = msgs(messages)
+    messages = msgs(messages);
+    const PopupComponent =  tetherPopup ? TetheredPopUp : Popup;
 
     return (
       <div {...elementProps}
@@ -188,7 +195,7 @@ var DropdownList = React.createClass({
               : dataText(valueItem, textField)
           }
         </div>
-        <Popup {...popupProps}
+        <PopupComponent {...popupProps}
           onOpen={() => this.focus() }
           onOpening={() => this.refs.list.forceUpdate() }
         >
@@ -213,7 +220,7 @@ var DropdownList = React.createClass({
                 }}/>
             }
           </div>
-        </Popup>
+        </PopupComponent>
       </div>
     )
   },

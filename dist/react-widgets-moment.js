@@ -1,5 +1,19 @@
 /*! (c) 2015 Jason Quense | https://github.com/jquense/react-widgets/blob/master/License.txt */
+<<<<<<< 68198334ad7e6c8517cd4e9b805a61246b8df002
 /******/ (function(modules) { // webpackBootstrap
+=======
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("ReactWidgets"));
+	else if(typeof define === 'function' && define.amd)
+		define(["ReactWidgets"], factory);
+	else if(typeof exports === 'object')
+		exports["ReactWidgets"] = factory(require("ReactWidgets"));
+	else
+		root["ReactWidgets"] = factory(root["ReactWidgets"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_100__) {
+return /******/ (function(modules) { // webpackBootstrap
+>>>>>>> allow popUp of DropdownList to tether. reflect update in docs.
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -41,17 +55,18 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var babelHelpers = __webpack_require__(1);
+	var babelHelpers = __webpack_require__(2);
 
 	exports.__esModule = true;
 
-	var _configure = __webpack_require__(3);
+	var _configure = __webpack_require__(100);
 
 	var _configure2 = babelHelpers.interopRequireDefault(_configure);
 
@@ -117,7 +132,8 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 1 */
+
+/***/ 2:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
@@ -130,6 +146,40 @@
 	  }
 	})(this, function (global) {
 	  var babelHelpers = global;
+
+	  babelHelpers.inherits = function (subClass, superClass) {
+	    if (typeof superClass !== "function" && superClass !== null) {
+	      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+	    }
+
+	    subClass.prototype = Object.create(superClass && superClass.prototype, {
+	      constructor: {
+	        value: subClass,
+	        enumerable: false,
+	        writable: true,
+	        configurable: true
+	      }
+	    });
+	    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	  };
+
+	  babelHelpers.createClass = (function () {
+	    function defineProperties(target, props) {
+	      for (var i = 0; i < props.length; i++) {
+	        var descriptor = props[i];
+	        descriptor.enumerable = descriptor.enumerable || false;
+	        descriptor.configurable = true;
+	        if ("value" in descriptor) descriptor.writable = true;
+	        Object.defineProperty(target, descriptor.key, descriptor);
+	      }
+	    }
+
+	    return function (Constructor, protoProps, staticProps) {
+	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+	      if (staticProps) defineProperties(Constructor, staticProps);
+	      return Constructor;
+	    };
+	  })();
 
 	  babelHelpers.createDecoratedObject = function (descriptors) {
 	    var target = {};
@@ -214,14 +264,23 @@
 
 	    return target;
 	  };
+
+	  babelHelpers.classCallCheck = function (instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  };
 	})
 
 /***/ },
-/* 2 */,
-/* 3 */
+
+/***/ 100:
 /***/ function(module, exports) {
 
-	module.exports = window.ReactWidgets;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_100__;
 
 /***/ }
-/******/ ]);
+
+/******/ })
+});
+;
