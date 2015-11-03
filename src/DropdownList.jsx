@@ -165,7 +165,8 @@ var DropdownList = React.createClass({
         onKeyDown={this._keyDown}
         onKeyPress={this._keyPress}
         onClick={this._click}
-        onFocus={this._focus.bind(null, true)}
+        onFocus={tetherPopup ? () => this.setState({focused:true}) : this._focus.bind(null, true)}
+        onBlur={!tetherPopup ? this.close : null}
         className={cx(className, 'rw-dropdownlist', 'rw-widget', {
           'rw-state-disabled':  disabled,
           'rw-state-readonly':  readOnly,
@@ -193,7 +194,7 @@ var DropdownList = React.createClass({
           }
         </div>
         <PopupComponent {...popupProps}
-          onOpen={tetherPopup ? null : () => this.focus() }
+          onOpen={tetherPopup ? null : this.focus }
           onBlur={tetherPopup ? this._focus.bind(null, false) : null}
           onOpening={() => this.refs.list.forceUpdate() }
         >
@@ -237,7 +238,6 @@ var DropdownList = React.createClass({
 
   @widgetEnabled
   _focus(focused, e){
-
     this.setTimeout('focus', () => {
       if (!focused) this.close()
 
@@ -381,7 +381,7 @@ var DropdownList = React.createClass({
   },
 
   close() {
-    
+
     notify(this.props.onToggle, false)
   },
 
