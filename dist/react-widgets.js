@@ -1254,7 +1254,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    emptyList: _utilPropTypes2['default'].message,
 	    emptyFilter: _utilPropTypes2['default'].message,
 	    filterPlaceholder: _utilPropTypes2['default'].message
-	  })
+	  }),
+
+	  popupClassName: _react2['default'].PropTypes.string
+
 	};
 
 	var DropdownList = _react2['default'].createClass(babelHelpers.createDecoratedObject([{
@@ -1393,7 +1396,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onKeyDown: this._keyDown,
 	        onKeyPress: this._keyPress,
 	        onClick: this._click,
-	        onFocus: this._focus.bind(null, true),
+	        onFocus: tetherPopup ? function () {
+	          return _this.setState({ focused: true });
+	        } : this._focus.bind(null, true),
+	        onBlur: !tetherPopup ? this.close : null,
 	        className: _classnames2['default'](className, 'rw-dropdownlist', 'rw-widget', (_cx = {
 	          'rw-state-disabled': disabled,
 	          'rw-state-readonly': readOnly,
@@ -1428,9 +1434,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _react2['default'].createElement(
 	        PopupComponent,
 	        babelHelpers._extends({}, popupProps, {
-	          onOpen: tetherPopup ? null : function () {
-	            return _this.focus();
-	          },
+	          className: popupClassName,
+	          onOpen: tetherPopup ? null : this.focus,
 	          onBlur: tetherPopup ? this._focus.bind(null, false) : null,
 	          onOpening: function () {
 	            return _this.refs.list.forceUpdate();
@@ -3558,12 +3563,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    child = _react2['default'].Children.only(props.children);
 
 	    return _react.cloneElement(child, babelHelpers._extends({}, props, {
-	      className: _classnames2['default'](child.props.className, 'rw-popup rw-widget')
+	      className: _classnames2['default'](this.props.className, child.props.className, 'rw-popup rw-widget')
 	    }));
-	  },
-
-	  componentDidUpdate: function componentDidUpdate() {
-	    _utilCompat2['default'].findDOMNode(this).focus();
 	  }
 	});
 
@@ -3661,7 +3662,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        {
 	          tether: _react2['default'].createElement(
 	            PopupContent,
-	            { onBlur: onBlur, ref: 'content', style: { width: width, opacity: opacity, pointerEvents: pointerEvents } },
+	            { className: className, tabIndex: 1, onBlur: function () {
+	                setTimeout(onBlur, 100);
+	              }, ref: 'content', style: { width: width, opacity: opacity, pointerEvents: pointerEvents } },
 	            _react2['default'].createElement(
 	              'div',
 	              { ref: 'wrap' },
@@ -3700,7 +3703,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        anim = _utilCompat2['default'].findDOMNode(this),
 	        contentEl = _utilCompat2['default'].findDOMNode(this.refs.content);
 
-	    var onOpen = this.props.onOpen;
+	    var _props2 = this.props;
+	    var onOpen = _props2.onOpen;
+	    var onBlur = _props2.onBlur;
 
 	    this._isOpening = true;
 
@@ -3721,6 +3726,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      anim.style.overflofw = 'visible';
 
 	      onOpen && onOpen();
+
+	      var el = _utilCompat2['default'].findDOMNode(self.refs.content);
+	      el.focus();
 	    });
 	  },
 
