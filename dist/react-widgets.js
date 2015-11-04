@@ -1353,6 +1353,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var placeholder = _props2.placeholder;
 	    var value = _props2.value;
 	    var open = _props2.open;
+	    var popupClassName = _props2.popupClassName;
 	    var ValueComponent = _props2.valueComponent;
 	    var List = _props2.listComponent;
 
@@ -1396,10 +1397,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onKeyDown: this._keyDown,
 	        onKeyPress: this._keyPress,
 	        onClick: this._click,
-	        onFocus: tetherPopup ? function () {
-	          return _this.setState({ focused: true });
-	        } : this._focus.bind(null, true),
-	        onBlur: !tetherPopup ? this.close : null,
+	        onFocus: this._focus.bind(null, true),
+	        onBlur: this._focus.bind(null, false),
 	        className: _classnames2['default'](className, 'rw-dropdownlist', 'rw-widget', (_cx = {
 	          'rw-state-disabled': disabled,
 	          'rw-state-readonly': readOnly,
@@ -1435,8 +1434,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        PopupComponent,
 	        babelHelpers._extends({}, popupProps, {
 	          className: popupClassName,
-	          onOpen: tetherPopup ? null : this.focus,
-	          onBlur: tetherPopup ? this._focus.bind(null, false) : null,
+	          getTetherFocus: filter ? function () {
+	            return _this.refs.filter;
+	          } : this.refs.list,
+	          onOpen: function () {
+	            return _this.focus();
+	          },
+	          onBlur: this._focus.bind(null, false),
 	          onOpening: function () {
 	            return _this.refs.list.forceUpdate();
 	          }
@@ -3662,9 +3666,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        {
 	          tether: _react2['default'].createElement(
 	            PopupContent,
-	            { className: className, tabIndex: 1, onBlur: function () {
-	                setTimeout(onBlur, 100);
-	              }, ref: 'content', style: { width: width, opacity: opacity, pointerEvents: pointerEvents } },
+	            { className: className, tabIndex: 1, ref: 'content', style: { width: width, opacity: opacity, pointerEvents: pointerEvents } },
 	            _react2['default'].createElement(
 	              'div',
 	              { ref: 'wrap' },
@@ -3706,6 +3708,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _props2 = this.props;
 	    var onOpen = _props2.onOpen;
 	    var onBlur = _props2.onBlur;
+	    var getTetherFocus = _props2.getTetherFocus;
+
+	    var focusComponent = self.refs.content;
+	    if (getTetherFocus) focusComponent = getTetherFocus();
+	    var focusEl = _utilCompat2['default'].findDOMNode(focusComponent);
 
 	    this._isOpening = true;
 
@@ -3727,8 +3734,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      onOpen && onOpen();
 
-	      var el = _utilCompat2['default'].findDOMNode(self.refs.content);
-	      el.focus();
+	      focusEl.addEventListener('blur', function () {
+	        return setTimeout(onBlur, 200);
+	      });
+	      focusEl.focus();
 	    });
 	  },
 
