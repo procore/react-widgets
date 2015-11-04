@@ -1039,6 +1039,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return typeof value === 'function' ? value.apply(undefined, args) : value;
 	  },
 
+	  isFunction: function isFunction(check) {
+	    return typeof check === 'function';
+	  },
+
 	  isShallowEqual: function isShallowEqual(a, b) {
 	    if (a === b) return true;
 	    if (a instanceof Date && b instanceof Date) return a.getTime() === b.getTime();
@@ -1529,7 +1533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _this4 = this;
 
 	    var self = this,
-	        key = e.key,
+	        key = e.keyCode,
 	        alt = e.altKey,
 	        list = this.refs.list,
 	        filtering = this.props.filter,
@@ -1539,7 +1543,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        closeWithFocus = function closeWithFocus() {
 	      _this4.close(), _utilCompat2['default'].findDOMNode(_this4).focus();
 	    };
-
 	    _utilWidgetHelpers.notify(this.props.onKeyDown, [e]);
 
 	    if (e.defaultPrevented) return;
@@ -3543,6 +3546,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _TetherTarget2 = babelHelpers.interopRequireDefault(_TetherTarget);
 
+	var _util_ = __webpack_require__(20);
+
 	var transform = _utilConfiguration2['default'].animate.transform;
 
 	function properties(prop, value) {
@@ -3587,6 +3592,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    onClose: _react2['default'].PropTypes.func,
 	    onBlur: _react2['default'].PropTypes.func,
 	    onOpen: _react2['default'].PropTypes.func,
+	    onKeyDown: _react2['default'].PropTypes.func,
 	    dropDownHeight: _react2['default'].PropTypes.number
 	  },
 
@@ -3701,18 +3707,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  open: function open() {
+	    var content = this.refs.content;
+
 	    var self = this,
 	        anim = _utilCompat2['default'].findDOMNode(this),
-	        contentEl = _utilCompat2['default'].findDOMNode(this.refs.content);
+	        contentEl = _utilCompat2['default'].findDOMNode(content);
 
 	    var _props2 = this.props;
 	    var onOpen = _props2.onOpen;
 	    var onBlur = _props2.onBlur;
+	    var onKeyDown = _props2.onKeyDown;
 	    var getTetherFocus = _props2.getTetherFocus;
 
-	    var focusComponent = self.refs.content;
-	    if (getTetherFocus) focusComponent = getTetherFocus();
-	    var focusEl = _utilCompat2['default'].findDOMNode(focusComponent);
+	    var focusComponent = content;
+	    var focusEl = undefined;
+
+	    if (_util_.isFunction(getTetherFocus)) focusComponent = getTetherFocus();
+	    if (focusComponent) focusEl = _utilCompat2['default'].findDOMNode(focusComponent);
 
 	    this._isOpening = true;
 
@@ -3734,9 +3745,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      onOpen && onOpen();
 
+	      if (!focusEl) return false;
+
 	      focusEl.addEventListener('blur', function () {
 	        return setTimeout(onBlur, 200);
 	      });
+	      focusEl.addEventListener('keydown', onKeyDown);
 	      focusEl.focus();
 	    });
 	  },

@@ -277,7 +277,7 @@ var DropdownList = React.createClass({
   @widgetEditable
   _keyDown(e){
     var self = this
-      , key = e.key
+      , key = e.keyCode
       , alt = e.altKey
       , list = this.refs.list
       , filtering = this.props.filter
@@ -285,8 +285,8 @@ var DropdownList = React.createClass({
       , selectedItem = this.state.selectedItem
       , isOpen = this.props.open
       , closeWithFocus = () => { this.close(), compat.findDOMNode(this).focus()};
-
     notify(this.props.onKeyDown, [e])
+
 
     if (e.defaultPrevented)
       return
