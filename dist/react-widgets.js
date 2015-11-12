@@ -1232,6 +1232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  valueComponent: _utilPropTypes2['default'].elementType,
 	  itemComponent: _utilPropTypes2['default'].elementType,
 	  listComponent: _utilPropTypes2['default'].elementType,
+	  afterListComponent: _utilPropTypes2['default'].elementType,
 
 	  groupComponent: _utilPropTypes2['default'].elementType,
 	  groupBy: _utilPropTypes2['default'].accessor,
@@ -1290,7 +1291,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      searchTerm: '',
 	      messages: msgs(),
 	      ariaActiveDescendantKey: 'dropdownlist',
-	      tetherPopup: false
+	      tetherPopup: false,
+	      afterComponent: null
 	    };
 	  }
 	}, {
@@ -1354,11 +1356,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var data = _props2.data;
 	    var busy = _props2.busy;
 	    var dropUp = _props2.dropUp;
+	    var searchTerm = _props2.searchTerm;
+	    var onChange = _props2.onChange;
 	    var placeholder = _props2.placeholder;
 	    var value = _props2.value;
 	    var open = _props2.open;
-	    var popupClassName = _props2.popupClassName;
 	    var ValueComponent = _props2.valueComponent;
+	    var tetherPopup = _props2.tetherPopup;
+	    var popupClassName = _props2.popupClassName;
+	    var afterListComponent = _props2.afterListComponent;
 	    var List = _props2.listComponent;
 
 	    List = List || groupBy && _ListGroupable2['default'] || _List2['default'];
@@ -1366,6 +1372,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var elementProps = omit(this.props, Object.keys(propTypes));
 	    var listProps = pick(this.props, Object.keys(List.propTypes));
 	    var popupProps = pick(this.props, Object.keys(_Popup2['default'].propTypes));
+
+	    var PopupComponent = tetherPopup ? _TetheredPopup2['default'] : _Popup2['default'];
 
 	    var _state = this.state;
 	    var focusedItem = _state.focusedItem;
@@ -1382,7 +1390,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var shouldRenderList = _utilWidgetHelpers.isFirstFocusedRender(this) || open;
 
 	    messages = msgs(messages);
-	    var PopupComponent = tetherPopup ? _TetheredPopup2['default'] : _Popup2['default'];
 
 	    return _react2['default'].createElement(
 	      'div',
@@ -1466,7 +1473,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            onMove: this._scrollTo,
 	            messages: {
 	              emptyList: data.length ? messages.emptyFilter : messages.emptyList
-	            } }))
+	            }
+	          })),
+	          afterListComponent && _react2['default'].cloneElement(afterListComponent, { value: value, searchTerm: searchTerm, data: data, onChange: onChange })
 	        )
 	      )
 	    );
@@ -3590,7 +3599,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    onClosing: _react2['default'].PropTypes.func,
 	    onOpening: _react2['default'].PropTypes.func,
 	    onClose: _react2['default'].PropTypes.func,
-	    onBlur: _react2['default'].PropTypes.func,
 	    onOpen: _react2['default'].PropTypes.func,
 	    onKeyDown: _react2['default'].PropTypes.func,
 	    dropDownHeight: _react2['default'].PropTypes.number
@@ -3679,8 +3687,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	              this.props.children
 	            )
 	          ),
-	          options: { attachment: 'bottom right' }
+	          options: {
+	            attachment: 'bottom right',
+	            classes: {
+	              element: 'rw-popup-tether-element'
+	            }
+	          }
 	        },
+	        open && _react2['default'].createElement('div', { className: 'rw-tether-scrim', onClick: onBlur }),
 	        _react2['default'].createElement('div', { ref: 'placeholder', style: { width: '100%' } })
 	      )
 	    );
@@ -3715,7 +3729,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var _props2 = this.props;
 	    var onOpen = _props2.onOpen;
-	    var onBlur = _props2.onBlur;
 	    var onKeyDown = _props2.onKeyDown;
 	    var getTetherFocus = _props2.getTetherFocus;
 
@@ -3740,16 +3753,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (!self._isOpening) return;
 
 	      anim.className = anim.className.replace(/ ?rw-popup-animating/g, '');
-
 	      anim.style.overflofw = 'visible';
 
-	      onOpen && onOpen();
+	      if (onOpen) onOpen();
 
 	      if (!focusEl) return false;
 
-	      focusEl.addEventListener('blur', function () {
-	        return setTimeout(onBlur, 200);
-	      });
 	      focusEl.addEventListener('keydown', onKeyDown);
 	      focusEl.focus();
 	    });
@@ -3829,6 +3838,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var tetherOptions = _props.options;
 
 	    var options = babelHelpers._extends({}, tetherOptions, { target: _utilCompat2['default'].findDOMNode(this) });
+
 	    this.tethered = new _utilTetherElement2['default'](tether, options);
 	  };
 
