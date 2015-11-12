@@ -72,7 +72,11 @@ Place the {widgetName} in a read-only mode, If an `Array` of values is passed in
 
 ### groupBy?{ type: 'String | Function(Any dataItem)' }
 
+<<<<<<< 4de275e5337f21fab8a2ed4c267eb44262fdd229
 Determines how to group the {widgetName}. Providing a `string` will group
+=======
+Determines how to group the {widgetName} dropdown list. Providing a `string` will group
+>>>>>>> add afterComponent to Combobox
 the `data` array by that property. You can also provide a function which should return the group value.
 
 <EditableExample codeText={require('../examples/groupby')(widgetName)}/>
@@ -108,6 +112,19 @@ Use in conjunction with the filter prop. Filter the list without regard for case
 
 ### minLength?{ type: 'Boolean', default: '1' }
 Use in conjunction with the filter prop. Start filtering the list only after the value has reached a minimum length.
+
+### afterListComponent?{type: 'Component'}
+
+Place a component after the list. Use for custom widget areas, adder buttons, and more.
+
+The {widgetName} passes the following props to the `afterListComponent`:
+- value
+- onChange
+- data
+- filter
+- searchTerm
+
+<EditableExample codeText={require('../examples/afterListComponent')(widgetName)}/>
 
 ### open?{ type: 'Boolean' }
 
