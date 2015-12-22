@@ -1232,6 +1232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  valueComponent: _utilPropTypes2['default'].elementType,
 	  itemComponent: _utilPropTypes2['default'].elementType,
 	  listComponent: _utilPropTypes2['default'].elementType,
+	  beforeListComponent: _utilPropTypes2['default'].elementType,
 	  afterListComponent: _utilPropTypes2['default'].elementType,
 
 	  groupComponent: _utilPropTypes2['default'].elementType,
@@ -1247,6 +1248,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  delay: _react2['default'].PropTypes.number,
 
 	  tetherPopup: _react2['default'].PropTypes.bool,
+
+	  multi: _react2['default'].PropTypes.bool,
 
 	  dropUp: _react2['default'].PropTypes.bool,
 	  duration: _react2['default'].PropTypes.number, //popup
@@ -1292,7 +1295,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      messages: msgs(),
 	      ariaActiveDescendantKey: 'dropdownlist',
 	      tetherPopup: false,
-	      afterComponent: null
+	      multi: false,
+	      beforeListComponent: null,
+	      afterListComponent: null
 	    };
 	  }
 	}, {
@@ -1361,6 +1366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var placeholder = _props2.placeholder;
 	    var value = _props2.value;
 	    var open = _props2.open;
+	    var beforeListComponent = _props2.beforeListComponent;
 	    var ValueComponent = _props2.valueComponent;
 	    var tetherPopup = _props2.tetherPopup;
 	    var popupClassName = _props2.popupClassName;
@@ -1386,6 +1392,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        valueItem = _utilDataHelpers.dataItem(data, value, valueField),
 	        // take value from the raw data
 	    listID = _utilWidgetHelpers.instanceId(this, '__listbox');
+
+	    if (value !== null) {
+	      valueItem = _utilDataHelpers.dataItem(data, value, valueField); // take value from the raw data
+	    }
 
 	    var shouldRenderList = _utilWidgetHelpers.isFirstFocusedRender(this) || open;
 
@@ -1460,6 +1470,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'div',
 	          null,
 	          filter && this._renderFilter(messages),
+	          beforeListComponent && _react2['default'].cloneElement(beforeListComponent, { value: value, searchTerm: searchTerm, data: data, onChange: onChange }),
 	          shouldRenderList && _react2['default'].createElement(List, babelHelpers._extends({ ref: 'list'
 	          }, listProps, {
 	            data: items,
@@ -1470,7 +1481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            selected: selectedItem,
 	            focused: open ? focusedItem : null,
 	            onSelect: this._onSelect,
-	            onMove: this._scrollTo,
+	            onMove: multi ? function () {} : this._scrollTo,
 	            messages: {
 	              emptyList: data.length ? messages.emptyFilter : messages.emptyList
 	            }

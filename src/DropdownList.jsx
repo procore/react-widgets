@@ -33,6 +33,7 @@ var propTypes = {
   valueComponent: CustomPropTypes.elementType,
   itemComponent:  CustomPropTypes.elementType,
   listComponent:  CustomPropTypes.elementType,
+  beforeListComponent: CustomPropTypes.elementType,
   afterListComponent: CustomPropTypes.elementType,
 
   groupComponent: CustomPropTypes.elementType,
@@ -47,7 +48,9 @@ var propTypes = {
 
   delay:          React.PropTypes.number,
 
-  tetherPopup:   React.PropTypes.bool,
+  tetherPopup:    React.PropTypes.bool,
+
+  multi:          React.PropTypes.bool,
 
   dropUp:         React.PropTypes.bool,
   duration:       React.PropTypes.number, //popup
@@ -91,7 +94,9 @@ var DropdownList = React.createClass({
       messages: msgs(),
       ariaActiveDescendantKey: 'dropdownlist',
       tetherPopup: false,
-      afterComponent: null,
+      multi: false,
+      beforeListComponent: null,
+      afterListComponent: null,
     }
   },
 
@@ -131,7 +136,7 @@ var DropdownList = React.createClass({
         className, tabIndex, filter
       , valueField, textField, groupBy
       , messages, data, busy, dropUp, searchTerm, onChange
-      , placeholder, value, open
+      , placeholder, value, open, beforeListComponent
       , valueComponent: ValueComponent, tetherPopup, popupClassName
       , afterListComponent, listComponent: List } = this.props;
 
@@ -150,6 +155,10 @@ var DropdownList = React.createClass({
       , readOnly = isReadOnly(this.props)
       , valueItem = dataItem(data, value, valueField) // take value from the raw data
       , listID = instanceId(this, '__listbox');
+
+    if (value !== null) {
+      valueItem = dataItem(data, value, valueField) // take value from the raw data
+    }
 
     let shouldRenderList = isFirstFocusedRender(this) || open;
 
@@ -208,6 +217,12 @@ var DropdownList = React.createClass({
         >
           <div>
             { filter && this._renderFilter(messages) }
+            {beforeListComponent && (
+              React.cloneElement(
+                beforeListComponent,
+                {value, searchTerm, data, onChange, }
+              )
+            )}
             { shouldRenderList && (
               <List ref="list"
                 {...listProps}
@@ -219,7 +234,7 @@ var DropdownList = React.createClass({
                 selected={selectedItem}
                 focused ={open ? focusedItem : null}
                 onSelect={this._onSelect}
-                onMove={this._scrollTo}
+                onMove={multi ? () => {} : this._scrollTo}
                 messages={{
                   emptyList: data.length
                     ? messages.emptyFilter
