@@ -1232,8 +1232,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  valueComponent: _utilPropTypes2['default'].elementType,
 	  itemComponent: _utilPropTypes2['default'].elementType,
 	  listComponent: _utilPropTypes2['default'].elementType,
-	  beforeListComponent: _utilPropTypes2['default'].elementType,
-	  afterListComponent: _utilPropTypes2['default'].elementType,
+	  beforeListComponent: _react2['default'].PropTypes.any,
+	  afterListComponent: _react2['default'].PropTypes.any,
 
 	  groupComponent: _utilPropTypes2['default'].elementType,
 	  groupBy: _utilPropTypes2['default'].accessor,
@@ -1479,7 +1479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            'aria-labelledby': _utilWidgetHelpers.instanceId(this),
 	            'aria-hidden': !this.props.open,
 	            selected: selectedItem,
-	            focused: open ? focusedItem : null,
+	            focused: open && focusedItem,
 	            onSelect: this._onSelect,
 	            onMove: multi ? function () {} : this._scrollTo,
 	            messages: {
@@ -1531,9 +1531,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  key: '_onSelect',
 	  decorators: [_utilInteraction.widgetEditable],
 	  value: function _onSelect(data) {
-	    _utilWidgetHelpers.notify(this.props.onSelect, data);
+	    var _props3 = this.props;
+	    var onSelect = _props3.onSelect;
+	    var tetherPopup = _props3.tetherPopup;
+
+	    _utilWidgetHelpers.notify(onSelect, data);
 	    this.change(data);
 	    this.close();
+	    if (tetherPopup) this._focus(false);
 	    this.focus(this);
 	  }
 	}, {
@@ -3713,7 +3718,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	          }
 	        },
-	        open && _react2['default'].createElement('div', { className: 'rw-tether-scrim', onClick: onBlur }),
+	        open && _react2['default'].createElement('div', { className: 'rw-tether-scrim' }),
 	        _react2['default'].createElement('div', { ref: 'placeholder', style: { width: '100%' } })
 	      )
 	    );
@@ -6101,7 +6106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  itemComponent: _utilPropTypes2['default'].elementType,
 	  listComponent: _utilPropTypes2['default'].elementType,
-	  afterListComponent: _utilPropTypes2['default'].elementType,
+	  afterListComponent: _react2['default'].PropTypes.any,
 	  groupComponent: _utilPropTypes2['default'].elementType,
 	  groupBy: _utilPropTypes2['default'].accessor,
 
@@ -6623,6 +6628,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      type: 'text',
 	      'aria-disabled': this.props.disabled,
 	      'aria-readonly': this.props.readOnly,
+	      'aria-autocomplete': 'none',
+	      autoComplete: 'off',
 	      className: this.props.className + ' rw-input',
 	      onKeyDown: this.props.onKeyDown,
 	      onChange: this._change,
