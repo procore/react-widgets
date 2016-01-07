@@ -32,8 +32,6 @@ var propTypes = {
   valueComponent: CustomPropTypes.elementType,
   itemComponent:  CustomPropTypes.elementType,
   listComponent:  CustomPropTypes.elementType,
-  beforeListComponent: React.PropTypes.any,
-  afterListComponent: React.PropTypes.any,
 
   groupComponent: CustomPropTypes.elementType,
   groupBy:        CustomPropTypes.accessor,
@@ -47,10 +45,6 @@ var propTypes = {
 
   delay:          React.PropTypes.number,
 
-  tetherPopup:    React.PropTypes.bool,
-
-  multi:          React.PropTypes.bool,
-
   dropUp:         React.PropTypes.bool,
   duration:       React.PropTypes.number, //popup
 
@@ -62,10 +56,7 @@ var propTypes = {
     emptyList:         CustomPropTypes.message,
     emptyFilter:       CustomPropTypes.message,
     filterPlaceholder: CustomPropTypes.message
-  }),
-
-  popupClassName: React.PropTypes.string
-
+  })
 };
 
 var DropdownList = React.createClass({
@@ -91,12 +82,8 @@ var DropdownList = React.createClass({
       data: [],
       searchTerm: '',
       messages: msgs(),
-      ariaActiveDescendantKey: 'dropdownlist',
-      tetherPopup: false,
-      multi: false,
-      beforeListComponent: null,
-      afterListComponent: null,
-      popupComponent: Popup
+      popupComponent: Popup,
+      ariaActiveDescendantKey: 'dropdownlist'
     }
   },
 
@@ -135,12 +122,12 @@ var DropdownList = React.createClass({
     let {
         className, tabIndex, filter
       , valueField, textField, groupBy
-      , messages, data, busy, dropUp, searchTerm, onChange
+      , messages, data, busy, dropUp
       , placeholder, value, open
-      , valueComponent: ValueComponent, multi
-      , popupComponent: PopupComponent, popupClassName
-      , beforeListComponent, afterListComponent
-      , listComponent: List } = this.props;
+      , valueComponent: ValueComponent
+      , listComponent: List, afterListComponent
+      , beforeListComponent, searchTerm
+      , onChange, popupComponent: PopupComponent } = this.props;
 
     List = List || (groupBy && GroupableList) || PlainList
 
@@ -156,13 +143,9 @@ var DropdownList = React.createClass({
       , valueItem = dataItem(data, value, valueField) // take value from the raw data
       , listID = instanceId(this, '__listbox');
 
-    if (value !== null) {
-      valueItem = dataItem(data, value, valueField) // take value from the raw data
-    }
-
     let shouldRenderList = isFirstFocusedRender(this) || open;
 
-    messages = msgs(messages);
+    messages = msgs(messages)
 
     return (
       <div {...elementProps}
@@ -181,7 +164,7 @@ var DropdownList = React.createClass({
         onKeyPress={this._keyPress}
         onClick={this._click}
         onFocus={this._focus.bind(null, true)}
-        onBlur={this._focus.bind(null, false)}
+        onBlur ={this._focus.bind(null, false)}
         className={cx(className, 'rw-dropdownlist', 'rw-widget', {
           'rw-state-disabled':  disabled,
           'rw-state-readonly':  readOnly,
@@ -209,9 +192,7 @@ var DropdownList = React.createClass({
           }
         </div>
         <PopupComponent {...popupProps}
-          className={popupClassName}
-          onOpen={() => this.focus()}
-          onBlur={this._focus.bind(null, false)}
+          onOpen={() => this.focus() }
           onOpening={() => this.refs.list.forceUpdate() }
         >
           <div>
@@ -222,7 +203,7 @@ var DropdownList = React.createClass({
                 { value, searchTerm, data, onChange }
               )
             )}
-            { shouldRenderList && (
+            { shouldRenderList &&
               <List ref="list"
                 {...listProps}
                 data={items}
@@ -231,16 +212,15 @@ var DropdownList = React.createClass({
                 aria-labelledby={instanceId(this)}
                 aria-hidden={!this.props.open}
                 selected={selectedItem}
-                focused ={open && focusedItem}
+                focused ={open ? focusedItem : null}
                 onSelect={this._onSelect}
-                onMove={multi ? () => {} : this._scrollTo}
+                onMove={this._scrollTo}
                 messages={{
                   emptyList: data.length
                     ? messages.emptyFilter
                     : messages.emptyList
-                  }}
-              />
-            )}
+                }}/>
+            }
             {afterListComponent && (
               React.cloneElement(
                 afterListComponent,
@@ -267,6 +247,7 @@ var DropdownList = React.createClass({
 
   @widgetEnabled
   _focus(focused, e){
+
     this.setTimeout('focus', () => {
       if (!focused) this.close()
 
@@ -279,10 +260,10 @@ var DropdownList = React.createClass({
 
   @widgetEditable
   _onSelect(data){
+    this.close()
     notify(this.props.onSelect, data)
-    this.change(data);
-    this.close();
-    this.focus(this);
+    this.change(data)
+    this.focus(this)
   },
 
   @widgetEditable
@@ -301,7 +282,7 @@ var DropdownList = React.createClass({
   @widgetEditable
   _keyDown(e){
     var self = this
-      , key = e.keyCode
+      , key = e.key
       , alt = e.altKey
       , list = this.refs.list
       , filtering = this.props.filter
@@ -309,8 +290,8 @@ var DropdownList = React.createClass({
       , selectedItem = this.state.selectedItem
       , isOpen = this.props.open
       , closeWithFocus = () => { this.close(), compat.findDOMNode(this).focus()};
-    notify(this.props.onKeyDown, [e])
 
+    notify(this.props.onKeyDown, [e])
 
     if (e.defaultPrevented)
       return
@@ -410,7 +391,6 @@ var DropdownList = React.createClass({
   },
 
   close() {
-
     notify(this.props.onToggle, false)
   },
 

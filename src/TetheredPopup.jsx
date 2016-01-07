@@ -125,7 +125,12 @@ module.exports = React.createClass({
       >
         <TetherTarget
           tether={
-            <PopupContent className={className} tabIndex={1} ref='content' style={{ width, opacity, pointerEvents  }}>
+            <PopupContent
+              className={className}
+              tabIndex={1}
+              ref='content'
+              style={{ width, opacity, pointerEvents  }}
+            >
               <div>
                 { this.props.children }
               </div>
@@ -138,7 +143,7 @@ module.exports = React.createClass({
             }
           }}
           >
-          {open && <div className='rw-tether-scrim'/>}
+          {open && <div onClick={onBlur} className='rw-tether-scrim'/>}
           <div ref='placeholder' style={{ width: '100%'}} />
         </TetherTarget>
       </div>
