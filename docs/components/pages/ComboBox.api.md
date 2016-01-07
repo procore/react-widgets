@@ -72,11 +72,7 @@ Place the {widgetName} in a read-only mode, If an `Array` of values is passed in
 
 ### groupBy?{ type: 'String | Function(Any dataItem)' }
 
-<<<<<<< 4de275e5337f21fab8a2ed4c267eb44262fdd229
 Determines how to group the {widgetName}. Providing a `string` will group
-=======
-Determines how to group the {widgetName} dropdown list. Providing a `string` will group
->>>>>>> add afterComponent to Combobox
 the `data` array by that property. You can also provide a function which should return the group value.
 
 <EditableExample codeText={require('../examples/groupby')(widgetName)}/>

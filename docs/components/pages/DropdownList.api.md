@@ -69,11 +69,7 @@ Place the {widgetName} in a read-only mode, If an `Array` of values is passed in
 
 ### groupBy?{ type: 'String | Function(Any dataItem)' }
 
-<<<<<<< c771c3ede70064d08deb0cd511af978463a1be45
 Determines how to group the {widgetName}. Providing a `string` will group
-=======
-Determines how to group the {widgetName} dropdown list. Providing a `string` will group
->>>>>>> add afterListComponent to Dropdown. Include example for docs.
 the `data` array by that property. You can also provide a function which should return the group value.
 
 <EditableExample codeText={require('../examples/groupby')(widgetName)}/>
@@ -141,11 +137,7 @@ The `DropdownList` passes the following props to the `afterListComponent`:
 
 ### filter?{ type: '[String, Function(dataItem, searchTerm)]', default: 'false' }
 
-<<<<<<< c771c3ede70064d08deb0cd511af978463a1be45
 Specify a filtering method used to reduce the items in the dropdown as you type. There are a few built-in filtering
-=======
-Specify a filtering method used to reduce the items in the dropdown as you type. There are a few prebuilt filtering
->>>>>>> add afterListComponent to Dropdown. Include example for docs.
 methods that can be specified by passing the `String` name.
 
 To handle custom filtering techniques provide a `function` that returns `true` or `false` for each passed in item

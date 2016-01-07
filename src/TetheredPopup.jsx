@@ -5,7 +5,6 @@ import config from './util/configuration';
 import cn from 'classnames';
 import compat from './util/compat';
 import TetherTarget from './TetherTarget';
-import { isFunction } from './util/_';
 
 var transform = config.animate.transform
 
@@ -70,9 +69,6 @@ module.exports = React.createClass({
     }
   },
 
-  // componentDidMount(){
-  //   !this.props.open && this.close(0)
-  // },
   componentWillMount(){
     !this.props.open && (this._initialPosition = true)
   },
@@ -179,13 +175,7 @@ module.exports = React.createClass({
       , anim = compat.findDOMNode(this)
       , contentEl   = compat.findDOMNode(content);
 
-    const { onOpen, onKeyDown, getTetherFocus } = this.props;
-
-    let focusComponent = content;
-    let focusEl;
-
-    if(isFunction(getTetherFocus)) focusComponent = getTetherFocus();
-    if(focusComponent) focusEl = compat.findDOMNode(focusComponent);
+    const { onOpen } = this.props;
 
     this._isOpening = true
 
@@ -209,11 +199,6 @@ module.exports = React.createClass({
           anim.style.overflofw = 'visible';
 
           if (onOpen) onOpen();
-
-          if (!focusEl) return false;
-
-          focusEl.addEventListener('keydown', onKeyDown);
-          focusEl.focus();
       })
   },
 

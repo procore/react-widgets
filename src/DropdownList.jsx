@@ -10,7 +10,6 @@ import PlainList       from './List';
 import GroupableList   from './ListGroupable';
 import validateList    from './util/validateListInterface';
 import createUncontrolledWidget from 'uncontrollable';
-import TetheredPopUp from './TetheredPopup';
 
 import { dataItem, dataText, dataIndexOf, valueMatcher } from './util/dataHelpers';
 import { widgetEditable, widgetEnabled, isDisabled, isReadOnly } from './util/interaction';
@@ -97,6 +96,7 @@ var DropdownList = React.createClass({
       multi: false,
       beforeListComponent: null,
       afterListComponent: null,
+      popupComponent: Popup
     }
   },
 
@@ -136,17 +136,17 @@ var DropdownList = React.createClass({
         className, tabIndex, filter
       , valueField, textField, groupBy
       , messages, data, busy, dropUp, searchTerm, onChange
-      , placeholder, value, open, beforeListComponent
-      , valueComponent: ValueComponent, tetherPopup, popupClassName
-      , afterListComponent, listComponent: List } = this.props;
+      , placeholder, value, open
+      , valueComponent: ValueComponent, multi
+      , popupComponent: PopupComponent, popupClassName
+      , beforeListComponent, afterListComponent
+      , listComponent: List } = this.props;
 
     List = List || (groupBy && GroupableList) || PlainList
 
     let elementProps = omit(this.props, Object.keys(propTypes));
     let listProps    = pick(this.props, Object.keys(List.propTypes));
     let popupProps   = pick(this.props, Object.keys(Popup.propTypes));
-
-    const PopupComponent =  tetherPopup ? TetheredPopUp : Popup;
 
     let { focusedItem, selectedItem, focused } = this.state;
 
@@ -210,7 +210,6 @@ var DropdownList = React.createClass({
         </div>
         <PopupComponent {...popupProps}
           className={popupClassName}
-          getTetherFocus={filter ? () => this.refs.filter : this.refs.list}
           onOpen={() => this.focus()}
           onBlur={this._focus.bind(null, false)}
           onOpening={() => this.refs.list.forceUpdate() }
@@ -280,11 +279,9 @@ var DropdownList = React.createClass({
 
   @widgetEditable
   _onSelect(data){
-    const { onSelect, tetherPopup } = this.props;
-    notify(onSelect, data)
+    notify(this.props.onSelect, data)
     this.change(data);
     this.close();
-    if (tetherPopup) this._focus(false);
     this.focus(this);
   },
 

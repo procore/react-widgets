@@ -1,8 +1,10 @@
 'use strict';
+
 module.exports = function(widgetName){
 var code =
 `
 var ${widgetName} = ReactWidgets.${widgetName}
+  , TetheredPopup = ReactWidgets.TetheredPopup
   , colors = ['orange', 'red', 'blue', 'purple'];
 
 var Example = React.createClass({
@@ -13,13 +15,13 @@ var Example = React.createClass({
     	<span>
     		<${widgetName}
     			data={colors}
-    			tetherPopup
+    			popupComponent={TetheredPopup}
     			popupClassName='tether-className-prop'
     			/>
     		<${widgetName}
     			data={colors}
-    			tetherPopup
-    			filter='contains'
+          filter="contains"
+    			popupComponent={TetheredPopup}
     			popupClassName='tether-className-prop'
     			/>
     	</span>

@@ -20,6 +20,7 @@ module.exports = {
   NumberPicker:     require('./NumberPicker'),
   Multiselect:      require('./Multiselect'),
   SelectList:       require('./SelectList'),
+  TetheredPopup:    require('./TetheredPopup'),
 
   utils: {
     ReplaceTransitionGroup: require('./ReplaceTransitionGroup'),
