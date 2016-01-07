@@ -152,19 +152,19 @@ var DropdownList = React.createClass({
         ref="input"
         role='combobox'
         tabIndex={tabIndex || '0'}
-        aria-expanded={open }
+        aria-expanded={open}
         aria-haspopup={true}
         aria-owns={listID}
         aria-busy={!!busy}
         aria-live={!open && 'polite'}
         aria-autocomplete="list"
-        aria-disabled={disabled }
-        aria-readonly={readOnly }
+        aria-disabled={disabled}
+        aria-readonly={readOnly}
         onKeyDown={this._keyDown}
         onKeyPress={this._keyPress}
         onClick={this._click}
         onFocus={this._focus.bind(null, true)}
-        onBlur ={this._focus.bind(null, false)}
+        // onBlur={this._focus.bind(null, false)}
         className={cx(className, 'rw-dropdownlist', 'rw-widget', {
           'rw-state-disabled':  disabled,
           'rw-state-readonly':  readOnly,
@@ -193,7 +193,8 @@ var DropdownList = React.createClass({
         </div>
         <PopupComponent {...popupProps}
           onOpen={() => this.focus() }
-          onOpening={() => this.refs.list.forceUpdate() }
+          onBlur={this._focus.bind(null, false)}
+          onOpening={() => this.refs.list.forceUpdate()}
         >
           <div>
             { filter && this._renderFilter(messages) }

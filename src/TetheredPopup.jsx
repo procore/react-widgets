@@ -65,7 +65,7 @@ module.exports = React.createClass({
 
   getInitialState(){
     return {
-      width: 'auto',
+      width: 'auto'
     }
   },
 
@@ -98,9 +98,9 @@ module.exports = React.createClass({
 
     const width = placeholderEl.offsetWidth;
 
-    if(width !== this.state.width) this.setState({ width });
-    else if (opening) this.open();
+    if(width !== this.state.width) this.setState({ width })
     else if (closing) this.close();
+    else if (opening) this.open();
   },
 
   render() {
@@ -113,15 +113,19 @@ module.exports = React.createClass({
       , ...props } = this.props;
 
     const opacity = open ? 1 : 0;
-    const pointerEvents = open ? 'all' : 'none';
     const { width } = this.state;
+    const placeholder = <div ref='placeholder' style={{ width: '100%'}} />;
+
+    if (!open) return placeholder;
 
     return (
       <div {...props}
         style={{
           ... propStyle
         }}
-        className={cn(className, 'rw-popup-container', 'rw-tether', { 'rw-dropup': dropUp })}
+        className={
+          cn(className, 'rw-popup-container', 'rw-tether', { ['rw-open' + (dropUp ? '-up' : '')]: open })
+        }
       >
         <TetherTarget
           tether={
@@ -129,7 +133,7 @@ module.exports = React.createClass({
               className={className}
               tabIndex={1}
               ref='content'
-              style={{ width, opacity, pointerEvents  }}
+              style={{ width, opacity }}
             >
               <div>
                 { this.props.children }
@@ -144,7 +148,7 @@ module.exports = React.createClass({
           }}
           >
           {open && <div onClick={onBlur} className='rw-tether-scrim'/>}
-          <div ref='placeholder' style={{ width: '100%'}} />
+          {placeholder}
         </TetherTarget>
       </div>
     )
@@ -188,8 +192,6 @@ module.exports = React.createClass({
       this._initialPosition = false
       this.reset();
     }
-
-    this.props.onOpening();
 
     anim.className += ' rw-popup-animating'
 
