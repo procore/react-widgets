@@ -269,12 +269,13 @@ var DropdownList = React.createClass({
 
   @widgetEnabled
   _focus(focused, e){
-    const event = e;
+    e.originalEvent.firstTimeIn = true;
+
     this.setTimeout('focus', () => {
       if( !focused) this.close()
 
       if( focused !== this.state.focused) {
-        notify(this.props[focused ? 'onFocus' : 'onBlur'], event)
+        notify(this.props[focused ? 'onFocus' : 'onBlur'], e)
         this.setState({ focused: focused })
       }
     })
