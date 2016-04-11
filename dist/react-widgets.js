@@ -1511,11 +1511,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: function _focus(focused, e) {
 	    var _this3 = this;
 
+	    debugger;
 	    this.setTimeout('focus', function () {
 	      if (!focused) _this3.close();
 
 	      if (focused !== _this3.state.focused) {
-	        _utilWidgetHelpers.notify(_this3.props[focused ? 'onFocus' : 'onBlur'], e);
+	        _utilWidgetHelpers.notify(_this3.props[focused ? 'onFocus' : 'onBlur'], window.event);
 	        _this3.setState({ focused: focused });
 	      }
 	    });
@@ -3823,7 +3824,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.1.0 */
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.2.0 */
 
 	(function(root, factory) {
 	  if (true) {
@@ -3847,9 +3848,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function getScrollParent(el) {
-	  var _getComputedStyle = getComputedStyle(el);
-
-	  var position = _getComputedStyle.position;
+	  // In firefox if the el is inside an iframe with display: none; window.getComputedStyle() will return null;
+	  // https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+	  var computedStyle = getComputedStyle(el) || {};
+	  var position = computedStyle.position;
 
 	  if (position === 'fixed') {
 	    return el;
@@ -5301,14 +5303,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      if (changeAttachX === 'element' || changeAttachX === 'both') {
-	        if (left < bounds[0] && eAttachment.left === 'right') {
-	          left += width;
-	          eAttachment.left = 'left';
+	        if (left < bounds[0]) {
+	          if (eAttachment.left === 'right') {
+	            left += width;
+	            eAttachment.left = 'left';
+	          } else if (eAttachment.left === 'center') {
+	            left += width / 2;
+	            eAttachment.left = 'left';
+	          }
 	        }
 
-	        if (left + width > bounds[2] && eAttachment.left === 'left') {
-	          left -= width;
-	          eAttachment.left = 'right';
+	        if (left + width > bounds[2]) {
+	          if (eAttachment.left === 'left') {
+	            left -= width;
+	            eAttachment.left = 'right';
+	          } else if (eAttachment.left === 'center') {
+	            left -= width / 2;
+	            eAttachment.left = 'right';
+	          }
 	        }
 	      }
 
