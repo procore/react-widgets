@@ -1511,12 +1511,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: function _focus(focused, e) {
 	    var _this3 = this;
 
-	    var event = e;
+	    e.originalEvent.firstTimeIn = true;
+
 	    this.setTimeout('focus', function () {
 	      if (!focused) _this3.close();
 
 	      if (focused !== _this3.state.focused) {
-	        _utilWidgetHelpers.notify(_this3.props[focused ? 'onFocus' : 'onBlur'], event);
+	        _utilWidgetHelpers.notify(_this3.props[focused ? 'onFocus' : 'onBlur'], e);
 	        _this3.setState({ focused: focused });
 	      }
 	    });
