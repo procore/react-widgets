@@ -6262,11 +6262,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var autoFocus = _props2.autoFocus;
 	    var placeholder = _props2.placeholder;
 	    var value = _props2.value;
-	    var open
-	    // Procore Specific
-	    // , disabled, readOnly
-	    // , afterListComponent, searchTerm, onChange
-	    = _props2.open;
+	    var open = _props2.open;
+	    var afterListComponent = _props2.afterListComponent;
+	    var searchTerm = _props2.searchTerm;
+	    var onChange = _props2.onChange;
 	    var List = _props2.listComponent;
 
 

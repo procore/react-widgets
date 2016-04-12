@@ -154,9 +154,7 @@ var ComboBox = React.createClass({
       , valueField, textField, groupBy
       , messages, data, busy, dropUp, name, autoFocus
       , placeholder, value, open
-      // Procore Specific
-      // , disabled, readOnly
-      // , afterListComponent, searchTerm, onChange
+      , afterListComponent, searchTerm, onChange
       , listComponent: List } = this.props;
 
     List = List || (groupBy && GroupableList) || PlainList
