@@ -143,7 +143,7 @@ var DropdownList = React.createClass({
       , messages, data, busy, dropUp
       , placeholder, value, open, tetherPopup, multi
       , valueComponent: ValueComponent
-      , beforeListComponent, afterListComponent
+      , beforeListComponent, afterListComponent, searchTerm
       , listComponent: List } = this.props;
 
     List = List || (groupBy && GroupableList) || PlainList

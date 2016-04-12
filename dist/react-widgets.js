@@ -1262,6 +1262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var ValueComponent = _props2.valueComponent;
 	    var beforeListComponent = _props2.beforeListComponent;
 	    var afterListComponent = _props2.afterListComponent;
+	    var searchTerm = _props2.searchTerm;
 	    var List = _props2.listComponent;
 
 
