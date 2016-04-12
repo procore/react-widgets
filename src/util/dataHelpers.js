@@ -3,11 +3,11 @@ import { has, isShallowEqual } from './_';
 function accessor(data, field){
   var value = data;
 
-  if ( typeof field === 'function')
+  if (typeof field === 'function')
     value = field(data)
-  else if ( data == null )
+  else if (data == null)
     value = data
-  else if ( typeof field === 'string' && typeof data === 'object' && field in data )
+  else if (typeof field === 'string' && typeof data === 'object' && field in data)
     value = data[field]
 
   return value
@@ -29,24 +29,28 @@ export function dataIndexOf(data, item, valueField){
     , finder = datum => valueMatcher(item, datum, valueField);
 
   while (++idx < len)
-    if( finder(data[idx]) ) return idx
+    if (finder(data[idx])) return idx
 
   return -1
 }
 
+/**
+ * I don't know that the shallow equal makes sense here but am too afraid to
+ * remove it.
+ */
 export function valueMatcher(a, b, valueField){
   return isShallowEqual(
     dataValue(a, valueField), dataValue(b, valueField))
 }
 
-export function dataItem(data, item, valueField){
+export function dataItem(data, item, valueField) {
   var first = data[0]
     , idx;
 
   // make an attempt to see if we were passed in dataItem vs just a valueField value
   // either an object with the right prop, or a primitive
   // { valueField: 5 } || "hello" [ "hello" ]
-  if( has(item, valueField) || typeof first === typeof val)
+  if (has(item, valueField) || typeof first === typeof item)
     return item
 
   idx = dataIndexOf(data, dataValue(item, valueField), valueField)

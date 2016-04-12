@@ -18,7 +18,7 @@ module.exports = function makeConfig(options){
         : 'style-loader!css-loader!less-loader' },
 
     { test: /\.gif$/, loader: 'url-loader?mimetype=image/png' },
-    { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
+    { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
     { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader?name=[name].[ext]' }
   ];
 
@@ -90,12 +90,14 @@ module.exports = function makeConfig(options){
 
     externals: options.externals,
 
-    babel: options.babel,
+    //babel: options.babel,
 
     resolve: {
       extensions: ['', '.js', '.jsx'],
       alias: {
-        'react-widgets': path.join(__dirname, '..', 'src')
+        react: path.resolve('./node_modules/react'),
+        'react-widgets': path.join(__dirname, '..', 'src'),
+        'react-dom': path.resolve('./node_modules/react-dom')
       }
     },
 

@@ -36,6 +36,7 @@ export default React.createClass({
       <input
         {...this.props }
         type='text'
+        autoComplete='off'
         aria-disabled={this.props.disabled}
         aria-readonly={this.props.readOnly}
         aria-autocomplete="none"

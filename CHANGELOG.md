@@ -1,3 +1,119 @@
+v3.2.4 - Mon, 11 Apr 2016 17:40:41 GMT
+--------------------------------------
+
+- [cad7940](../../commit/cad7940) [fixed] incorrectly limited padded zeros
+
+
+
+v3.2.3 - Mon, 11 Apr 2016 15:48:52 GMT
+--------------------------------------
+
+- [b49b5ef](../../commit/b49b5ef) [fixed] #322
+
+
+
+v3.2.1 - Tue, 29 Mar 2016 19:34:19 GMT
+--------------------------------------
+
+- [3bd3da4](../../commit/3bd3da4) [fixed] SelectList was too forceful refocusing
+- [db5fc11](../../commit/db5fc11) [fixed] SelectList focus logic
+
+
+
+v3.2.0 - Sat, 27 Feb 2016 16:48:04 GMT
+--------------------------------------
+
+- [8805757](../../commit/8805757) [fixed] guard against async setState
+- [f01fbfd](../../commit/f01fbfd) [fixed] focused popups have a higher zIndex than others
+- [93325fa](../../commit/93325fa) [fixed] add onNavigate to Calendar propTypes
+- [31151a8](../../commit/31151a8) [changed] Move focus handling to Mixin for consistency
+- [fd6bada](../../commit/fd6bada) [fixed] SSR rendering issue with popup
+- [665549d](../../commit/665549d) [fixed] Move envify to dependencies
+- [3b0499a](../../commit/3b0499a) [fixed] Better Globalize version sniffing...siiigh
+
+
+
+v3.1.7 - Thu, 21 Jan 2016 17:01:50 GMT
+--------------------------------------
+
+
+
+
+
+v3.1.6 - Fri, 15 Jan 2016 20:46:18 GMT
+--------------------------------------
+
+- [406c795](../../commit/406c795) [changed] popup animates onMount
+
+
+
+v3.1.5 - Thu, 14 Jan 2016 15:45:04 GMT
+--------------------------------------
+
+- [9e1ada0](../../commit/9e1ada0) [fixed] add autoComplete off to combobox and dropdown filter
+- [39284b8](../../commit/39284b8) [fixed] preventDefault for Enter keys
+- [5b17d73](../../commit/5b17d73) [fixed] Multiselect not handling disabled items correctly
+- [c8bcb1e](../../commit/c8bcb1e) [fixed] correctly localize number when editing
+- [735c267](../../commit/735c267) [fixed] Can start typing negative numbers
+
+
+
+v3.1.4 - Tue, 12 Jan 2016 22:14:45 GMT
+--------------------------------------
+
+- [438e30a](../../commit/438e30a) [fixed] extra timeout check, prevent setState after unmount
+- [4b6abc7](../../commit/4b6abc7) [fixed] localizer dist files
+
+
+
+v3.1.3 - Tue, 08 Dec 2015 19:20:18 GMT
+--------------------------------------
+
+- [c9bed37](../../commit/c9bed37) [fixed] moment localizer parse error
+- [edba4c1](../../commit/edba4c1) [fixed] changing dropUp during a transition will cancel and restart the correct animation
+
+
+
+v3.1.2 - Tue, 08 Dec 2015 19:12:58 GMT
+--------------------------------------
+
+- [3f7a001](../../commit/3f7a001) [fixed] changing dropUp during a transition will cancel and restart the correct animation
+- [53bff60](../../commit/53bff60) [fixed] multiselect calls preventDefault
+- [6e83098](../../commit/6e83098) [fixed] A couple IE8 issues
+
+
+
+v3.1.1 - Fri, 04 Dec 2015 18:48:40 GMT
+--------------------------------------
+
+- [39f2dc0](../../commit/39f2dc0) [fixed] dropdown correctly checks value equality
+- [88bc7b0](../../commit/88bc7b0) [fixed]  list searches correctly happen on keyPress and not keyDown
+
+
+
+v3.1.0 - Mon, 02 Nov 2015 17:56:43 GMT
+--------------------------------------
+
+- [bd399d9](../../commit/bd399d9) [added] grouping SelectList items
+- [1058e3f](../../commit/1058e3f) [added] disable individual dropdown/combobox options
+- [5d1b530](../../commit/5d1b530) [fixed] missing key on Multiselect
+
+
+
+v3.0.1 - Fri, 30 Oct 2015 04:27:39 GMT
+--------------------------------------
+
+- [3d25273](../../commit/3d25273) [fixed] missing dev dep
+
+
+
+v3.0.0 - Sat, 24 Oct 2015 01:55:25 GMT
+--------------------------------------
+
+- [8172eaa](../../commit/8172eaa) [added] selectlist selectAll() method
+
+
+
 v3.0.0-beta.1 - Mon, 12 Oct 2015 13:09:20 GMT
 ---------------------------------------------
 

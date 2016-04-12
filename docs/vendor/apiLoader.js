@@ -1,29 +1,12 @@
 "use strict";
 var marked = require('marked')
   , Renderer = require('./jsx-renderer')
-  , prism = require('./prism')
   , fs = require('fs')
   , path = require('path');
 
-
-prism.languages.insertBefore('javascript', 'keyword', {
-  'var': /\b(this)\b/g,
-  'block-keyword': /\b(if|else|while|for|function)\b/g,
-  'primitive': /\b(true|false|null|undefined)\b/g,
-  'function': prism.languages.function,
-});
-
-prism.languages.insertBefore('javascript', {
-  'qualifier': /\b[A-Z][a-z0-9_]+/g,
-});
-
 marked.setOptions({
-  xhtml: true,
-  highlight: function(code) {
-    return prism.highlight(code, prism.languages.javascript);
-  }
+  xhtml: true
 })
-
 
 var renderer = new Renderer()
   , props;
@@ -43,7 +26,7 @@ renderer.heading = function (text, level, raw) {
 
 
 module.exports = function(markdown) {
-  var templatePath = __dirname + '/../templates/doc-page'
+  var templatePath = path.join(__dirname, '../templates/doc-page')
     , callback = this.async();
 
   if (this && this.cacheable)

@@ -11,7 +11,7 @@ module.exports = makeConfig({
     //hot: !args.production,
 
     entry:  {
-      app: path.join(__dirname, '../docs/components/docs.jsx'),
+      app: path.join(__dirname, '../docs/components/Docs.jsx'),
       vendor: ['react', 'react-dom', 'globalize']
     },
 
@@ -19,10 +19,6 @@ module.exports = makeConfig({
       path: path.join(__dirname, '../docs/public'),
       filename: 'docs.js',
       publicPath: '/docs/public'
-    },
-
-    externals: {
-      'babel/browser': 'window.babel'
     },
 
     plugins: [

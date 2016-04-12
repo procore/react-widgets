@@ -1,3 +1,9 @@
+<div className='alert alert-warning'>
+ <i className='fa fa-exclamation-triangle'/>
+ You must configure a <a href='#/i18n'>localizer</a> to use this component!
+</div>
+<--------------->
+
 ### value?{ type: 'Date?', handler: "onChange", controllable: true }
 
 The current selected date, should be a Date object or null.
@@ -18,10 +24,17 @@ Callback fired when the Calendar navigates between views, or forward and backwar
 
 The minimum date that the Calendar can navigate from.
 
-
 ### max?{ type: 'Date' }
 
 The maximum date that the Calendar can navigate to.
+
+### currentDate?{ type: 'Date', default: 'Date()', handler: 'onCurrentDateChange', controllable: true }
+
+Default current date at which the calendar opens. If none is provided, opens at today's date or the `value` date (if any).
+
+### onCurrentDateChange?{ type: 'Function( Date? date )' }
+
+Change event Handler that is called when the currentDate is changed. The handler is called with the currentDate object
 
 ### footer?{ type: 'Boolean', default: 'false' }
 
@@ -124,6 +137,7 @@ title and screen reader text for the left arrow button
 ### messages.moveForward?{ type: 'String', default: '"navigate forward"' }
 
 title and screen reader text for the right arrow button
+
 
 ## Keyboard Navigation
 

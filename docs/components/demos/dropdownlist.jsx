@@ -1,7 +1,7 @@
 'use strict';
 var React = require('react')
-  , Button = require('../../bootstrap').Button
-  , ButtonGroup = require('../../bootstrap').ButtonGroup
+var Button      = require('react-bootstrap/lib/Button')
+var ButtonGroup = require('react-bootstrap/lib/ButtonGroup')
   , Dropdown = require('../../../src/index').DropdownList
   , RW = require('../../../src/index')
   , genData = require('../generate-data');
@@ -39,7 +39,7 @@ var DropdownApi = React.createClass({
   getInitialState: function(){
 
     return {
-      duration: 250,
+      duration: 250
     }
   },
 
@@ -59,6 +59,8 @@ var DropdownApi = React.createClass({
       textField: 'name'
     }
 
+    //let disabled = this.state.disabled === true || Array.isArray(this.state.disabled);
+
     return (
       <div className='example' role='application'>
         <div className='row'>
@@ -77,13 +79,13 @@ var DropdownApi = React.createClass({
             <div className='form-group'>
               <label className='checkbox-inline'>
                 <input type='checkbox'
-                  checked={this.state.isRtl}
+                  checked={!!this.state.isRtl}
                   onChange={this._set.bind(null, 'isRtl', !this.state.isRtl)}/>
                   Right to Left
               </label>
               <label className='checkbox-inline'>
                 <input type='checkbox'
-                  checked={this.state.groupBy}
+                  checked={!!this.state.groupBy}
                   onChange={this._set.bind(null, 'groupBy', !this.state.groupBy ? 'lastName' : null )}/>
                   Group
               </label>
@@ -153,4 +155,3 @@ var DropdownApi = React.createClass({
 });
 
 module.exports = DropdownApi;
-

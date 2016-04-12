@@ -16,7 +16,7 @@ import DateInput from './DateInput';
 import Btn       from './WidgetButton';
 import CustomPropTypes from './util/propTypes';
 import createUncontrolledWidget from 'uncontrollable';
-import { widgetEditable, widgetEnabled } from './util/interaction';
+import { widgetEditable } from './util/interaction';
 import { instanceId, notify, isFirstFocusedRender } from './util/widgetHelpers';
 
 let { calendarViews: views, datePopups: popups } = constants;
@@ -34,6 +34,8 @@ let propTypes = {
     onChange:       React.PropTypes.func,
     open:           React.PropTypes.oneOf([false, popups.TIME, popups.CALENDAR]),
     onToggle:       React.PropTypes.func,
+    currentDate:    React.PropTypes.instanceOf(Date),
+    onCurrentDateChange: React.PropTypes.func,
     //------------------------------------
 
     onSelect:       React.PropTypes.func,
@@ -90,6 +92,11 @@ var DateTimePicker = React.createClass({
     require('./mixins/PureRenderMixin'),
     require('./mixins/PopupScrollToMixin'),
     require('./mixins/RtlParentContextMixin'),
+    require('./mixins/FocusMixin')({
+      didHandle(focused) {
+        if (!focused) this.close()
+      }
+    }),
     require('./mixins/AriaDescendantMixin')('valueInput', function(key, id){
       var { open } = this.props
         , current = this.ariaActiveDescendant()
@@ -167,8 +174,9 @@ var DateTimePicker = React.createClass({
         ref="element"
         tabIndex={'-1'}
         onKeyDown={this._keyDown}
-        onFocus={this._focus.bind(null, true)}
-        onBlur={this._focus.bind(null, false)}
+        onKeyPress={this._keyPress}
+        onBlur={this.handleBlur}
+        onFocus={this.handleFocus}
         className={cx(className, 'rw-datetimepicker', 'rw-widget', {
           'rw-state-focus':     focused,
           'rw-state-disabled':  disabled,
@@ -186,6 +194,7 @@ var DateTimePicker = React.createClass({
           autoFocus={autoFocus}
           tabIndex={tabIndex || 0}
           role='combobox'
+          autoComplete='off'
           aria-labelledby={ariaLabelledby}
           aria-describedby ={ariaDescribedby}
           aria-expanded={!!open}
@@ -241,7 +250,6 @@ var DateTimePicker = React.createClass({
         <Popup
           dropUp={dropUp}
           open={timeIsOpen}
-          onRequestClose={this.close}
           duration={duration}
           onOpening={() => this.refs.timePopup.forceUpdate()}
         >
@@ -258,6 +266,7 @@ var DateTimePicker = React.createClass({
                 step={step}
                 min={min}
                 max={max}
+                currentDate={this.props.currentDate}
                 culture={culture}
                 onMove={this._scrollTo}
                 preserveDate={!!calendar}
@@ -272,7 +281,6 @@ var DateTimePicker = React.createClass({
           dropUp={dropUp}
           open={calendarIsOpen}
           duration={duration}
-          onRequestClose={this.close}
         >
           { shouldRenderList &&
             <Calendar
@@ -288,6 +296,8 @@ var DateTimePicker = React.createClass({
               // #75: need to aggressively reclaim focus from the calendar otherwise
               // disabled header/footer buttons will drop focus completely from the widget
               onNavigate={() => this.focus()}
+              currentDate={this.props.currentDate}
+              onCurrentDateChange={this.props.onCurrentDateChange}
             />
           }
         </Popup>
@@ -344,21 +354,17 @@ var DateTimePicker = React.createClass({
       if (open === popups.TIME )
         this.refs.timePopup._keyDown(e)
     }
-
-
   },
 
-  @widgetEnabled
-  _focus(focused, e){
+  @widgetEditable
+  _keyPress(e) {
+    notify(this.props.onKeyPress, [e])
 
-    this.setTimeout('focus', () => {
-      if (!focused) this.close()
+    if (e.defaultPrevented)
+      return
 
-      if (focused !== this.state.focused){
-        notify(this.props[focused ? 'onFocus' : 'onBlur'], e)
-        this.setState({ focused })
-      }
-    })
+    if (this.props.open === popups.TIME )
+      this.refs.timePopup._keyPress(e)
   },
 
   focus(){
@@ -369,7 +375,7 @@ var DateTimePicker = React.createClass({
   @widgetEditable
   _selectDate(date){
     var format   = getFormat(this.props)
-      , dateTime = dates.merge(date, this.props.value)
+      , dateTime = dates.merge(date, this.props.value, this.props.currentDate)
       , dateStr  = formatDate(date, format, this.props.culture);
 
     this.close()
@@ -381,7 +387,7 @@ var DateTimePicker = React.createClass({
   @widgetEditable
   _selectTime(datum){
     var format   = getFormat(this.props)
-      , dateTime = dates.merge(this.props.value, datum.date)
+      , dateTime = dates.merge(this.props.value, datum.date, this.props.currentDate)
       , dateStr  = formatDate(datum.date, format, this.props.culture);
 
     this.close()
@@ -453,7 +459,7 @@ var DateTimePicker = React.createClass({
 
 export default  createUncontrolledWidget(
     DateTimePicker
-  , { open: 'onToggle', value: 'onChange' });
+  , { open: 'onToggle', value: 'onChange', currentDate: 'onCurrentDateChange' }, ['focus']);
 
 
 

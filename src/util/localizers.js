@@ -42,7 +42,7 @@ function checkFormats(requiredFormats, formats){
 
 let _numberLocalizer = createWrapper('NumberPicker')
 
-export function setNumber({ format, parse, precision = () => null, formats, propType }) {
+export function setNumber({ format, parse, decimalChar = () => '.', precision = () => null, formats, propType }) {
   invariant(typeof format === 'function'
     , 'number localizer `format(..)` must be a function')
   invariant(typeof parse === 'function'
@@ -50,17 +50,20 @@ export function setNumber({ format, parse, precision = () => null, formats, prop
 
   checkFormats(REQUIRED_NUMBER_FORMATS, formats)
 
+  formats.editFormat = formats.editFormat || (str => parseFloat(str));
+
   _numberLocalizer = {
     formats,
     precision,
+    decimalChar,
     propType: propType || localePropType,
 
     format(value, str, culture){
       return _format(this, format, value, str, culture)
     },
 
-    parse(value, culture) {
-      let result = parse.call(this, value, culture)
+    parse(value, culture, format) {
+      let result = parse.call(this, value, culture, format)
       invariant(result == null || typeof result === 'number'
         , 'number localizer `parse(..)` must return a number, null, or undefined')
       return result
@@ -107,6 +110,9 @@ export let number = {
   format(...args){
     return _numberLocalizer.format(...args)
   },
+  decimalChar(...args){
+    return _numberLocalizer.decimalChar(...args)
+  },
   precision(...args){
     return _numberLocalizer.precision(...args)
   }
@@ -134,16 +140,18 @@ export default { number, date }
 function createWrapper(){
   let dummy = {};
 
-  ['formats', 'parse', 'format', 'firstOfWeek', 'precision']
-    .forEach(name => Object.defineProperty(dummy, name, {
-      enumerable: true,
-      get(){
-        throw new Error(
-          '[React Widgets] You are attempting to use a widget that requires localization ' +
-          '(Calendar, DateTimePicker, NumberPicker). ' +
-          'However there is no localizer set. Please configure a localizer. \n\n' +
-          'see http://jquense.github.io/react-widgets/docs/#/i18n for more info.')
-      }
-    }))
+  if (process.env.NODE_ENV !== 'production' ) {
+    ['formats', 'parse', 'format', 'firstOfWeek', 'precision']
+      .forEach(name => Object.defineProperty(dummy, name, {
+        enumerable: true,
+        get(){
+          throw new Error(
+            '[React Widgets] You are attempting to use a widget that requires localization ' +
+            '(Calendar, DateTimePicker, NumberPicker). ' +
+            'However there is no localizer set. Please configure a localizer. \n\n' +
+            'see http://jquense.github.io/react-widgets/docs/#/i18n for more info.')
+        }
+      }))
+  }
   return dummy
 }

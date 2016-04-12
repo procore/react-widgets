@@ -11,18 +11,19 @@
     overflow: auto;
 
     > li {
-    
+
       &.rw-list-option {
         position: relative;
         min-height: 27px;
         cursor: auto;
+        outline: none;
         padding-left: 5px;
 
         > label > input {
           position: absolute;
           margin: 4px 0 0 -20px;
         }
-     
+
         > label {
           padding-left: 20px;
           line-height:  1.423em;
@@ -62,14 +63,11 @@
 }
 
 .rw-selectlist {
-
   &.rw-state-disabled,
   &.rw-state-readonly {
-
     > ul > li:hover {
       background: none;
       border-color: transparent;
     }
   }
-  
 }

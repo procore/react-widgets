@@ -29,7 +29,7 @@ regardless of whether the value has actually changed.
 ### data?{ type: 'Array<Any>' }
 
 An array of possible values for the {widgetName}. If an array of `objects` is provided you
-should usethe `valueField` and `textField` props, to specify which object
+should use the `valueField` and `textField` props, to specify which object
 properties comprise the value field (such as an id) and the field used to label the item.
 
 ### valueField?{ type: 'String' }
@@ -53,14 +53,26 @@ may also also used as to find an item in the list as you type. Providing an acce
 
 ### itemComponent?{ type: 'Component' }
 
-This component is used to render each possible item in the DropdownList. The default component
+This component is used to render each possible item in the ${widgetName}. The default component
 renders the text of the selected item (specified by `textfield`)
 
 <EditableExample codeText={require('../examples/itemComponent')(widgetName)}/>
 
+### disabled?{ type: '[Boolean, Array]' }
+
+Disable the widget, if an `Array` of values is passed in only those values will be disabled.
+
+<EditableExample codeText={require('../examples/disabled')(widgetName, 'disabled', false)}/>
+
+### readOnly?{ type: '[Boolean, Array]' }
+
+Place the {widgetName} in a read-only mode, If an `Array` of values is passed in only those values will be read-only.
+
+<EditableExample codeText={require('../examples/disabled')(widgetName, 'readOnly', false)}/>
+
 ### groupBy?{ type: 'String | Function(Any dataItem)' }
 
-Determines how to group the {widgetName} dropdown list. Providing a `string` will group
+Determines how to group the {widgetName}. Providing a `string` will group
 the `data` array by that property. You can also provide a function which should return the group value.
 
 <EditableExample codeText={require('../examples/groupby')(widgetName)}/>
@@ -80,7 +92,7 @@ are always "startsWith", meaning it will search from the start of the `textField
 ### filter?{ type: '[Boolean, String, Function(dataItem, searchTerm)]', default: 'false' }
 
 Specify a filtering method used to reduce the items in the dropdown as you type. It can be used in conjunction with
-the `suggest` prop or instead of it. There are a few prebuilt filtering methods that can be specified
+the `suggest` prop or instead of it. There are a few built-in filtering methods that can be specified
 by passing the `String` name. You can explicitly opt out of filtering by setting filter
 to `false`
 

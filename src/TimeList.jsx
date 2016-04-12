@@ -15,6 +15,7 @@ export default React.createClass({
     value:          React.PropTypes.instanceOf(Date),
     min:            React.PropTypes.instanceOf(Date),
     max:            React.PropTypes.instanceOf(Date),
+    currentDate:    React.PropTypes.instanceOf(Date),
     step:           React.PropTypes.number,
     itemComponent:  CustomPropTypes.elementType,
     format:         CustomPropTypes.dateFormat,
@@ -66,10 +67,14 @@ export default React.createClass({
   },
 
   render(){
-    let { min, max, value, step, ...props } = this.props;
+    let { value, ...props } = this.props;
 
     var times = this.state.dates
       , date  = this._closestDate(times, value);
+
+    delete props.min;
+    delete props.max;
+    delete props.step;
 
     return (
       <List {...props}
@@ -120,7 +125,7 @@ export default React.createClass({
   },
 
   _dateValues(props){
-    var value = props.value || dates.today()
+    var value = props.value || props.currentDate || dates.today()
       , useDate = props.preserveDate
       , min = props.min
       , max = props.max
@@ -128,8 +133,8 @@ export default React.createClass({
 
     //compare just the time regradless of whether they fall on the same day
     if(!useDate) {
-      start = dates.startOf(dates.merge(new Date(), min), 'minutes')
-      end   = dates.startOf(dates.merge(new Date(), max), 'minutes')
+      start = dates.startOf(dates.merge(new Date(), min, props.currentDate), 'minutes')
+      end   = dates.startOf(dates.merge(new Date(), max, props.currentDate), 'minutes')
 
       if( dates.lte(end, start) && dates.gt(max, min, 'day'))
         end = dates.tomorrow()
@@ -144,14 +149,13 @@ export default React.createClass({
     end = dates.tomorrow()
     //date parts are equal
     return {
-      min: dates.eq(value, min, 'day') ? dates.merge(start, min) : start,
-      max: dates.eq(value, max, 'day') ? dates.merge(start, max) : end
+      min: dates.eq(value, min, 'day') ? dates.merge(start, min, props.currentDate) : start,
+      max: dates.eq(value, max, 'day') ? dates.merge(start, max, props.currentDate) : end
     }
   },
 
-  _keyDown: function(e){
+  _keyDown(e) {
     var key = e.key
-      , character = String.fromCharCode(e.keyCode)
       , focusedItem  = this.state.focusedItem
       , list = this.refs.list;
 
@@ -172,13 +176,15 @@ export default React.createClass({
       e.preventDefault()
       this.setState({ focusedItem: list.prev(focusedItem) })
     }
-    else {
-      e.preventDefault()
+  },
 
-      this.search(character, item => {
+  _keyPress(e) {
+    e.preventDefault();
+
+    this.search(String.fromCharCode(e.which), item => {
+      this.isMounted() &&
         this.setState({ focusedItem: item })
-      })
-    }
+    })
   },
 
   scrollTo(){
