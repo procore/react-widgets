@@ -1591,9 +1591,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: '_renderFilter',
 	  value: function _renderFilter(messages) {
-	    var _this2 = this;
-
-	    var change = _lodashThrottle2['default'](_utilWidgetHelpers.notify, 2000);
+	    var change = _lodashThrottle2['default'](this.props.onSearch, 2000);
 	    return _react2['default'].createElement(
 	      'div',
 	      { ref: 'filterWrapper', className: 'rw-filter-input' },
@@ -1606,7 +1604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        placeholder: _util_2['default'].result(messages.filterPlaceholder, this.props),
 	        value: this.props.searchTerm,
 	        onChange: function (e) {
-	          return change(_this2.props.onSearch, e.target.value);
+	          return _utilWidgetHelpers.notify(change, e.target.value);
 	        } })
 	    );
 	  }
@@ -1614,14 +1612,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  key: '_focus',
 	  decorators: [_utilInteraction.widgetEnabled],
 	  value: function _focus(focused, e) {
-	    var _this3 = this;
+	    var _this2 = this;
 
 	    this.setTimeout('focus', function () {
-	      if (!focused) _this3.close();
+	      if (!focused) _this2.close();
 
-	      if (focused !== _this3.state.focused) {
-	        _utilWidgetHelpers.notify(_this3.props[focused ? 'onFocus' : 'onBlur'], e);
-	        _this3.setState({ focused: focused });
+	      if (focused !== _this2.state.focused) {
+	        _utilWidgetHelpers.notify(_this2.props[focused ? 'onFocus' : 'onBlur'], e);
+	        _this2.setState({ focused: focused });
 	      }
 	    });
 	  }
@@ -1652,7 +1650,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  key: '_keyDown',
 	  decorators: [_utilInteraction.widgetEditable],
 	  value: function _keyDown(e) {
-	    var _this4 = this;
+	    var _this3 = this;
 
 	    var self = this,
 	        key = e.keyCode,
@@ -1663,7 +1661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        selectedItem = this.state.selectedItem,
 	        isOpen = this.props.open,
 	        closeWithFocus = function closeWithFocus() {
-	      _this4.close(), _utilCompat2['default'].findDOMNode(_this4).focus();
+	      _this3.close(), _utilCompat2['default'].findDOMNode(_this3).focus();
 	    };
 	    _utilWidgetHelpers.notify(this.props.onKeyDown, [e]);
 
@@ -1686,7 +1684,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (alt) closeWithFocus();else if (isOpen) this.setState({ focusedItem: list.prev(focusedItem) });else change(list.prev(selectedItem));
 	      e.preventDefault();
 	    } else if (!(this.props.filter && isOpen)) this.search(String.fromCharCode(e.keyCode), function (item) {
-	      isOpen ? _this4.setState({ focusedItem: item }) : change(item);
+	      isOpen ? _this3.setState({ focusedItem: item }) : change(item);
 	    });
 
 	    function change(item, fromList) {
@@ -1720,18 +1718,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'search',
 	  value: function search(character, cb) {
-	    var _this5 = this;
+	    var _this4 = this;
 
 	    var word = ((this._searchTerm || '') + character).toLowerCase();
 
 	    this._searchTerm = word;
 
 	    this.setTimeout('search', function () {
-	      var list = _this5.refs.list,
-	          key = _this5.props.open ? 'focusedItem' : 'selectedItem',
-	          item = list.next(_this5.state[key], word);
+	      var list = _this4.refs.list,
+	          key = _this4.props.open ? 'focusedItem' : 'selectedItem',
+	          item = list.next(_this4.state[key], word);
 
-	      _this5._searchTerm = '';
+	      _this4._searchTerm = '';
 	      if (item) cb(item);
 	    }, this.props.delay);
 	  }

@@ -266,14 +266,14 @@ var DropdownList = React.createClass({
   },
 
   _renderFilter(messages){
-    const change = throttle(notify, 2000);
+    const change = throttle(this.props.onSearch, 2000);
     return (
       <div ref='filterWrapper' className='rw-filter-input'>
         <span className='rw-select rw-btn'><i className='rw-i rw-i-search'/></span>
         <input ref='filter' className='rw-input'
           placeholder={_.result(messages.filterPlaceholder, this.props)}
           value={this.props.searchTerm }
-          onChange={ e => change(this.props.onSearch, e.target.value)}/>
+          onChange={ e => notify(change, e.target.value)}/>
       </div>
     )
   },
