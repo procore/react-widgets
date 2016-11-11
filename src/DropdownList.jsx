@@ -17,6 +17,8 @@ import { dataItem, dataText, dataIndexOf } from './util/dataHelpers';
 import { widgetEditable, widgetEnabled } from './util/interaction';
 import { instanceId, notify, isFirstFocusedRender } from './util/widgetHelpers';
 
+import throttle from 'lodash.throttle';
+
 let { omit, pick, result } = _;
 
 var propTypes = {
@@ -262,13 +264,14 @@ var DropdownList = React.createClass({
   },
 
   _renderFilter(messages){
+    const change = throttle(notify, 2000);
     return (
       <div ref='filterWrapper' className='rw-filter-input'>
         <span className='rw-select rw-btn'><i className='rw-i rw-i-search'/></span>
         <input ref='filter' className='rw-input'
           placeholder={_.result(messages.filterPlaceholder, this.props)}
           value={this.props.searchTerm }
-          onChange={ e => notify(this.props.onSearch, e.target.value)}/>
+          onChange={ e => change(this.props.onSearch, e.target.value)}/>
       </div>
     )
   },
