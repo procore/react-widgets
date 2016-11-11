@@ -1493,6 +1493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _react2['default'].createElement(
 	      'div',
 	      babelHelpers._extends({}, elementProps, {
+	        'data-did-this-work': 'yep',
 	        ref: 'input',
 	        role: 'combobox',
 	        tabIndex: tabIndex || '0',

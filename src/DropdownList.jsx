@@ -173,6 +173,7 @@ var DropdownList = React.createClass({
 
     return (
       <div {...elementProps}
+        data-did-this-work="yep"
         ref="input"
         role='combobox'
         tabIndex={tabIndex || '0'}
