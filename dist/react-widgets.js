@@ -1494,6 +1494,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      'div',
 	      babelHelpers._extends({}, elementProps, {
 	        'data-did-this-work': 'yep',
+	        style: { color: 'red' },
 	        ref: 'input',
 	        role: 'combobox',
 	        tabIndex: tabIndex || '0',
@@ -1514,7 +1515,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onBlur: tetherPopup ? function () {
 	          return _this.setState({ focused: false });
 	        } : this.handleBlur,
-	        className: _classnames2['default'](className, 'rw-dropdownlist', 'rw-widget', (_cx = {
+	        className: _classnames2['default'](className, 'wowowow', 'rw-dropdownlist', 'rw-widget', (_cx = {
 	          'rw-state-disabled': disabled,
 	          'rw-state-readonly': readOnly,
 	          'rw-state-focus': focused,

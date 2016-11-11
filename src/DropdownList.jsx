@@ -174,6 +174,7 @@ var DropdownList = React.createClass({
     return (
       <div {...elementProps}
         data-did-this-work="yep"
+        style={{color: 'red'}}
         ref="input"
         role='combobox'
         tabIndex={tabIndex || '0'}
@@ -190,7 +191,7 @@ var DropdownList = React.createClass({
         onClick={this._click}
         onFocus={tetherPopup ? () => this.setState({focused: true}) : this.handleFocus}
         onBlur={tetherPopup ? () => this.setState({focused: false}) : this.handleBlur}
-        className={cx(className, 'rw-dropdownlist', 'rw-widget', {
+        className={cx(className, 'wowowow', 'rw-dropdownlist', 'rw-widget', {
           'rw-state-disabled':  disabled,
           'rw-state-readonly':  readOnly,
           'rw-state-focus':     focused,
