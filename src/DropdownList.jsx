@@ -95,7 +95,7 @@ var DropdownList = React.createClass({
 
   getDefaultProps(){
     return {
-      delay: 500,
+      delay: 5500,
       value: '',
       open: false,
       data: [],
