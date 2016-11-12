@@ -1425,9 +1425,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var searchTerm = props.searchTerm;
 	    var valueField = props.valueField;
 
-	    var tf = _lodashThrottle2['default'](this.filter, 2000);
-
-	    var processed = filter ? tf(data, searchTerm) : data,
+	    var processed = filter ? this.filter(data, searchTerm) : data,
 	        idx = _utilDataHelpers.dataIndexOf(data, value, valueField);
 
 	    this.setState({
@@ -1595,7 +1593,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: function _renderFilter(messages) {
 	    var _this2 = this;
 
-	    //const change = throttle(, 2000);
 	    return _react2['default'].createElement(
 	      'div',
 	      { ref: 'filterWrapper', className: 'rw-filter-input' },
@@ -6384,6 +6381,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilDataHelpers = __webpack_require__(38);
 
+	var _lodashThrottle = __webpack_require__(53);
+
+	var _lodashThrottle2 = babelHelpers.interopRequireDefault(_lodashThrottle);
+
 	var dflt = function dflt(f) {
 	  return f === true ? 'startsWith' : f ? f : 'eq';
 	};
@@ -6425,8 +6426,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (!matches || !searchTerm || !searchTerm.trim() || searchTerm.length < (this.props.minLength || 1)) return items;
 
+	    var tmatches = _lodashThrottle2['default'](matches, 2000);
 	    return items.filter(function (item, idx) {
-	      return matches(item, searchTerm, idx);
+	      return tmatches(item, searchTerm, idx);
 	    });
 	  }
 	};

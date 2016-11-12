@@ -129,9 +129,8 @@ var DropdownList = React.createClass({
 
   componentWillReceiveProps(props){
     let { open, filter, value, data, searchTerm, valueField } = props;
-    const tf = throttle(this.filter, 2000);
 
-    var processed = filter ? tf(data, searchTerm) : data
+    var processed = filter ? this.filter(data, searchTerm) : data
       , idx = dataIndexOf(data, value, valueField);
 
     this.setState({
@@ -267,7 +266,6 @@ var DropdownList = React.createClass({
   },
 
   _renderFilter(messages){
-    //const change = throttle(, 2000);
     return (
       <div ref='filterWrapper' className='rw-filter-input'>
         <span className='rw-select rw-btn'><i className='rw-i rw-i-search'/></span>

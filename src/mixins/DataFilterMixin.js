@@ -4,6 +4,8 @@ import filters from '../util/filter';
 import CustomPropTypes from '../util/propTypes';
 import { dataText } from '../util/dataHelpers';
 
+import throttle from 'lodash.throttle';
+
 var dflt = f => f === true ? 'startsWith' : f ? f : 'eq'
 
 module.exports = {
@@ -50,8 +52,9 @@ module.exports = {
       if ( !matches || !searchTerm || !searchTerm.trim() || searchTerm.length < (this.props.minLength || 1))
         return items
 
+      const tmatches = throttle(matches, 2000);
       return items.filter(
-        (item, idx) => matches(item, searchTerm, idx))
+        (item, idx) => tmatches(item, searchTerm, idx))
     }
   }
 
