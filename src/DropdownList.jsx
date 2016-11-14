@@ -171,7 +171,7 @@ var DropdownList = React.createClass({
 
     return (
       <div {...elementProps}
-        style={{color: 'dodgerblue', border: '1px dotted pink'}}
+        style={{color: 'springgreen', border: '1px dotted lemonchiffon'}}
         ref="input"
         role='combobox'
         tabIndex={tabIndex || '0'}
