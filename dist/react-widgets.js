@@ -1489,7 +1489,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _react2['default'].createElement(
 	      'div',
 	      babelHelpers._extends({}, elementProps, {
-	        style: { color: 'dodgerblue', border: '1px dotted pink' },
+	        style: { color: 'springgreen', border: '1px dotted lemonchiffon' },
 	        ref: 'input',
 	        role: 'combobox',
 	        tabIndex: tabIndex || '0',
