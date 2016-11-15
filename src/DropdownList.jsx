@@ -17,6 +17,8 @@ import { dataItem, dataText, dataIndexOf } from './util/dataHelpers';
 import { widgetEditable, widgetEnabled } from './util/interaction';
 import { instanceId, notify, isFirstFocusedRender } from './util/widgetHelpers';
 
+import throttle from 'lodash.throttle';
+
 let { omit, pick, result } = _;
 
 var propTypes = {
@@ -110,7 +112,9 @@ var DropdownList = React.createClass({
   getInitialState(){
     let { open, filter, value, data, searchTerm, valueField } = this.props;
 
-    var processed = filter ? this.filter(data, searchTerm) : data
+    const t = throttle(this.filter, 2000);
+
+    var processed = filter ? t(data, searchTerm) : data
       , initialIdx = dataIndexOf(data, value, valueField);
 
     return {
@@ -171,7 +175,7 @@ var DropdownList = React.createClass({
 
     return (
       <div {...elementProps}
-        style={{color: 'springgreen', border: '1px dotted lemonchiffon'}}
+        style={{color: 'red', border: '1px dotted orange'}}
         ref="input"
         role='combobox'
         tabIndex={tabIndex || '0'}
