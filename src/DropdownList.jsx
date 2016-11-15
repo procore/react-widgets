@@ -132,7 +132,9 @@ var DropdownList = React.createClass({
   componentWillReceiveProps(props){
     let { open, filter, value, data, searchTerm, valueField } = props;
 
-    var processed = filter ? this.filter(data, searchTerm) : data
+    const t = throttle(this.filter, 2000);
+
+    var processed = filter ? t(data, searchTerm) : data
       , idx = dataIndexOf(data, value, valueField);
 
     this.setState({
@@ -175,7 +177,7 @@ var DropdownList = React.createClass({
 
     return (
       <div {...elementProps}
-        style={{color: 'red', border: '1px dotted orange'}}
+        style={{color: 'blue', border: '1px dotted springgreen'}}
         ref="input"
         role='combobox'
         tabIndex={tabIndex || '0'}
@@ -192,7 +194,7 @@ var DropdownList = React.createClass({
         onClick={this._click}
         onFocus={tetherPopup ? () => this.setState({focused: true}) : this.handleFocus}
         onBlur={tetherPopup ? () => this.setState({focused: false}) : this.handleBlur}
-        className={cx(className, 'qwertyuiop', 'rw-dropdownlist', 'rw-widget', {
+        className={cx(className, 'rw-dropdownlist', 'rw-widget', {
           'rw-state-disabled':  disabled,
           'rw-state-readonly':  readOnly,
           'rw-state-focus':     focused,
