@@ -69,17 +69,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = babelHelpers._extends({}, configure, {
 	  DropdownList: __webpack_require__(22),
-	  Combobox: __webpack_require__(63),
-	  Calendar: __webpack_require__(67),
-	  DateTimePicker: __webpack_require__(80),
-	  NumberPicker: __webpack_require__(83),
-	  Multiselect: __webpack_require__(86),
-	  SelectList: __webpack_require__(89),
-	  ListMultiGroupable: __webpack_require__(90),
+	  Combobox: __webpack_require__(64),
+	  Calendar: __webpack_require__(68),
+	  DateTimePicker: __webpack_require__(81),
+	  NumberPicker: __webpack_require__(84),
+	  Multiselect: __webpack_require__(87),
+	  SelectList: __webpack_require__(90),
+	  ListMultiGroupable: __webpack_require__(91),
 
 	  utils: {
-	    ReplaceTransitionGroup: __webpack_require__(78),
-	    SlideTransition: __webpack_require__(77)
+	    ReplaceTransitionGroup: __webpack_require__(79),
+	    SlideTransition: __webpack_require__(78)
 	  }
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -1294,6 +1294,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilWidgetHelpers = __webpack_require__(39);
 
+	var _lodashThrottle = __webpack_require__(53);
+
+	var _lodashThrottle2 = babelHelpers.interopRequireDefault(_lodashThrottle);
+
 	var omit = _util_2['default'].omit;
 	var pick = _util_2['default'].pick;
 	var result = _util_2['default'].result;
@@ -1358,7 +1362,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-	    return [__webpack_require__(53), __webpack_require__(54), __webpack_require__(55), __webpack_require__(56), __webpack_require__(61), __webpack_require__(41)(), __webpack_require__(62)({
+	    return [__webpack_require__(54), __webpack_require__(55), __webpack_require__(56), __webpack_require__(57), __webpack_require__(62), __webpack_require__(41)(), __webpack_require__(63)({
 	      didHandle: function didHandle(focused) {
 	        if (!focused) this.close();
 	      }
@@ -1397,7 +1401,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var searchTerm = _props.searchTerm;
 	    var valueField = _props.valueField;
 
-	    var processed = filter ? this.filter(data, searchTerm) : data,
+	    var t = _lodashThrottle2['default'](this.filter, 2000);
+
+	    var processed = filter ? t(data, searchTerm) : data,
 	        initialIdx = _utilDataHelpers.dataIndexOf(data, value, valueField);
 
 	    return {
@@ -1489,7 +1495,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _react2['default'].createElement(
 	      'div',
 	      babelHelpers._extends({}, elementProps, {
-	        style: { color: 'springgreen', border: '1px dotted lemonchiffon' },
+	        style: { color: 'red', border: '1px dotted orange' },
 	        ref: 'input',
 	        role: 'combobox',
 	        tabIndex: tabIndex || '0',
@@ -5864,6 +5870,452 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 53 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * lodash (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+	 * Released under MIT license <https://lodash.com/license>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 */
+
+	/** Used as the `TypeError` message for "Functions" methods. */
+	var FUNC_ERROR_TEXT = 'Expected a function';
+
+	/** Used as references for various `Number` constants. */
+	var NAN = 0 / 0;
+
+	/** `Object#toString` result references. */
+	var symbolTag = '[object Symbol]';
+
+	/** Used to match leading and trailing whitespace. */
+	var reTrim = /^\s+|\s+$/g;
+
+	/** Used to detect bad signed hexadecimal string values. */
+	var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+	/** Used to detect binary string values. */
+	var reIsBinary = /^0b[01]+$/i;
+
+	/** Used to detect octal string values. */
+	var reIsOctal = /^0o[0-7]+$/i;
+
+	/** Built-in method references without a dependency on `root`. */
+	var freeParseInt = parseInt;
+
+	/** Detect free variable `global` from Node.js. */
+	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+	/** Detect free variable `self`. */
+	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+	/** Used as a reference to the global object. */
+	var root = freeGlobal || freeSelf || Function('return this')();
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeMax = Math.max,
+	    nativeMin = Math.min;
+
+	/**
+	 * Gets the timestamp of the number of milliseconds that have elapsed since
+	 * the Unix epoch (1 January 1970 00:00:00 UTC).
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 2.4.0
+	 * @category Date
+	 * @returns {number} Returns the timestamp.
+	 * @example
+	 *
+	 * _.defer(function(stamp) {
+	 *   console.log(_.now() - stamp);
+	 * }, _.now());
+	 * // => Logs the number of milliseconds it took for the deferred invocation.
+	 */
+	var now = function() {
+	  return root.Date.now();
+	};
+
+	/**
+	 * Creates a debounced function that delays invoking `func` until after `wait`
+	 * milliseconds have elapsed since the last time the debounced function was
+	 * invoked. The debounced function comes with a `cancel` method to cancel
+	 * delayed `func` invocations and a `flush` method to immediately invoke them.
+	 * Provide `options` to indicate whether `func` should be invoked on the
+	 * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+	 * with the last arguments provided to the debounced function. Subsequent
+	 * calls to the debounced function return the result of the last `func`
+	 * invocation.
+	 *
+	 * **Note:** If `leading` and `trailing` options are `true`, `func` is
+	 * invoked on the trailing edge of the timeout only if the debounced function
+	 * is invoked more than once during the `wait` timeout.
+	 *
+	 * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+	 * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+	 *
+	 * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+	 * for details over the differences between `_.debounce` and `_.throttle`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Function
+	 * @param {Function} func The function to debounce.
+	 * @param {number} [wait=0] The number of milliseconds to delay.
+	 * @param {Object} [options={}] The options object.
+	 * @param {boolean} [options.leading=false]
+	 *  Specify invoking on the leading edge of the timeout.
+	 * @param {number} [options.maxWait]
+	 *  The maximum time `func` is allowed to be delayed before it's invoked.
+	 * @param {boolean} [options.trailing=true]
+	 *  Specify invoking on the trailing edge of the timeout.
+	 * @returns {Function} Returns the new debounced function.
+	 * @example
+	 *
+	 * // Avoid costly calculations while the window size is in flux.
+	 * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+	 *
+	 * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+	 * jQuery(element).on('click', _.debounce(sendMail, 300, {
+	 *   'leading': true,
+	 *   'trailing': false
+	 * }));
+	 *
+	 * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+	 * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+	 * var source = new EventSource('/stream');
+	 * jQuery(source).on('message', debounced);
+	 *
+	 * // Cancel the trailing debounced invocation.
+	 * jQuery(window).on('popstate', debounced.cancel);
+	 */
+	function debounce(func, wait, options) {
+	  var lastArgs,
+	      lastThis,
+	      maxWait,
+	      result,
+	      timerId,
+	      lastCallTime,
+	      lastInvokeTime = 0,
+	      leading = false,
+	      maxing = false,
+	      trailing = true;
+
+	  if (typeof func != 'function') {
+	    throw new TypeError(FUNC_ERROR_TEXT);
+	  }
+	  wait = toNumber(wait) || 0;
+	  if (isObject(options)) {
+	    leading = !!options.leading;
+	    maxing = 'maxWait' in options;
+	    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+	    trailing = 'trailing' in options ? !!options.trailing : trailing;
+	  }
+
+	  function invokeFunc(time) {
+	    var args = lastArgs,
+	        thisArg = lastThis;
+
+	    lastArgs = lastThis = undefined;
+	    lastInvokeTime = time;
+	    result = func.apply(thisArg, args);
+	    return result;
+	  }
+
+	  function leadingEdge(time) {
+	    // Reset any `maxWait` timer.
+	    lastInvokeTime = time;
+	    // Start the timer for the trailing edge.
+	    timerId = setTimeout(timerExpired, wait);
+	    // Invoke the leading edge.
+	    return leading ? invokeFunc(time) : result;
+	  }
+
+	  function remainingWait(time) {
+	    var timeSinceLastCall = time - lastCallTime,
+	        timeSinceLastInvoke = time - lastInvokeTime,
+	        result = wait - timeSinceLastCall;
+
+	    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+	  }
+
+	  function shouldInvoke(time) {
+	    var timeSinceLastCall = time - lastCallTime,
+	        timeSinceLastInvoke = time - lastInvokeTime;
+
+	    // Either this is the first call, activity has stopped and we're at the
+	    // trailing edge, the system time has gone backwards and we're treating
+	    // it as the trailing edge, or we've hit the `maxWait` limit.
+	    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+	      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+	  }
+
+	  function timerExpired() {
+	    var time = now();
+	    if (shouldInvoke(time)) {
+	      return trailingEdge(time);
+	    }
+	    // Restart the timer.
+	    timerId = setTimeout(timerExpired, remainingWait(time));
+	  }
+
+	  function trailingEdge(time) {
+	    timerId = undefined;
+
+	    // Only invoke if we have `lastArgs` which means `func` has been
+	    // debounced at least once.
+	    if (trailing && lastArgs) {
+	      return invokeFunc(time);
+	    }
+	    lastArgs = lastThis = undefined;
+	    return result;
+	  }
+
+	  function cancel() {
+	    if (timerId !== undefined) {
+	      clearTimeout(timerId);
+	    }
+	    lastInvokeTime = 0;
+	    lastArgs = lastCallTime = lastThis = timerId = undefined;
+	  }
+
+	  function flush() {
+	    return timerId === undefined ? result : trailingEdge(now());
+	  }
+
+	  function debounced() {
+	    var time = now(),
+	        isInvoking = shouldInvoke(time);
+
+	    lastArgs = arguments;
+	    lastThis = this;
+	    lastCallTime = time;
+
+	    if (isInvoking) {
+	      if (timerId === undefined) {
+	        return leadingEdge(lastCallTime);
+	      }
+	      if (maxing) {
+	        // Handle invocations in a tight loop.
+	        timerId = setTimeout(timerExpired, wait);
+	        return invokeFunc(lastCallTime);
+	      }
+	    }
+	    if (timerId === undefined) {
+	      timerId = setTimeout(timerExpired, wait);
+	    }
+	    return result;
+	  }
+	  debounced.cancel = cancel;
+	  debounced.flush = flush;
+	  return debounced;
+	}
+
+	/**
+	 * Creates a throttled function that only invokes `func` at most once per
+	 * every `wait` milliseconds. The throttled function comes with a `cancel`
+	 * method to cancel delayed `func` invocations and a `flush` method to
+	 * immediately invoke them. Provide `options` to indicate whether `func`
+	 * should be invoked on the leading and/or trailing edge of the `wait`
+	 * timeout. The `func` is invoked with the last arguments provided to the
+	 * throttled function. Subsequent calls to the throttled function return the
+	 * result of the last `func` invocation.
+	 *
+	 * **Note:** If `leading` and `trailing` options are `true`, `func` is
+	 * invoked on the trailing edge of the timeout only if the throttled function
+	 * is invoked more than once during the `wait` timeout.
+	 *
+	 * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+	 * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+	 *
+	 * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+	 * for details over the differences between `_.throttle` and `_.debounce`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Function
+	 * @param {Function} func The function to throttle.
+	 * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+	 * @param {Object} [options={}] The options object.
+	 * @param {boolean} [options.leading=true]
+	 *  Specify invoking on the leading edge of the timeout.
+	 * @param {boolean} [options.trailing=true]
+	 *  Specify invoking on the trailing edge of the timeout.
+	 * @returns {Function} Returns the new throttled function.
+	 * @example
+	 *
+	 * // Avoid excessively updating the position while scrolling.
+	 * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
+	 *
+	 * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+	 * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
+	 * jQuery(element).on('click', throttled);
+	 *
+	 * // Cancel the trailing throttled invocation.
+	 * jQuery(window).on('popstate', throttled.cancel);
+	 */
+	function throttle(func, wait, options) {
+	  var leading = true,
+	      trailing = true;
+
+	  if (typeof func != 'function') {
+	    throw new TypeError(FUNC_ERROR_TEXT);
+	  }
+	  if (isObject(options)) {
+	    leading = 'leading' in options ? !!options.leading : leading;
+	    trailing = 'trailing' in options ? !!options.trailing : trailing;
+	  }
+	  return debounce(func, wait, {
+	    'leading': leading,
+	    'maxWait': wait,
+	    'trailing': trailing
+	  });
+	}
+
+	/**
+	 * Checks if `value` is the
+	 * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(_.noop);
+	 * // => true
+	 *
+	 * _.isObject(null);
+	 * // => false
+	 */
+	function isObject(value) {
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+
+	/**
+	 * Checks if `value` is classified as a `Symbol` primitive or object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+	 * @example
+	 *
+	 * _.isSymbol(Symbol.iterator);
+	 * // => true
+	 *
+	 * _.isSymbol('abc');
+	 * // => false
+	 */
+	function isSymbol(value) {
+	  return typeof value == 'symbol' ||
+	    (isObjectLike(value) && objectToString.call(value) == symbolTag);
+	}
+
+	/**
+	 * Converts `value` to a number.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to process.
+	 * @returns {number} Returns the number.
+	 * @example
+	 *
+	 * _.toNumber(3.2);
+	 * // => 3.2
+	 *
+	 * _.toNumber(Number.MIN_VALUE);
+	 * // => 5e-324
+	 *
+	 * _.toNumber(Infinity);
+	 * // => Infinity
+	 *
+	 * _.toNumber('3.2');
+	 * // => 3.2
+	 */
+	function toNumber(value) {
+	  if (typeof value == 'number') {
+	    return value;
+	  }
+	  if (isSymbol(value)) {
+	    return NAN;
+	  }
+	  if (isObject(value)) {
+	    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+	    value = isObject(other) ? (other + '') : other;
+	  }
+	  if (typeof value != 'string') {
+	    return value === 0 ? value : +value;
+	  }
+	  value = value.replace(reTrim, '');
+	  var isBinary = reIsBinary.test(value);
+	  return (isBinary || reIsOctal.test(value))
+	    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+	    : (reIsBadHex.test(value) ? NAN : +value);
+	}
+
+	module.exports = throttle;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5894,7 +6346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5909,7 +6361,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5990,7 +6442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5999,7 +6451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-	var _domHelpersUtilScrollTo = __webpack_require__(57);
+	var _domHelpersUtilScrollTo = __webpack_require__(58);
 
 	var _domHelpersUtilScrollTo2 = babelHelpers.interopRequireDefault(_domHelpersUtilScrollTo);
 
@@ -6030,15 +6482,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var getOffset = __webpack_require__(30),
 	    height = __webpack_require__(29),
-	    getScrollParent = __webpack_require__(58),
-	    scrollTop = __webpack_require__(59),
-	    raf = __webpack_require__(60),
+	    getScrollParent = __webpack_require__(59),
+	    scrollTop = __webpack_require__(60),
+	    raf = __webpack_require__(61),
 	    getWindow = __webpack_require__(31);
 
 	module.exports = function scrollTo(selected, scrollParent) {
@@ -6086,7 +6538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6115,7 +6567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6130,7 +6582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6181,7 +6633,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = compatRaf;
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6214,7 +6666,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6273,7 +6725,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6302,11 +6754,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
 
-	var _WidgetButton = __webpack_require__(64);
+	var _WidgetButton = __webpack_require__(65);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
-	var _ComboboxInput = __webpack_require__(65);
+	var _ComboboxInput = __webpack_require__(66);
 
 	var _ComboboxInput2 = babelHelpers.interopRequireDefault(_ComboboxInput);
 
@@ -6397,7 +6849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-	    return [__webpack_require__(53), __webpack_require__(55), __webpack_require__(56), __webpack_require__(61), __webpack_require__(41)('input')];
+	    return [__webpack_require__(54), __webpack_require__(56), __webpack_require__(57), __webpack_require__(62), __webpack_require__(41)('input')];
 	  }
 	}, {
 	  key: 'propTypes',
@@ -6789,7 +7241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6825,7 +7277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6838,7 +7290,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-	var _utilCaret = __webpack_require__(66);
+	var _utilCaret = __webpack_require__(67);
 
 	var _utilCaret2 = babelHelpers.interopRequireDefault(_utilCaret);
 
@@ -6923,7 +7375,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports) {
 
 	/*eslint-disable no-empty */
@@ -6981,7 +7433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7004,27 +7456,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
-	var _Header = __webpack_require__(68);
+	var _Header = __webpack_require__(69);
 
 	var _Header2 = babelHelpers.interopRequireDefault(_Header);
 
-	var _Footer = __webpack_require__(70);
+	var _Footer = __webpack_require__(71);
 
 	var _Footer2 = babelHelpers.interopRequireDefault(_Footer);
 
-	var _Month = __webpack_require__(71);
+	var _Month = __webpack_require__(72);
 
 	var _Month2 = babelHelpers.interopRequireDefault(_Month);
 
-	var _Year = __webpack_require__(74);
+	var _Year = __webpack_require__(75);
 
 	var _Year2 = babelHelpers.interopRequireDefault(_Year);
 
-	var _Decade = __webpack_require__(75);
+	var _Decade = __webpack_require__(76);
 
 	var _Decade2 = babelHelpers.interopRequireDefault(_Decade);
 
-	var _Century = __webpack_require__(76);
+	var _Century = __webpack_require__(77);
 
 	var _Century2 = babelHelpers.interopRequireDefault(_Century);
 
@@ -7038,11 +7490,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _uncontrollable2 = babelHelpers.interopRequireDefault(_uncontrollable);
 
-	var _SlideTransition = __webpack_require__(77);
+	var _SlideTransition = __webpack_require__(78);
 
 	var _SlideTransition2 = babelHelpers.interopRequireDefault(_SlideTransition);
 
-	var _utilDates = __webpack_require__(72);
+	var _utilDates = __webpack_require__(73);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -7143,7 +7595,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-	    return [__webpack_require__(53), __webpack_require__(54), __webpack_require__(61), __webpack_require__(41)()];
+	    return [__webpack_require__(54), __webpack_require__(55), __webpack_require__(62), __webpack_require__(41)()];
 	  }
 	}, {
 	  key: 'propTypes',
@@ -7468,7 +7920,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7481,7 +7933,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-	var _WidgetButton = __webpack_require__(64);
+	var _WidgetButton = __webpack_require__(65);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
@@ -7504,7 +7956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    })
 	  },
 
-	  mixins: [__webpack_require__(54), __webpack_require__(69)],
+	  mixins: [__webpack_require__(55), __webpack_require__(70)],
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
@@ -7580,7 +8032,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7607,7 +8059,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7618,7 +8070,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-	var _WidgetButton = __webpack_require__(64);
+	var _WidgetButton = __webpack_require__(65);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
@@ -7656,7 +8108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7673,7 +8125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-	var _utilDates = __webpack_require__(72);
+	var _utilDates = __webpack_require__(73);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -7730,7 +8182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    isEqual: isEqual
 	  },
 
-	  mixins: [__webpack_require__(69), __webpack_require__(41)()],
+	  mixins: [__webpack_require__(70), __webpack_require__(41)()],
 
 	  propTypes: propTypes,
 
@@ -7849,7 +8301,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7858,7 +8310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-	var _dateArithmetic = __webpack_require__(73);
+	var _dateArithmetic = __webpack_require__(74);
 
 	var _dateArithmetic2 = babelHelpers.interopRequireDefault(_dateArithmetic);
 
@@ -7963,7 +8415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	var MILI    = 'milliseconds'
@@ -8190,7 +8642,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8207,7 +8659,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-	var _utilDates = __webpack_require__(72);
+	var _utilDates = __webpack_require__(73);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -8250,7 +8702,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'YearView',
 
-	  mixins: [__webpack_require__(69), __webpack_require__(41)()],
+	  mixins: [__webpack_require__(70), __webpack_require__(41)()],
 
 	  propTypes: propTypes,
 
@@ -8347,7 +8799,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8364,7 +8816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-	var _utilDates = __webpack_require__(72);
+	var _utilDates = __webpack_require__(73);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -8404,7 +8856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'DecadeView',
 
-	  mixins: [__webpack_require__(54), __webpack_require__(69), __webpack_require__(41)()],
+	  mixins: [__webpack_require__(55), __webpack_require__(70), __webpack_require__(41)()],
 
 	  propTypes: propTypes,
 
@@ -8511,7 +8963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8528,7 +8980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = babelHelpers.interopRequireDefault(_classnames);
 
-	var _utilDates = __webpack_require__(72);
+	var _utilDates = __webpack_require__(73);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -8570,7 +9022,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'CenturyView',
 
-	  mixins: [__webpack_require__(54), __webpack_require__(69), __webpack_require__(41)()],
+	  mixins: [__webpack_require__(55), __webpack_require__(70), __webpack_require__(41)()],
 
 	  propTypes: propTypes,
 
@@ -8686,7 +9138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8694,10 +9146,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var babelHelpers = __webpack_require__(2);
 
 	var React = __webpack_require__(21),
-	    ReplaceTransitionGroup = __webpack_require__(78),
+	    ReplaceTransitionGroup = __webpack_require__(79),
 	    compat = __webpack_require__(32),
 	    css = __webpack_require__(7),
-	    getWidth = __webpack_require__(79),
+	    getWidth = __webpack_require__(80),
 	    config = __webpack_require__(4);
 
 	var SlideChildGroup = React.createClass({
@@ -8813,7 +9265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8827,7 +9279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var React = __webpack_require__(21),
 	    css = __webpack_require__(7),
 	    height = __webpack_require__(29),
-	    width = __webpack_require__(79),
+	    width = __webpack_require__(80),
 	    compat = __webpack_require__(32),
 	    _ = __webpack_require__(20);
 
@@ -9007,7 +9459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9021,7 +9473,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9056,7 +9508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//pick, omit, has
 
-	var _utilDates = __webpack_require__(72);
+	var _utilDates = __webpack_require__(73);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -9070,19 +9522,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
 
-	var _Calendar2 = __webpack_require__(67);
+	var _Calendar2 = __webpack_require__(68);
 
 	var _Calendar3 = babelHelpers.interopRequireDefault(_Calendar2);
 
-	var _TimeList = __webpack_require__(81);
+	var _TimeList = __webpack_require__(82);
 
 	var _TimeList2 = babelHelpers.interopRequireDefault(_TimeList);
 
-	var _DateInput = __webpack_require__(82);
+	var _DateInput = __webpack_require__(83);
 
 	var _DateInput2 = babelHelpers.interopRequireDefault(_DateInput);
 
-	var _WidgetButton = __webpack_require__(64);
+	var _WidgetButton = __webpack_require__(65);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
@@ -9166,7 +9618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-	    return [__webpack_require__(53), __webpack_require__(54), __webpack_require__(56), __webpack_require__(61), __webpack_require__(41)('valueInput', function (key, id) {
+	    return [__webpack_require__(54), __webpack_require__(55), __webpack_require__(57), __webpack_require__(62), __webpack_require__(41)('valueInput', function (key, id) {
 	      var open = this.props.open;
 	      var current = this.ariaActiveDescendant();
 	      var calIsActive = open === popups.CALENDAR && key === 'calendar';
@@ -9568,7 +10020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9581,7 +10033,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = babelHelpers.interopRequireDefault(_react);
 
-	var _utilDates = __webpack_require__(72);
+	var _utilDates = __webpack_require__(73);
 
 	var _utilDates2 = babelHelpers.interopRequireDefault(_utilDates);
 
@@ -9615,7 +10067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    culture: _react2['default'].PropTypes.string
 	  },
 
-	  mixins: [__webpack_require__(53)],
+	  mixins: [__webpack_require__(54)],
 
 	  getDefaultProps: function getDefaultProps() {
 	    return {
@@ -9788,7 +10240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9914,7 +10366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9951,17 +10403,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilConstants2 = babelHelpers.interopRequireDefault(_utilConstants);
 
-	var _utilRepeater = __webpack_require__(84);
+	var _utilRepeater = __webpack_require__(85);
 
 	var _utilRepeater2 = babelHelpers.interopRequireDefault(_utilRepeater);
 
 	var _utilLocalizers = __webpack_require__(18);
 
-	var _NumberInput = __webpack_require__(85);
+	var _NumberInput = __webpack_require__(86);
 
 	var _NumberInput2 = babelHelpers.interopRequireDefault(_NumberInput);
 
-	var _WidgetButton = __webpack_require__(64);
+	var _WidgetButton = __webpack_require__(65);
 
 	var _WidgetButton2 = babelHelpers.interopRequireDefault(_WidgetButton);
 
@@ -10016,7 +10468,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-	    return [__webpack_require__(53), __webpack_require__(54), __webpack_require__(61)];
+	    return [__webpack_require__(54), __webpack_require__(55), __webpack_require__(62)];
 	  }
 	}, {
 	  key: 'propTypes',
@@ -10260,7 +10712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//allow for styling, focus stealing keeping me from the normal what have you
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports) {
 
 	// my tests in ie11/chrome/FF indicate that keyDown repeats
@@ -10288,7 +10740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10432,7 +10884,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10457,11 +10909,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Popup2 = babelHelpers.interopRequireDefault(_Popup);
 
-	var _MultiselectInput = __webpack_require__(87);
+	var _MultiselectInput = __webpack_require__(88);
 
 	var _MultiselectInput2 = babelHelpers.interopRequireDefault(_MultiselectInput);
 
-	var _MultiselectTagList = __webpack_require__(88);
+	var _MultiselectTagList = __webpack_require__(89);
 
 	var _MultiselectTagList2 = babelHelpers.interopRequireDefault(_MultiselectTagList);
 
@@ -10556,7 +11008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-	    return [__webpack_require__(53), __webpack_require__(55), __webpack_require__(56), __webpack_require__(61), __webpack_require__(41)('input', function (key, id) {
+	    return [__webpack_require__(54), __webpack_require__(56), __webpack_require__(57), __webpack_require__(62), __webpack_require__(41)('input', function (key, id) {
 	      var myKey = this.props.ariaActiveDescendantKey;
 
 	      var createIsActive = (!this._data().length || this.state.focusedItem === null) && key === myKey;
@@ -11012,7 +11464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11075,7 +11527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11114,7 +11566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  displayName: 'MultiselectTagList',
 
-	  mixins: [__webpack_require__(54), __webpack_require__(41)()],
+	  mixins: [__webpack_require__(55), __webpack_require__(41)()],
 
 	  propTypes: {
 	    value: _react2['default'].PropTypes.array,
@@ -11268,7 +11720,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11309,7 +11761,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilValidateListInterface2 = babelHelpers.interopRequireDefault(_utilValidateListInterface);
 
-	var _domHelpersUtilScrollTo = __webpack_require__(57);
+	var _domHelpersUtilScrollTo = __webpack_require__(58);
 
 	var _domHelpersUtilScrollTo2 = babelHelpers.interopRequireDefault(_domHelpersUtilScrollTo);
 
@@ -11363,7 +11815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, {
 	  key: 'mixins',
 	  initializer: function initializer() {
-	    return [__webpack_require__(53), __webpack_require__(61), __webpack_require__(41)()];
+	    return [__webpack_require__(54), __webpack_require__(62), __webpack_require__(41)()];
 	  }
 	}, {
 	  key: 'getDefaultProps',
@@ -11694,7 +12146,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11735,11 +12187,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utilWidgetHelpers = __webpack_require__(39);
 
-	var _GroupHeader = __webpack_require__(91);
+	var _GroupHeader = __webpack_require__(92);
 
 	var _GroupHeader2 = babelHelpers.interopRequireDefault(_GroupHeader);
 
-	var _utilObjectTraversal = __webpack_require__(92);
+	var _utilObjectTraversal = __webpack_require__(93);
 
 	var optionId = function optionId(id, idx) {
 	  return id + '__option__' + idx;
@@ -12137,7 +12589,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12182,7 +12634,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
