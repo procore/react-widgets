@@ -1965,7 +1965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
 	var transform = _utilConfiguration2['default'].animate.transform;
-
+	alert('Yolo!');
 	function properties(prop, value) {
 	  var _ref, _ref2;
 
@@ -2023,9 +2023,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  },
 
-	  // componentDidMount(){
-	  //   !this.props.open && this.close(0)
-	  // },
 	  componentWillMount: function componentWillMount() {
 	    !this.props.open && (this._initialPosition = true);
 	  },
@@ -2041,7 +2038,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        opening = !pvProps.open && this.props.open,
 	        open = this.props.open;
 
-	    if (opening) this.open();else if (closing) this.close();else if (open) this.height();
+	    if (opening) this.open();else if (closing) this.close();else if (open) {
+	      this.conditionallySetHeight();
+	    }
+	  },
+
+	  conditionallySetHeight: function conditionallySetHeight() {
+	    // this.height() returns a floating point number with the desired height
+	    // for this popup. Because of potential rounding errors in floating point
+	    // aritmetic we must allow an error margin when comparing to the current
+	    // state, otherwise we can end up in an infinite loop where the height
+	    // is never exactly equal to our target value.
+	    var height = this.height(),
+	        diff = Math.abs(height - this.state.height);
+	    if (isNaN(diff) || diff > 0.1) this.setState({ height: height });
 	  },
 
 	  render: function render() {
@@ -2079,7 +2089,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        style = { display: 'block', overflow: 'hidden' };
 
 	    _domHelpersStyle2['default'](container, style);
-	    this.height();
+	    this.conditionallySetHeight();
 	    _domHelpersStyle2['default'](content, properties('top', this.props.dropUp ? '100%' : '-100%'));
 	  },
 
@@ -2092,8 +2102,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (this.state.height !== height) {
 	      el.style.height = height + 'px';
-	      this.setState({ height: height });
 	    }
+
+	    return height;
 	  },
 
 	  open: function open() {
@@ -2107,7 +2118,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this._initialPosition) {
 	      this._initialPosition = false;
 	      this.reset();
-	    } else this.height();
+	    } else this.conditionallySetHeight();
 
 	    this.props.onOpening();
 
@@ -2135,7 +2146,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.ORGINAL_POSITION = _domHelpersStyle2['default'](el, 'position');
 
 	    this._isOpening = false;
-	    this.height();
+
+	    this.conditionallySetHeight();
+
 	    this.props.onClosing();
 
 	    anim.style.overflow = 'hidden';
