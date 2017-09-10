@@ -1965,7 +1965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utilCompat2 = babelHelpers.interopRequireDefault(_utilCompat);
 
 	var transform = _utilConfiguration2['default'].animate.transform;
-	alert('Yolo!');
+
 	function properties(prop, value) {
 	  var _ref, _ref2;
 
