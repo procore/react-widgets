@@ -209,7 +209,7 @@ var ComboBox = React.createClass({
           autoFocus={autoFocus}
           tabIndex={tabIndex}
           suggest={suggest}
-          onClick={tetherPopup && this.toggle}
+          onClick={tetherPopup ? this.open : () => {}}
           name={name}
           role='combobox'
           aria-owns={listID}
@@ -228,9 +228,9 @@ var ComboBox = React.createClass({
         <PopupComponent
           {...popupProps}
           onBlur={this._focus.bind(null, false)}
-          onKeyDown={this.focus}
-          getTetherFocus={() => this.refs.list.refs.ul}
+          getTetherFocus={() => this.refs.input}
           onOpening={() => this.refs.list.forceUpdate()}
+          onOpen={tetherPopup ? () => this.refs.input.focus() : popupProps.onOpen}
           onRequestClose={this.close}
           popupStyle={popupStyle}
         >

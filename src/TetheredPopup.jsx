@@ -188,6 +188,7 @@ module.exports = React.createClass({
 
     const { onOpen, onKeyDown, getTetherFocus } = this.props;
 
+    contentEl.focus()
     let focusComponent = compat.findDOMNode(getTetherFocus());
 
     if(focusComponent) {
@@ -216,6 +217,7 @@ module.exports = React.createClass({
           anim.className = anim.className.replace(/ ?rw-popup-animating/g, '')
           anim.style.overflofw = 'visible';
 
+          contentEl.focus();
           if (onOpen) onOpen();
       })
   },
