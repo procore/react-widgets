@@ -188,7 +188,6 @@ module.exports = React.createClass({
 
     const { onOpen, onKeyDown, getTetherFocus } = this.props;
 
-    contentEl.focus()
     let focusComponent = compat.findDOMNode(getTetherFocus());
 
     if(focusComponent) {
