@@ -3,6 +3,7 @@ import cx from 'classnames';
 import _  from './util/_';
 import filter from './util/filter';
 import Popup           from './Popup';
+import TetheredPopup   from './TetheredPopup';
 import Btn             from './WidgetButton';
 import Input           from './ComboboxInput';
 import compat          from './util/compat';
@@ -48,6 +49,8 @@ let propTypes = {
       filter:         CustomPropTypes.filter,
 
       busy:           React.PropTypes.bool,
+
+      tetherPopup:    React.PropTypes.bool,
 
       dropUp:         React.PropTypes.bool,
       duration:       React.PropTypes.number, //popup
@@ -96,6 +99,8 @@ var ComboBox = React.createClass({
       suggest: false,
       filter: false,
       delay: 500,
+      tetherPopup: false,
+      popupStyle: {},
 
       messages: msgs(),
       ariaActiveDescendantKey: 'combobox'
@@ -142,17 +147,18 @@ var ComboBox = React.createClass({
   render(){
     let {
         className, tabIndex, filter, suggest
-      , valueField, textField, groupBy
+      , valueField, textField, groupBy, tetherPopup, popupStyle
       , messages, data, busy, dropUp, name, autoFocus
       , placeholder, value, open, disabled, readOnly
       , afterListComponent, searchTerm, onChange
       , listComponent: List } = this.props;
 
     List = List || (groupBy && GroupableList) || PlainList
+    const PopupComponent = tetherPopup ? TetheredPopup : Popup;
 
     let elementProps = omit(this.props, Object.keys(propTypes));
     let listProps    = pick(this.props, Object.keys(List.propTypes));
-    let popupProps   = pick(this.props, Object.keys(Popup.propTypes));
+    let popupProps   = pick(this.props, Object.keys(PopupComponent.propTypes));
 
     let { focusedItem, selectedItem, focused } = this.state;
 
@@ -172,9 +178,9 @@ var ComboBox = React.createClass({
       <div
         {...elementProps}
         ref="element"
-        onKeyDown={this._keyDown}
-        onFocus={this._focus.bind(null, true)}
-        onBlur ={this._focus.bind(null, false)}
+        onKeyDown={tetherPopup ? null : this._keyDown}
+        onFocus={tetherPopup ? () => this.setState({focused: true}) : this._focus.bind(null, true)}
+        onBlur ={tetherPopup ? () => this.setState({focused: false}) : this._focus.bind(null, false)}
         tabIndex={'-1'}
         className={cx(className, 'rw-combobox', 'rw-widget', {
           'rw-state-focus':     focused,
@@ -203,6 +209,7 @@ var ComboBox = React.createClass({
           autoFocus={autoFocus}
           tabIndex={tabIndex}
           suggest={suggest}
+          onClick={tetherPopup && this.toggle}
           name={name}
           role='combobox'
           aria-owns={listID}
@@ -218,10 +225,14 @@ var ComboBox = React.createClass({
           onChange={this._inputTyping}
           onKeyDown={this._inputKeyDown}
         />
-        <Popup
+        <PopupComponent
           {...popupProps}
+          onBlur={this._focus.bind(null, false)}
+          onKeyDown={this.focus}
+          getTetherFocus={() => this.refs.list.refs.ul}
           onOpening={() => this.refs.list.forceUpdate()}
           onRequestClose={this.close}
+          popupStyle={popupStyle}
         >
           <div>
             { shouldRenderList &&
@@ -249,7 +260,7 @@ var ComboBox = React.createClass({
               )
             )}
           </div>
-        </Popup>
+        </PopupComponent>
       </div>
     )
   },
