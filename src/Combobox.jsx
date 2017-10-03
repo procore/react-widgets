@@ -209,7 +209,6 @@ var ComboBox = React.createClass({
           autoFocus={autoFocus}
           tabIndex={tabIndex}
           suggest={suggest}
-          onClick={tetherPopup ? this.open : () => {}}
           name={name}
           role='combobox'
           aria-owns={listID}
