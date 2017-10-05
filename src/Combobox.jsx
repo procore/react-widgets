@@ -179,7 +179,7 @@ var ComboBox = React.createClass({
         {...elementProps}
         ref="element"
         onKeyDown={tetherPopup ? null : this._keyDown}
-        onFocus={tetherPopup ? () => this.setState({focused: true}) : this._focus.bind(null, true)}
+        onFocus={this._focus.bind(null, true)}
         onBlur ={tetherPopup ? () => this.setState({focused: false}) : this._focus.bind(null, false)}
         tabIndex={'-1'}
         className={cx(className, 'rw-combobox', 'rw-widget', {
@@ -230,7 +230,7 @@ var ComboBox = React.createClass({
           getTetherFocus={() => this.refs.list.refs.ul}
           onBlur={this._focus.bind(null, false)}
           onKeyDown={this._keyDown}
-          onOpen={this._focus.bind(null, true)}
+          onOpen={this.focus}
           onRequestClose={this.close}
           popupStyle={popupStyle}
         >
@@ -267,10 +267,12 @@ var ComboBox = React.createClass({
 
   @widgetEditable
   _onSelect(data){
+    const { onSelect, tetherPopup } = this.props;
     this.close()
-    notify(this.props.onSelect, data)
+    notify(onSelect, data)
     this.change(data)
     this.focus();
+    if (tetherPopup) this._focus(false);
   },
 
   _inputKeyDown(e){
