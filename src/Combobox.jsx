@@ -178,7 +178,7 @@ var ComboBox = React.createClass({
       <div
         {...elementProps}
         ref="element"
-        onKeyDown={tetherPopup ? null : this._keyDown}
+        onKeyDown={this._keyDown}
         onFocus={this._focus.bind(null, true)}
         onBlur ={tetherPopup ? () => this.setState({focused: false}) : this._focus.bind(null, false)}
         tabIndex={'-1'}
@@ -229,7 +229,6 @@ var ComboBox = React.createClass({
           onOpening={() => this.refs.list.forceUpdate()}
           getTetherFocus={() => this.refs.list.refs.ul}
           onBlur={this._focus.bind(null, false)}
-          onKeyDown={this._keyDown}
           onOpen={this.focus}
           onRequestClose={this.close}
           popupStyle={popupStyle}
