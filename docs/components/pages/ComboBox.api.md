@@ -123,6 +123,9 @@ initialization value for uncontrolled widgets.
 Called fires when the {widgetName} is about to open or close. `onToggle` should be used
 when the `open` prop is set otherwise the widget will never open or close.
 
+### tetherPopup?{ type: 'Boolean' }
+
+Flag the {widgetName} to tether its popup instead of positioning it absolutely. Big thanks to [tetherJS](http://github.hubspot.com/tether/).
 
 ### busy?{ type: 'Boolean', default: "false" }
 
