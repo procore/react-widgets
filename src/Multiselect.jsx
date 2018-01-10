@@ -186,7 +186,7 @@ var Multiselect = React.createClass({
             : messages.noneSelected
     }
 
-    var classIconParent = cx({"hidden": !busy});
+    var classIconParent = cx({"invisible": !busy});
 
     return (
       <div {...elementProps}
@@ -222,7 +222,7 @@ var Multiselect = React.createClass({
           <span className={classIconParent}>
             <i className="rw-i rw-loading"></i>
           </span>
-          <div className={cx({hidden: !shouldRenderTags})}>
+          <div className={cx({invisible: !shouldRenderTags})}>
             <TagList {...tagsProps}
               ref='tagList'
               id={tagsID}
