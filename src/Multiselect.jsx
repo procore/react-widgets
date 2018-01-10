@@ -186,6 +186,8 @@ var Multiselect = React.createClass({
             : messages.noneSelected
     }
 
+    var classNames = cx({"hidden": busy, 'rw-i': busy,  'rw-loading': busy});
+
     return (
       <div {...elementProps}
         ref="element"
@@ -215,8 +217,8 @@ var Multiselect = React.createClass({
           { notify }
         </span>
 
-        <div style={{backgroundColor: 'red'}} className='rw-multiselect-wrapper' ref='wrapper'>
-          <i className={cx("rw-i rw-loading", {"hidden": !!busy })}></i>
+        <div className='rw-multiselect-wrapper' ref='wrapper'>
+          <i className={classNames}></i>
           { shouldRenderTags &&
             <TagList {...tagsProps}
               ref='tagList'
