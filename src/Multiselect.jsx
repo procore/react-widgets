@@ -216,7 +216,7 @@ var Multiselect = React.createClass({
         </span>
 
         <div className='rw-multiselect-wrapper' ref='wrapper'>
-          <i className={cx("rw-i rw-loading", {"hidden": busy })}></i>
+          <i className={cx("rw-i rw-loading", {"hidden": !!busy })}></i>
           { shouldRenderTags &&
             <TagList {...tagsProps}
               ref='tagList'
@@ -230,6 +230,7 @@ var Multiselect = React.createClass({
               valueComponent={TagComponent}
               ariaActiveDescendantKey='taglist'
             />
+            <p>hehe test</p>
           }
           <SelectInput
             {...inputProps}
