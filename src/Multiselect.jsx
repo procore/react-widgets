@@ -175,6 +175,7 @@ var Multiselect = React.createClass({
       , createID = instanceId(this, '__createlist')
       , createOptionID = instanceId(this, '__createlist_option');
 
+    console.log('dataItems', dataItems);
     let shouldRenderTags = !!dataItems.length
       , shouldRenderPopup = isFirstFocusedRender(this) || open
       , shouldShowCreate = this._shouldShowCreate()
