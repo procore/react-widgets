@@ -81,7 +81,10 @@ export default React.createClass({
                   'rw-state-readonly': isReadonly,
                 })}
               >
-                 <ValueComponent item={item }/>
+                { ValueComponent
+                  ? <ValueComponent item={item }/>
+                  : dataText(item, textField)
+                }
                 <span
                   tabIndex='-1'
                   onClick={!(isDisabled || isReadonly) ? this._delete.bind(null, item) : undefined}
