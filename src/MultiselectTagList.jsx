@@ -53,6 +53,10 @@ export default React.createClass({
 
       var id = instanceId(this);
 
+      if (value.length === 0) {
+          return null;
+       }
+
       return (
         <ul {...props}
           role='listbox'
