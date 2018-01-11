@@ -223,6 +223,20 @@ var Multiselect = React.createClass({
           <span className={classIconParent}>
             <i className="rw-i rw-loading"></i>
           </span>
+					<div className={cx({invisible: !shouldRenderTags})}>
+						<TagList {...tagsProps}
+							ref='tagList'
+							id={tagsID}
+							aria-label={messages.tagsLabel}
+							value={dataItems}
+							focused={focusedTag}
+							disabled={disabled}
+							readOnly={readOnly}
+							onDelete={this._delete}
+							valueComponent={<p>heheh</p>}
+							ariaActiveDescendantKey='taglist'
+						/>
+					</div>
           <SelectInput
             {...inputProps}
             ref='input'
