@@ -176,6 +176,7 @@ var Multiselect = React.createClass({
       , createOptionID = instanceId(this, '__createlist_option');
 
     console.log('dataItems', dataItems);
+    console.log('tagComponent', TagComponent);
     let shouldRenderTags = !!dataItems.length
       , shouldRenderPopup = isFirstFocusedRender(this) || open
       , shouldShowCreate = this._shouldShowCreate()
@@ -233,7 +234,7 @@ var Multiselect = React.createClass({
 							disabled={disabled}
 							readOnly={readOnly}
 							onDelete={this._delete}
-							valueComponent={<p>heheh</p>}
+							valueComponent={TagComponent}
 							ariaActiveDescendantKey='taglist'
 						/>
 					</div>
