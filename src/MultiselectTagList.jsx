@@ -52,9 +52,9 @@ export default React.createClass({
         , valueComponent: ValueComponent }  = this.props;
 
       var id = instanceId(this);
+
       if (value.length === 0) {
-        console.log('here');
-        return (<div>nothing</div>);
+        return null;
       }
 
       return (
