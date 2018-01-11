@@ -61,7 +61,7 @@ export default React.createClass({
         <ul {...props}
           role='listbox'
           tabIndex='-1'
-          className={cx('rw-multiselect-taglist', {invisible: !props.busy})}
+          className='rw-multiselect-taglist'
         >
           { value.map( (item, i) => {
             var isDisabled = isDisabledItem(item, this.props)
@@ -79,7 +79,6 @@ export default React.createClass({
                   'rw-state-focus':    isFocused,
                   'rw-state-disabled': isDisabled,
                   'rw-state-readonly': isReadonly,
-                  'invisible': !props.busy,
                 })}
               >
                  <ValueComponent item={item }/>
