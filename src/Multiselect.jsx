@@ -228,6 +228,7 @@ var Multiselect = React.createClass({
 						<TagList {...tagsProps}
 							ref='tagList'
 							id={tagsID}
+              busy={!!busy}
 							aria-label={messages.tagsLabel}
 							value={dataItems}
 							focused={focusedTag}
