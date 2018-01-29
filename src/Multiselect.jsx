@@ -218,25 +218,24 @@ var Multiselect = React.createClass({
         </span>
 
         <div className='rw-multiselect-wrapper' ref='wrapper'>
-
           <span className={classIconParent}>
             <i className="rw-i rw-loading"></i>
           </span>
-					<div className={cx({hidden: !shouldRenderTags})}>
-						<TagList {...tagsProps}
-							ref='tagList'
-							id={tagsID}
+          <div className={cx({hidden: !shouldRenderTags})}>
+            <TagList {...tagsProps}
+              ref='tagList'
+              id={tagsID}
               busy={!!busy}
-							aria-label={messages.tagsLabel}
-							value={dataItems}
-							focused={focusedTag}
-							disabled={disabled}
-							readOnly={readOnly}
-							onDelete={this._delete}
-							valueComponent={TagComponent}
-							ariaActiveDescendantKey='taglist'
-						/>
-					</div>
+              aria-label={messages.tagsLabel}
+              value={dataItems}
+              focused={focusedTag}
+              disabled={disabled}
+              readOnly={readOnly}
+              onDelete={this._delete}
+              valueComponent={TagComponent}
+              ariaActiveDescendantKey='taglist'
+            />
+          </div>
           <SelectInput
             {...inputProps}
             ref='input'
