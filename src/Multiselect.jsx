@@ -186,6 +186,8 @@ var Multiselect = React.createClass({
             : messages.noneSelected
     }
 
+    var classIconParent = cx({"hidden": !busy});
+
     return (
       <div {...elementProps}
         ref="element"
@@ -216,13 +218,14 @@ var Multiselect = React.createClass({
         </span>
 
         <div className='rw-multiselect-wrapper' ref='wrapper'>
-          { busy &&
+          <span className={classIconParent}>
             <i className="rw-i rw-loading"></i>
-          }
-          { shouldRenderTags &&
+          </span>
+          <div className={cx({hidden: !shouldRenderTags})}>
             <TagList {...tagsProps}
               ref='tagList'
               id={tagsID}
+              busy={!!busy}
               aria-label={messages.tagsLabel}
               value={dataItems}
               focused={focusedTag}
@@ -232,7 +235,7 @@ var Multiselect = React.createClass({
               valueComponent={TagComponent}
               ariaActiveDescendantKey='taglist'
             />
-          }
+          </div>
           <SelectInput
             {...inputProps}
             ref='input'

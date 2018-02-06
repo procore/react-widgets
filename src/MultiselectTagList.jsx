@@ -53,6 +53,10 @@ export default React.createClass({
 
       var id = instanceId(this);
 
+      if (value.length === 0) {
+        return <div />;
+      }
+
       return (
         <ul {...props}
           role='listbox'
@@ -74,7 +78,7 @@ export default React.createClass({
                 className={cx({
                   'rw-state-focus':    isFocused,
                   'rw-state-disabled': isDisabled,
-                  'rw-state-readonly': isReadonly
+                  'rw-state-readonly': isReadonly,
                 })}
               >
                 { ValueComponent
