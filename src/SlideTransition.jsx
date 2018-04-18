@@ -1,5 +1,6 @@
 'use strict';
 var React   = require('react')
+  , PropTypes = require('prop-types')
   , ReplaceTransitionGroup  = require('./ReplaceTransitionGroup')
   , compat = require('./util/compat')
   , css = require('dom-helpers/style')
@@ -10,8 +11,8 @@ var React   = require('react')
 var SlideChildGroup = React.createClass({
 
   propTypes: {
-    direction: React.PropTypes.oneOf(['left', 'right']),
-    duration:  React.PropTypes.number
+    direction: PropTypes.oneOf(['left', 'right']),
+    duration:  PropTypes.number
   },
 
   componentWillEnter: function(done) {
@@ -69,8 +70,8 @@ var SlideChildGroup = React.createClass({
 module.exports = React.createClass({
 
   propTypes: {
-    direction: React.PropTypes.oneOf(['left', 'right']),
-    duration:  React.PropTypes.number
+    direction: PropTypes.oneOf(['left', 'right']),
+    duration:  PropTypes.number
   },
 
   getDefaultProps: function(){
@@ -109,4 +110,3 @@ module.exports = React.createClass({
     return this.isMounted() && this.refs.container.isTransitioning()
   }
 });
-

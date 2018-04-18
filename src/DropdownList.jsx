@@ -21,53 +21,53 @@ let { omit, pick, result } = _;
 
 var propTypes = {
   //-- controlled props -----------
-  value:          React.PropTypes.any,
-  onChange:       React.PropTypes.func,
-  open:           React.PropTypes.bool,
-  onToggle:       React.PropTypes.func,
+  value:          PropTypes.any,
+  onChange:       PropTypes.func,
+  open:           PropTypes.bool,
+  onToggle:       PropTypes.func,
   //------------------------------------
 
-  data:           React.PropTypes.array,
-  valueField:     React.PropTypes.string,
+  data:           PropTypes.array,
+  valueField:     PropTypes.string,
   textField:      CustomPropTypes.accessor,
 
   valueComponent: CustomPropTypes.elementType,
   itemComponent:  CustomPropTypes.elementType,
   listComponent:  CustomPropTypes.elementType,
-  beforeListComponent: React.PropTypes.any,
-  afterListComponent: React.PropTypes.any,
+  beforeListComponent: PropTypes.any,
+  afterListComponent: PropTypes.any,
 
   groupComponent: CustomPropTypes.elementType,
   groupBy:        CustomPropTypes.accessor,
 
-  onSelect:       React.PropTypes.func,
+  onSelect:       PropTypes.func,
 
-  searchTerm:     React.PropTypes.string,
-  onSearch:       React.PropTypes.func,
+  searchTerm:     PropTypes.string,
+  onSearch:       PropTypes.func,
 
-  busy:           React.PropTypes.bool,
+  busy:           PropTypes.bool,
 
-  delay:          React.PropTypes.number,
+  delay:          PropTypes.number,
 
-  tetherPopup:    React.PropTypes.bool,
+  tetherPopup:    PropTypes.bool,
 
-  multi:          React.PropTypes.bool,
+  multi:          PropTypes.bool,
 
-  dropUp:         React.PropTypes.bool,
-  duration:       React.PropTypes.number, //popup
+  dropUp:         PropTypes.bool,
+  duration:       PropTypes.number, //popup
 
   disabled:       CustomPropTypes.disabled,
 
   readOnly:       CustomPropTypes.readOnly,
 
-  messages:       React.PropTypes.shape({
+  messages:       PropTypes.shape({
     open:              CustomPropTypes.message,
     emptyList:         CustomPropTypes.message,
     emptyFilter:       CustomPropTypes.message,
     filterPlaceholder: CustomPropTypes.message
   }),
 
-  popupClassName: React.PropTypes.string,
+  popupClassName: PropTypes.string,
 
 };
 

@@ -1,4 +1,5 @@
 import React    from 'react';
+import PropTypes from 'prop-types';
 import cx       from 'classnames';
 import compat   from './util/compat';
 import Header   from './Header';
@@ -59,16 +60,16 @@ let propTypes = {
   disabled:       CustomPropTypes.disabled,
   readOnly:       CustomPropTypes.readOnly,
 
-  onChange:      React.PropTypes.func,
-  value:         React.PropTypes.instanceOf(Date),
+  onChange:      PropTypes.func,
+  value:         PropTypes.instanceOf(Date),
 
-  min:           React.PropTypes.instanceOf(Date),
-  max:           React.PropTypes.instanceOf(Date),
+  min:           PropTypes.instanceOf(Date),
+  max:           PropTypes.instanceOf(Date),
 
-  initialView:   React.PropTypes.oneOf(VIEW_OPTIONS),
+  initialView:   PropTypes.oneOf(VIEW_OPTIONS),
 
   finalView(props, propname, componentName){
-    var err = React.PropTypes.oneOf(VIEW_OPTIONS)(props, propname, componentName)
+    var err = PropTypes.oneOf(VIEW_OPTIONS)(props, propname, componentName)
 
     if (err) return err
     if (VIEW_OPTIONS.indexOf(props[propname]) < VIEW_OPTIONS.indexOf(props.initialView))
@@ -76,9 +77,9 @@ let propTypes = {
         prop. This creates a range that cannot be rendered.`.replace(/\n\t/g, ''))
   },
 
-  culture:       React.PropTypes.string,
+  culture:       PropTypes.string,
 
-  footer:        React.PropTypes.bool,
+  footer:        PropTypes.bool,
 
   dayComponent:  CustomPropTypes.elementType,
   headerFormat:  CustomPropTypes.dateFormat,
@@ -91,9 +92,9 @@ let propTypes = {
   decadeFormat:  CustomPropTypes.dateFormat,
   centuryFormat: CustomPropTypes.dateFormat,
 
-  messages:      React.PropTypes.shape({
-    moveBack:     React.PropTypes.string,
-    moveForward:  React.PropTypes.string
+  messages:      PropTypes.shape({
+    moveBack:     PropTypes.string,
+    moveForward:  PropTypes.string
   })
 }
 

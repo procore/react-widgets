@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import _  from './util/_';
 import filter from './util/filter';
@@ -22,42 +23,42 @@ let { omit, pick } = _;
 
 let propTypes = {
       //-- controlled props -----------
-      value:          React.PropTypes.any,
-      onChange:       React.PropTypes.func,
-      open:           React.PropTypes.bool,
-      onToggle:       React.PropTypes.func,
+      value:          PropTypes.any,
+      onChange:       PropTypes.func,
+      open:           PropTypes.bool,
+      onToggle:       PropTypes.func,
       //------------------------------------
 
       itemComponent:  CustomPropTypes.elementType,
       listComponent:  CustomPropTypes.elementType,
-      afterListComponent: React.PropTypes.any,
+      afterListComponent: PropTypes.any,
       groupComponent: CustomPropTypes.elementType,
       groupBy:        CustomPropTypes.multiAccessor,
 
-      data:           React.PropTypes.array,
-      valueField:     React.PropTypes.string,
+      data:           PropTypes.array,
+      valueField:     PropTypes.string,
       textField:      CustomPropTypes.accessor,
-      name:           React.PropTypes.string,
+      name:           PropTypes.string,
 
-      onSelect:       React.PropTypes.func,
+      onSelect:       PropTypes.func,
 
-      autoFocus:      React.PropTypes.bool,
+      autoFocus:      PropTypes.bool,
       disabled:       CustomPropTypes.disabled,
       readOnly:       CustomPropTypes.readOnly,
 
       suggest:        CustomPropTypes.filter,
       filter:         CustomPropTypes.filter,
 
-      busy:           React.PropTypes.bool,
+      busy:           PropTypes.bool,
 
-      tetherPopup:    React.PropTypes.bool,
+      tetherPopup:    PropTypes.bool,
 
-      dropUp:         React.PropTypes.bool,
-      duration:       React.PropTypes.number, //popup
+      dropUp:         PropTypes.bool,
+      duration:       PropTypes.number, //popup
 
-      placeholder:    React.PropTypes.string,
+      placeholder:    PropTypes.string,
 
-      messages:       React.PropTypes.shape({
+      messages:       PropTypes.shape({
         open:         CustomPropTypes.message,
         emptyList:    CustomPropTypes.message,
         emptyFilter:  CustomPropTypes.message

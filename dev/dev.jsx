@@ -7,7 +7,7 @@ var numberLocalizer = require('../src/localizers/simple-number')
 
 numberLocalizer()
 
-var React = require('react/addons')
+var React = require('react')
 var index = require('../src')
 var dates = require('../src/util/dates')
 var DropdownList = require('../src/DropdownList.jsx')

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import dates from './util/dates';
 import { date as dateLocalizer } from './util/localizers';
@@ -7,14 +8,14 @@ import CustomPropTypes from './util/propTypes';
 import { instanceId } from './util/widgetHelpers';
 
 let propTypes = {
-  optionID:     React.PropTypes.func,
-  culture:      React.PropTypes.string,
+  optionID:     PropTypes.func,
+  culture:      PropTypes.string,
 
-  value:        React.PropTypes.instanceOf(Date),
-  focused:      React.PropTypes.instanceOf(Date),
-  min:          React.PropTypes.instanceOf(Date),
-  max:          React.PropTypes.instanceOf(Date),
-  onChange:     React.PropTypes.func.isRequired,
+  value:        PropTypes.instanceOf(Date),
+  focused:      PropTypes.instanceOf(Date),
+  min:          PropTypes.instanceOf(Date),
+  max:          PropTypes.instanceOf(Date),
+  onChange:     PropTypes.func.isRequired,
 
   yearFormat:   CustomPropTypes.dateFormat
 };

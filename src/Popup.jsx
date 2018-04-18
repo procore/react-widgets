@@ -1,4 +1,5 @@
 import React, { cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import css from 'dom-helpers/style';
 import getHeight from 'dom-helpers/query/height';
 import config from './util/configuration';
@@ -36,15 +37,15 @@ module.exports = React.createClass({
   displayName: 'Popup',
 
   propTypes: {
-    open:           React.PropTypes.bool,
-    dropUp:         React.PropTypes.bool,
-    duration:       React.PropTypes.number,
+    open:           PropTypes.bool,
+    dropUp:         PropTypes.bool,
+    duration:       PropTypes.number,
 
-    onRequestClose: React.PropTypes.func.isRequired,
-    onClosing:      React.PropTypes.func,
-    onOpening:      React.PropTypes.func,
-    onClose:        React.PropTypes.func,
-    onOpen:         React.PropTypes.func
+    onRequestClose: PropTypes.func.isRequired,
+    onClosing:      PropTypes.func,
+    onOpening:      PropTypes.func,
+    onClose:        PropTypes.func,
+    onOpen:         PropTypes.func
   },
 
   getInitialState(){ return {} },
