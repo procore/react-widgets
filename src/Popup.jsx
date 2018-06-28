@@ -60,9 +60,6 @@ module.exports = React.createClass({
     }
   },
 
-  // componentDidMount(){
-  //   !this.props.open && this.close(0)
-  // },
   componentWillMount(){
     !this.props.open && (this._initialPosition = true)
   },
@@ -80,7 +77,21 @@ module.exports = React.createClass({
 
     if (opening)      this.open()
     else if (closing) this.close()
-    else if (open)    this.height()
+    else if (open) {
+      this.conditionallySetHeight()
+    }
+  },
+
+  conditionallySetHeight(){
+    // this.height() returns a floating point number with the desired height
+    // for this popup. Because of potential rounding errors in floating point
+    // aritmetic we must allow an error margin when comparing to the current
+    // state, otherwise we can end up in an infinite loop where the height
+    // is never exactly equal to our target value.
+    const height = this.height()
+        , diff = Math.abs(height - this.state.height);
+    if (isNaN(diff) || diff > 0.1)
+      this.setState({ height });
   },
 
   render() {
@@ -117,7 +128,7 @@ module.exports = React.createClass({
       , style = { display: 'block', overflow: 'hidden'}
 
     css(container, style)
-    this.height();
+    this.conditionallySetHeight();
     css(content, properties('top', this.props.dropUp ? '100%' : '-100%'))
   },
 
@@ -131,8 +142,9 @@ module.exports = React.createClass({
 
     if( this.state.height !== height) {
       el.style.height  = height + 'px'
-      this.setState({ height })
     }
+
+    return height;
   },
 
   open() {
@@ -148,7 +160,7 @@ module.exports = React.createClass({
       this.reset();
     }
     else
-      this.height()
+      this.conditionallySetHeight();
 
     this.props.onOpening()
 
@@ -180,7 +192,9 @@ module.exports = React.createClass({
     this.ORGINAL_POSITION = css(el, 'position')
 
     this._isOpening = false
-    this.height()
+
+    this.conditionallySetHeight()
+
     this.props.onClosing()
 
     anim.style.overflow = 'hidden'
