@@ -1,6 +1,7 @@
 import React    from 'react';
 import PropTypes from 'prop-types';
 import cx       from 'classnames';
+import createReactClass from 'create-react-class';
 import compat   from './util/compat';
 import Header   from './Header';
 import Footer   from './Footer';
@@ -98,7 +99,7 @@ let propTypes = {
   })
 }
 
-let Calendar = React.createClass({
+let Calendar = createReactClass({
 
   displayName: 'Calendar',
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import localizers from './localizers';
 import filters from'./filter';
 
@@ -28,7 +29,7 @@ module.exports = {
         if (typeof props[propName] !== 'string')
           return new Error(
             'Invalid prop `' + propName + '` specified in  `' + componentName + '`.' +
-            ' Expected an Element `type` such as a tag name or return value of React.createClass(...)')
+            ' Expected an Element `type` such as a tag name or return value of createReactClass(...)')
       }
       return null
     }),

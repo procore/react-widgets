@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import invariant from 'invariant';
 import activeElement from 'dom-helpers/activeElement';
 import cx     from 'classnames';
+import createReactClass from 'create-react-class';
 import compat from './util/compat';
 import _      from './util/_'; //pick, omit, has
 
@@ -83,7 +84,7 @@ let propTypes = {
   }
 
 
-var DateTimePicker = React.createClass({
+var DateTimePicker = createReactClass({
 
   displayName: 'DateTimePicker',
 

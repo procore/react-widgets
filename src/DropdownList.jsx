@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import activeElement from 'dom-helpers/activeElement';
 import contains from 'dom-helpers/query/contains';
 import cx from 'classnames';
+import createReactClass from 'create-react-class';
 import _  from './util/_';
 import { keyCodes } from './util/constants';
 import Popup           from './Popup';
@@ -72,7 +73,7 @@ var propTypes = {
 
 };
 
-var DropdownList = React.createClass({
+var DropdownList = createReactClass({
 
   displayName: 'DropdownList',
 

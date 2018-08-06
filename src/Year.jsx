@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import createReactClass from 'create-react-class';
 import dates from './util/dates';
 import { date as dateLocalizer } from './util/localizers';
 import _  from './util/_';
@@ -24,7 +25,7 @@ let propTypes = {
 let isEqual = (dateA, dateB) => dates.eq(dateA, dateB, 'month')
 let optionId = (id, date) => `${id}__year_${dates.year(date)}-${dates.month(date)}`;
 
-let YearView = React.createClass({
+let YearView = createReactClass({
 
   displayName: 'YearView',
 

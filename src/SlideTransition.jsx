@@ -1,6 +1,7 @@
 'use strict';
 var React   = require('react')
   , PropTypes = require('prop-types')
+  , createReactClass = require('create-react-class')
   , ReplaceTransitionGroup  = require('./ReplaceTransitionGroup')
   , compat = require('./util/compat')
   , css = require('dom-helpers/style')
@@ -8,7 +9,7 @@ var React   = require('react')
   , config = require('./util/configuration');
 
 
-var SlideChildGroup = React.createClass({
+var SlideChildGroup = createReactClass({
 
   propTypes: {
     direction: PropTypes.oneOf(['left', 'right']),
@@ -67,7 +68,7 @@ var SlideChildGroup = React.createClass({
 })
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   propTypes: {
     direction: PropTypes.oneOf(['left', 'right']),

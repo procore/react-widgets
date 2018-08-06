@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import createReactClass from 'create-react-class';
 import dates from './util/dates';
 import { date as dateLocalizer } from './util/localizers';
 import _  from './util/_';
@@ -23,7 +24,7 @@ let propTypes = {
 let isEqual = (dataA, dateB) => dates.eq(dataA, dateB,  'year')
 let optionId = (id, date) => `${id}__decade_${dates.year(date)}`;
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'DecadeView',
 

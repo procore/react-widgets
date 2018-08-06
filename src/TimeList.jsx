@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import dates from './util/dates';
 import List from './List';
 import { date as dateLocalizer } from './util/localizers';
@@ -8,7 +9,7 @@ import CustomPropTypes from './util/propTypes';
 
 var format = props => dateLocalizer.getFormat('time', props.format)
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'TimeList',
 

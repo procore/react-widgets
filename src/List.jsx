@@ -1,5 +1,6 @@
 import React   from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import ListOption from './ListOption';
 import CustomPropTypes from './util/propTypes';
 import compat from './util/compat';
@@ -10,7 +11,7 @@ import { instanceId, notify } from './util/widgetHelpers';
 
 let optionId = (id, idx)=> `${id}__option__${idx}`;
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'List',
 

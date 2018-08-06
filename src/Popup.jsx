@@ -1,5 +1,6 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import css from 'dom-helpers/style';
 import getHeight from 'dom-helpers/query/height';
 import config from './util/configuration';
@@ -17,7 +18,7 @@ function properties(prop, value){
   return { [prop]: value }
 }
 
-var PopupContent = React.createClass({
+var PopupContent = createReactClass({
   render: function(){
     var child = this.props.children;
 
@@ -32,7 +33,7 @@ var PopupContent = React.createClass({
 })
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   displayName: 'Popup',
 

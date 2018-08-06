@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import _  from './util/_';
 import cx from 'classnames';
 import createUncontrolledWidget from 'uncontrollable';
@@ -54,7 +55,7 @@ let propTypes = {
   }
 
 
-var SelectList = React.createClass({
+var SelectList = createReactClass({
 
   propTypes: propTypes,
 
@@ -313,7 +314,7 @@ var SelectList = React.createClass({
 
 function getListItem(parent){
 
-  return React.createClass({
+  return createReactClass({
 
     displayName: 'SelectItem',
 

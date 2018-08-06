@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import Btn from './WidgetButton';
 
-export default React.createClass({
+export default createReactClass({
   displayName: 'Header',
   propTypes: {
     label:          PropTypes.string.isRequired,

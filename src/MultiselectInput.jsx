@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import compat from './util/compat';
 import CustomPropTypes from './util/propTypes';
 
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'MultiselectInput',
 

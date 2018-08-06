@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import createReactClass from 'create-react-class';
 import _  from './util/_';
 import Popup from './Popup';
 import SelectInput from './MultiselectInput';
@@ -68,7 +69,7 @@ var propTypes = {
       })
     };
 
-var Multiselect = React.createClass({
+var Multiselect = createReactClass({
 
   displayName: 'Multiselect',
 

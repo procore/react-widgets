@@ -1,5 +1,6 @@
 import React   from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import ListOption from './ListOption';
 import CustomPropTypes from './util/propTypes';
 import compat from './util/compat';
@@ -188,7 +189,7 @@ function _getOrderedIndex(item, object) {
   return result.foundIndex || -1;
 }
 
-export default React.createClass({
+export default createReactClass({
   displayName: 'List',
 
   mixins: [

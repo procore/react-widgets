@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import createReactClass from 'create-react-class';
 import _  from './util/_';
 import filter from './util/filter';
 import Popup           from './Popup';
@@ -65,7 +66,7 @@ let propTypes = {
       })
     };
 
-var ComboBox = React.createClass({
+var ComboBox = createReactClass({
 
   displayName: 'ComboBox',
 

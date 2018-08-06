@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import caretPos from './util/caret';
 import compat from './util/compat';
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'ComboboxInput',
 

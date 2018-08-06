@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import CustomPropTypes from './util/propTypes';
 import { number as numberLocalizer }  from './util/localizers';
 
 var format = props => numberLocalizer.getFormat('default', props.format)
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'NumberPickerInput',
 

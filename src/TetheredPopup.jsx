@@ -2,6 +2,7 @@ import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import css from 'dom-helpers/style';
 import getHeight from 'dom-helpers/query/height';
+import createReactClass from 'create-react-class';
 import config from './util/configuration';
 import cn from 'classnames';
 import compat from './util/compat';
@@ -19,7 +20,7 @@ function properties(prop, value){
   return { [prop]: value }
 }
 
-var PopupContent = React.createClass({
+var PopupContent = createReactClass({
   render: function(){
     const props = this.props;
     var child = props.children;
@@ -36,7 +37,7 @@ var PopupContent = React.createClass({
 })
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   displayName: 'TetheredPopup',
 
