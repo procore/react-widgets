@@ -229,7 +229,7 @@ var ComboBox = createReactClass({
         <PopupComponent
           {...popupProps}
           onOpening={() => this.listRef.forceUpdate()}
-          getTetherFocus={() => this.listRef.refs.ul}
+          getTetherFocus={() => this.listRef.ulRef}
           onBlur={this._focus.bind(null, false)}
           onOpen={this.focus}
           onRequestClose={this.close}
@@ -373,9 +373,9 @@ var ComboBox = createReactClass({
 
     function select(item, fromList) {
       if(!item)
-        return self.change(compat.findDOMNode(self.refs.input).value, false)
+        return self.change(compat.findDOMNode(self.inputRef).value, false)
 
-      self.refs.input.accept(true); //removes caret
+      self.inputRef.accept(true); //removes caret
 
       if(fromList)
         return self._onSelect(item)
