@@ -211,7 +211,7 @@ let Calendar = createReactClass({
           onMoveRight={this.navigate.bind(null,  dir.RIGHT, null)}
         />
         <SlideTransition
-          ref='animation'
+          ref={(ref) => this.animationRef = ref}
           duration={duration}
           direction={slideDirection}
           onAnimate={() => focused && this.focus()}

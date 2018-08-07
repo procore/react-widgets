@@ -298,7 +298,7 @@ export default createReactClass({
 
     return (
       <ul
-        ref='scrollable'
+        ref={(ref) => this.scrollableRef = ref}
         id={id}
         tabIndex='-1'
         className={cn(className, 'rw-list', 'rw-list-grouped')}

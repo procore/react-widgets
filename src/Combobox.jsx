@@ -110,11 +110,11 @@ var ComboBox = createReactClass({
   },
 
   componentDidUpdate() {
-    this.refs.list && validateList(this.refs.list)
+    this.listRef && validateList(this.listRef)
   },
 
   shouldComponentUpdate(nextProps, nextState){
-    var isSuggesting = this.refs.input && this.refs.input.isSuggesting()
+    var isSuggesting = this.inputRef && this.inputRef.isSuggesting()
       , stateChanged = !_.isShallowEqual(nextState, this.state)
       , valueChanged = !_.isShallowEqual(nextProps, this.props)
 
@@ -126,7 +126,7 @@ var ComboBox = createReactClass({
 
     var rawIdx = dataIndexOf(data, value, valueField)
       , valueItem = rawIdx === -1 ? nextProps.value : nextProps.data[rawIdx]
-      , isSuggesting = this.refs.input.isSuggesting()
+      , isSuggesting = this.inputRef.isSuggesting()
       , items = this.process(
           nextProps.data
         , nextProps.value
@@ -179,7 +179,7 @@ var ComboBox = createReactClass({
     return (
       <div
         {...elementProps}
-        ref="element"
+        ref={(ref) => this.elementRef = ref}
         onKeyDown={this._keyDown}
         onFocus={this._focus.bind(null, true)}
         onBlur ={tetherPopup ? () => this.setState({focused: false}) : this._focus.bind(null, false)}
@@ -206,7 +206,7 @@ var ComboBox = createReactClass({
           </i>
         </Btn>
         <Input
-          ref='input'
+          ref={(ref) => this.inputRef = ref}
           id={inputID}
           autoFocus={autoFocus}
           tabIndex={tabIndex}
@@ -228,8 +228,8 @@ var ComboBox = createReactClass({
         />
         <PopupComponent
           {...popupProps}
-          onOpening={() => this.refs.list.forceUpdate()}
-          getTetherFocus={() => this.refs.list.refs.ul}
+          onOpening={() => this.listRef.forceUpdate()}
+          getTetherFocus={() => this.listRef.refs.ul}
           onBlur={this._focus.bind(null, false)}
           onOpen={this.focus}
           onRequestClose={this.close}
@@ -237,7 +237,8 @@ var ComboBox = createReactClass({
         >
           <div>
             { shouldRenderList &&
-              <List ref="list"
+              <List
+                ref={(ref) => this.listRef = ref}
                 {...listProps}
                 id={listID}
                 data={items}
@@ -304,13 +305,13 @@ var ComboBox = createReactClass({
   },
 
   focus() {
-    this.refs.input.focus()
+    this.inputRef.focus()
   },
 
   @widgetEnabled
   _focus(focused, e){
 
-    !focused && this.refs.input.accept() //not suggesting anymore
+    !focused && this.inputRef.accept() //not suggesting anymore
 
     this.setTimeout('focus', () => {
 
@@ -328,7 +329,7 @@ var ComboBox = createReactClass({
     var self = this
       , key  = e.key
       , alt  = e.altKey
-      , list = this.refs.list
+      , list = this.listRef
       , focusedItem = this.state.focusedItem
       , selectedItem = this.state.selectedItem
       , isOpen = this.props.open;

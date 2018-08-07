@@ -106,7 +106,7 @@ var SelectList = createReactClass({
   },
 
   componentDidMount() {
-    validateList(this.refs.list)
+    validateList(this.listRef)
   },
 
   render() {
@@ -149,7 +149,7 @@ var SelectList = createReactClass({
       >
         <List
           {...listProps}
-          ref='list'
+          ref={(ref) => this.listRef = ref}
           id={listID}
           role={'radiogroup'}
           tabIndex={tabIndex || '0'}
@@ -179,7 +179,7 @@ var SelectList = createReactClass({
   _keyDown(e) {
     var key = e.key
       , { valueField, multiple } = this.props
-      , list = this.refs.list
+      , list = this.listRef
       , focusedItem = this.state.focusedItem
       , props = this.props;
 
@@ -272,7 +272,7 @@ var SelectList = createReactClass({
   @widgetEnabled
   _focus(focused, e) {
 
-    if( focused) compat.findDOMNode(this.refs.list).focus()
+    if( focused) compat.findDOMNode(this.listRef).focus()
 
     this.setTimeout('focus', () => {
       if( focused !== this.state.focused){
@@ -284,7 +284,7 @@ var SelectList = createReactClass({
 
   search(character) {
     var word = ((this._searchTerm || '') + character).toLowerCase()
-      , list = this.refs.list;
+      , list = this.listRef;
 
     this._searchTerm = word
 

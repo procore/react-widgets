@@ -75,7 +75,7 @@ export default createReactClass({
 
     return (
       <List {...props}
-        ref="list"
+        ref={(ref) => this.listRef = ref}
         data={times}
         textField='label'
         valueField='date'
@@ -155,7 +155,7 @@ export default createReactClass({
     var key = e.key
       , character = String.fromCharCode(e.keyCode)
       , focusedItem  = this.state.focusedItem
-      , list = this.refs.list;
+      , list = this.listRef;
 
     if ( key === 'End' )
       this.setState({ focusedItem: list.last() })
@@ -184,8 +184,8 @@ export default createReactClass({
   },
 
   scrollTo(){
-    this.refs.list.move
-      && this.refs.list.move()
+    this.listRef.move
+      && this.listRef.move()
   },
 
   search(character, cb){
@@ -194,7 +194,7 @@ export default createReactClass({
     this._searchTerm = word
 
     this.setTimeout('search', () => {
-      var list = this.refs.list
+      var list = this.listRef
         , item = list.next(this.state.focusedItem, word);
 
       this._searchTerm = ''

@@ -85,8 +85,7 @@ module.exports = createReactClass({
   },
 
   componentDidMount(){
-    const { placeholder } = this.refs;
-
+    const placeholder = this.placeholderRef;
     const placeholderEl = compat.findDOMNode(placeholder);
     if(!placeholder) return null;
     const width = placeholderEl.offsetWidth;
@@ -98,7 +97,7 @@ module.exports = createReactClass({
     var closing =  pvProps.open && !this.props.open
       , opening = !pvProps.open && this.props.open
 
-    const { placeholder } = this.refs;
+    const placeholder = this.placeholderRef;
 
     const placeholderEl = compat.findDOMNode(placeholder);
 
@@ -140,7 +139,7 @@ module.exports = createReactClass({
       >
         <TetherTarget
           tether={
-            <PopupContent className={className} tabIndex={1} ref='content' style={{ width, opacity, ...popupStyle }}>
+            <PopupContent className={className} tabIndex={1} ref={(ref) => this.contentRef = ref} style={{ width, opacity, ...popupStyle }}>
               { this.props.children }
             </PopupContent>
           }
@@ -152,7 +151,7 @@ module.exports = createReactClass({
           }}
           >
           {open && <div onClick={this._onClickScrim} className='rw-tether-scrim'/>}
-          <div ref='placeholder' style={{ width: '100%'}} />
+          <div ref={(ref) => this.placeholderRef = ref} style={{ width: '100%'}} />
         </TetherTarget>
       </div>
     )
@@ -160,7 +159,7 @@ module.exports = createReactClass({
 
   onResize(){
 
-    const { placeholder } = this.refs;
+    const placeholder = this.placeholderRef;
 
     if(!placeholder) return false;
 
@@ -174,7 +173,7 @@ module.exports = createReactClass({
 
   reset(){
     var container = compat.findDOMNode(this)
-      , content   = compat.findDOMNode(this.refs.content)
+      , content   = compat.findDOMNode(this.contentRef)
       , style = { display: 'block', overflow: 'hidden'}
 
     css(container, style);
@@ -183,7 +182,7 @@ module.exports = createReactClass({
 
 
   open() {
-    const { content } = this.refs;
+    const placeholder = this.contentRef;
     var self = this
       , anim = compat.findDOMNode(this)
       , contentEl   = compat.findDOMNode(content);
@@ -224,7 +223,7 @@ module.exports = createReactClass({
 
   close(dur) {
     var self = this
-      , el   = compat.findDOMNode(this.refs.content)
+      , el   = compat.findDOMNode(this.contentRef)
       , anim = compat.findDOMNode(this);
 
     this._isOpening = false;

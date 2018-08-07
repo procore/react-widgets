@@ -106,7 +106,7 @@ module.exports = createReactClass({
         }}
         className={cn(className, 'rw-popup-container', { 'rw-dropup': dropUp })}
       >
-        <PopupContent ref='content'>
+        <PopupContent ref={(ref) => this.contentRef = ref}>
           { this.props.children }
         </PopupContent>
       </div>
@@ -115,7 +115,7 @@ module.exports = createReactClass({
 
   reset(){
     var container = compat.findDOMNode(this)
-      , content   = compat.findDOMNode(this.refs.content)
+      , content   = compat.findDOMNode(this.contentRef)
       , style = { display: 'block', overflow: 'hidden'}
 
     css(container, style)
@@ -125,7 +125,7 @@ module.exports = createReactClass({
 
   height(){
     var el = compat.findDOMNode(this)
-      , content = compat.findDOMNode(this.refs.content)
+      , content = compat.findDOMNode(this.contentRef)
       , margin = parseInt(css(content, 'margin-top'), 10)
                + parseInt(css(content, 'margin-bottom'), 10);
 
@@ -140,7 +140,7 @@ module.exports = createReactClass({
   open() {
     var self = this
       , anim = compat.findDOMNode(this)
-      , el   = compat.findDOMNode(this.refs.content);
+      , el   = compat.findDOMNode(this.contentRef);
 
     this.ORGINAL_POSITION = css(el, 'position')
     this._isOpening = true
@@ -176,7 +176,7 @@ module.exports = createReactClass({
 
   close(dur) {
     var self = this
-      , el   = compat.findDOMNode(this.refs.content)
+      , el   = compat.findDOMNode(this.contentRef)
       , anim = compat.findDOMNode(this);
 
     this.ORGINAL_POSITION = css(el, 'position')

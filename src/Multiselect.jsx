@@ -132,7 +132,7 @@ var Multiselect = createReactClass({
     this.ariaActiveDescendant(
       instanceId(this, '__createlist_option'))
 
-    this.refs.list && validateList(this.refs.list)
+    this.listRef && validateList(this.listRef)
   },
 
   componentWillReceiveProps(nextProps) {
@@ -192,7 +192,7 @@ var Multiselect = createReactClass({
 
     return (
       <div {...elementProps}
-        ref="element"
+        ref={(ref) => this.elementRef = ref}
         id={instanceId(this)}
         onKeyDown={this._keyDown}
         onFocus={this._focus.bind(null, true)}
@@ -208,7 +208,7 @@ var Multiselect = createReactClass({
         })}>
 
         <span
-          ref='status'
+          ref={(ref) => this.statusRef = ref}
           id={instanceId(this, '__notify')}
           role="status"
           className='rw-sr'
@@ -219,13 +219,13 @@ var Multiselect = createReactClass({
           { notify }
         </span>
 
-        <div className='rw-multiselect-wrapper' ref='wrapper'>
+        <div className='rw-multiselect-wrapper' ref={(ref) => this.wrapperRef = ref}>
           <span className={classIconParent}>
             <i className="rw-i rw-loading"></i>
           </span>
           <div className={cx({hidden: !shouldRenderTags})}>
             <TagList {...tagsProps}
-              ref='tagList'
+              ref={(ref) => this.tagListRef = ref}
               id={tagsID}
               busy={!!busy}
               aria-label={messages.tagsLabel}
@@ -240,7 +240,7 @@ var Multiselect = createReactClass({
           </div>
           <SelectInput
             {...inputProps}
-            ref='input'
+            ref={(ref) => this.inputRef = ref}
             tabIndex={tabIndex || 0}
             role='listbox'
             aria-expanded={open}
@@ -266,12 +266,12 @@ var Multiselect = createReactClass({
           />
         </div>
         <Popup {...popupProps}
-          onOpening={()=> this.refs.list.forceUpdate()}
+          onOpening={()=> this.listRef.forceUpdate()}
           onRequestClose={this.close}
         >
           <div>
           { shouldRenderPopup && [
-              <List ref="list"
+              <List ref={(ref) => this.listRef = ref}
                 key={0}
                 {...listProps}
                 readOnly={!!readOnly}
@@ -331,11 +331,11 @@ var Multiselect = createReactClass({
     if (this.props.disabled === true )
       return
 
-    if(focused) this.refs.input.focus()
+    if(focused) this.inputRef.focus()
 
     this.setTimeout('focus', () => {
       if(!focused)
-        this.refs.tagList && this.setState({ focusedTag: null })
+        this.tagListRef && this.setState({ focusedTag: null })
 
       if(focused !== this.state.focused) {
         focused
@@ -400,7 +400,8 @@ var Multiselect = createReactClass({
       , isOpen  = this.props.open;
 
     let { focusedTag, focusedItem } = this.state;
-    let { list, tagList } = this.refs;
+    let list = this.listRef;
+    let tagList = this.tagListRef;
     let nullTag = { focusedTag: null };
 
     notify(this.props.onKeyDown, [e])

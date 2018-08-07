@@ -99,7 +99,7 @@ module.exports = createReactClass({
     return (
       <ReplaceTransitionGroup
         {...props}
-        ref='container'
+        ref={(ref) => this.containerRef = ref}
         childFactory={this._wrapChild}
         style={style}
         component={'div'}>
@@ -108,6 +108,6 @@ module.exports = createReactClass({
   },
 
   isTransitioning: function(){
-    return this.isMounted() && this.refs.container.isTransitioning()
+    return this.isMounted() && this.containerRef.isTransitioning()
   }
 });

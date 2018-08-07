@@ -99,7 +99,7 @@ let NumberPicker = createReactClass({
 
     return (
       <div {...props }
-        ref="element"
+        ref={(ref) => this.elementRef = ref}
         onKeyDown={this._keyDown}
         onFocus={this._focus.bind(null, true)}
         onBlur ={this._focus.bind(null, false)}
@@ -142,7 +142,7 @@ let NumberPicker = createReactClass({
           </Btn>
         </span>
         <Input
-          ref='input'
+          ref={(ref) => this.inputRef = ref}
           tabIndex={props.tabIndex}
           placeholder={this.props.placeholder}
           value={val}
@@ -199,7 +199,7 @@ let NumberPicker = createReactClass({
   @widgetEnabled
   _focus(focused, e){
 
-    focused && compat.findDOMNode(this.refs.input).focus()
+    focused && compat.findDOMNode(this.inputRef).focus()
 
     this.setTimeout('focus', () => {
       if( focused !== this.state.focused){

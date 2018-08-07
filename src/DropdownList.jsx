@@ -124,8 +124,8 @@ var DropdownList = createReactClass({
   },
 
   componentDidUpdate() {
-    this.refs.list
-        && validateList(this.refs.list)
+    this.listRef
+        && validateList(this.listRef)
   },
 
   componentWillReceiveProps(props){
@@ -175,7 +175,7 @@ var DropdownList = createReactClass({
 
     return (
       <div {...elementProps}
-        ref="input"
+        ref={(ref) => this.inputRef = ref}
         role='combobox'
         tabIndex={tabIndex || '0'}
         aria-expanded={open }
@@ -219,11 +219,11 @@ var DropdownList = createReactClass({
         </div>
         <PopupComponent {...popupProps}
           className={popupClassName}
-          getTetherFocus={filter ? () => this.refs.filter : () => this.refs.list.refs.ul}
+          getTetherFocus={filter ? () => this.filterRef : () => this.listRef.refs.ul}
           onOpen={tetherPopup ? this.handleFocus : this.focus}
           onKeyDown={this._keyDown}
           onBlur={this._focus.bind(null, false)}
-          onOpening={() => this.refs.list.forceUpdate()}
+          onOpening={() => this.listRef.forceUpdate()}
           onRequestClose={this.close}
           popupStyle={popupStyle}
         >
@@ -236,7 +236,7 @@ var DropdownList = createReactClass({
               )
             )}
             { shouldRenderList && (
-              <List ref="list"
+              <List ref={(ref) => this.listRef = ref}
                 {...listProps}
                 data={items}
                 id={listID}
@@ -268,9 +268,9 @@ var DropdownList = createReactClass({
 
   _renderFilter(messages){
     return (
-      <div ref='filterWrapper' className='rw-filter-input'>
+      <div ref={(ref) => this.filterWrapperRef = ref} className='rw-filter-input'>
         <span className='rw-select rw-btn'><i className='rw-i rw-i-search'/></span>
-        <input ref='filter' className='rw-input'
+        <input ref={(ref) => this.filterRef = ref} className='rw-input'
           placeholder={_.result(messages.filterPlaceholder, this.props)}
           value={this.props.searchTerm }
           onChange={ e => notify(this.props.onSearch, e.target.value)}/>
@@ -302,7 +302,7 @@ var DropdownList = createReactClass({
 
   @widgetEditable
   _click(e){
-    var wrapper = this.refs.filterWrapper
+    var wrapper = this.filterWrapperRef
     if( !this.props.filter || !this.props.open )
       this.toggle()
 
@@ -317,7 +317,7 @@ var DropdownList = createReactClass({
     var self = this
       , key = e.keyCode
       , alt = e.altKey
-      , list = this.refs.list
+      , list = this.listRef
       , filtering = this.props.filter
       , focusedItem = this.state.focusedItem
       , selectedItem = this.state.selectedItem
@@ -383,7 +383,7 @@ var DropdownList = createReactClass({
   },
 
   focus(target){
-    var inst = target || (this.props.filter && this.props.open ? this.refs.filter : this.refs.input);
+    var inst = target || (this.props.filter && this.props.open ? this.filterRef : this.inputRef);
 
     if ( activeElement() !== compat.findDOMNode(inst))
       compat.findDOMNode(inst).focus()
@@ -399,7 +399,7 @@ var DropdownList = createReactClass({
     this._searchTerm = word
 
     this.setTimeout('search', () => {
-      var list = this.refs.list
+      var list = this.listRef
         , key  = this.props.open ? 'focusedItem' : 'selectedItem'
         , item = list.next(this.state[key], word);
 

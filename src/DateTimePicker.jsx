@@ -174,7 +174,7 @@ var DateTimePicker = createReactClass({
 
     return (
       <div {...elementProps}
-        ref="element"
+        ref={(ref) => this.elementRef = ref}
         tabIndex={'-1'}
         onKeyDown={tetherPopup ? null : this._keyDown}
         onFocus={tetherPopup ? () => this.setState({focused: true}) : this._focus.bind(null, true)}
@@ -191,7 +191,7 @@ var DateTimePicker = createReactClass({
         })}
       >
         <DateInput
-          ref='valueInput'
+          ref={(ref) => this.valueInputRef = ref}
           id={inputID}
           autoFocus={autoFocus}
           tabIndex={tabIndex || 0}
@@ -253,7 +253,7 @@ var DateTimePicker = createReactClass({
           open={timeIsOpen}
           onRequestClose={this.close}
           duration={duration}
-          onOpening={() => this.refs.timePopup.forceUpdate()}
+          onOpening={() => this.timePopupRef.forceUpdate()}
           onOpen={tetherPopup ? null : () => this._focus(true)}
           onKeyDown={this._keyDown}
           onBlur={this._focus.bind(null, false)}
@@ -262,7 +262,7 @@ var DateTimePicker = createReactClass({
         >
           <div>
             { shouldRenderList &&
-              <Time ref="timePopup"
+              <Time ref={(ref) => this.timePopupRef = ref}
                 id={timeListID}
                 ariaActiveDescendantKey='timelist'
                 aria-labelledby={inputID}
@@ -297,7 +297,7 @@ var DateTimePicker = createReactClass({
           { shouldRenderList &&
             <Calendar
               {...calProps}
-              ref="calPopup"
+              ref={(ref) => this.calPopupRef = ref}
               tabIndex='-1'
               id={dateListID}
               value={value}
@@ -360,9 +360,9 @@ var DateTimePicker = createReactClass({
     }
     else if (open) {
       if (open === popups.CALENDAR )
-        this.refs.calPopup._keyDown(e)
+        this.calPopupRef._keyDown(e)
       if (open === popups.TIME )
-        this.refs.timePopup._keyDown(e)
+        this.timePopupRef._keyDown(e)
     }
 
 
@@ -382,8 +382,8 @@ var DateTimePicker = createReactClass({
   },
 
   focus(){
-    if (activeElement() !== compat.findDOMNode(this.refs.valueInput))
-      this.refs.valueInput.focus()
+    if (activeElement() !== compat.findDOMNode(this.valueInputRef))
+      this.valueInputRef.focus()
   },
 
   @widgetEditable
