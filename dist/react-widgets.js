@@ -4462,10 +4462,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
-	var _createReactClass = __webpack_require__(36);
-
-	var _createReactClass2 = babelHelpers.interopRequireDefault(_createReactClass);
-
 	var _localizers = __webpack_require__(18);
 
 	var _localizers2 = babelHelpers.interopRequireDefault(_localizers);
@@ -6015,10 +6011,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  open: function open() {
-	    var placeholder = this.contentRef;
 	    var self = this,
 	        anim = _utilCompat2['default'].findDOMNode(this),
-	        contentEl = _utilCompat2['default'].findDOMNode(content);
+	        contentEl = _utilCompat2['default'].findDOMNode(this.contentRef);
 
 	    var _props3 = this.props;
 	    var onOpen = _props3.onOpen;

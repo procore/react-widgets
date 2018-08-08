@@ -182,10 +182,9 @@ module.exports = createReactClass({
 
 
   open() {
-    const placeholder = this.contentRef;
     var self = this
       , anim = compat.findDOMNode(this)
-      , contentEl   = compat.findDOMNode(content);
+      , contentEl   = compat.findDOMNode(this.contentRef);
 
     const { onOpen, onKeyDown, getTetherFocus } = this.props;
 
