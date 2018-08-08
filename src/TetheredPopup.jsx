@@ -128,8 +128,6 @@ module.exports = createReactClass({
     const opacity = open ? 1 : 0;
     const { width } = this.state;
 
-    if (!open) return null;
-
     return (
       <div {...props}
         style={{

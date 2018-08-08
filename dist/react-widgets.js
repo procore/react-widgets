@@ -5956,8 +5956,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var opacity = open ? 1 : 0;
 	    var width = this.state.width;
 
-	    if (!open) return null;
-
 	    return _react2['default'].createElement(
 	      'div',
 	      babelHelpers._extends({}, props, {
@@ -8801,8 +8799,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        listID = _utilWidgetHelpers.instanceId(this, '_listbox'),
 	        completeType = suggest ? filter ? 'both' : 'inline' : filter ? 'list' : '';
 
-	    var shouldRenderList = _utilWidgetHelpers.isFirstFocusedRender(this) || open;
-
 	    messages = msgs(messages);
 
 	    return _react2['default'].createElement(
@@ -8866,7 +8862,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onChange: this._inputTyping,
 	        onKeyDown: this._inputKeyDown
 	      }),
-	      _react2['default'].createElement(
+	      open && _react2['default'].createElement(
 	        PopupComponent,
 	        babelHelpers._extends({}, popupProps, {
 	          onOpening: function () {
@@ -8883,7 +8879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _react2['default'].createElement(
 	          'div',
 	          null,
-	          shouldRenderList && _react2['default'].createElement(List, babelHelpers._extends({
+	          _react2['default'].createElement(List, babelHelpers._extends({
 	            ref: function (ref) {
 	              return _this.listRef = ref;
 	            }

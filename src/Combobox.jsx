@@ -172,8 +172,6 @@ var ComboBox = createReactClass({
           ? filter ? 'both' : 'inline'
           : filter ? 'list' : '';
 
-    let shouldRenderList = isFirstFocusedRender(this) || open;
-
     messages = msgs(messages)
 
     return (
@@ -226,7 +224,7 @@ var ComboBox = createReactClass({
           onChange={this._inputTyping}
           onKeyDown={this._inputKeyDown}
         />
-        <PopupComponent
+        {open && <PopupComponent
           {...popupProps}
           onOpening={() => this.listRef.forceUpdate()}
           getTetherFocus={() => this.listRef.ulRef}
@@ -236,25 +234,23 @@ var ComboBox = createReactClass({
           popupStyle={popupStyle}
         >
           <div>
-            { shouldRenderList &&
-              <List
-                ref={(ref) => this.listRef = ref}
-                {...listProps}
-                id={listID}
-                data={items}
-                selected={selectedItem}
-                focused ={focusedItem}
-                aria-hidden={!open}
-                aria-labelledby={inputID}
-                aria-live={open && 'polite'}
-                onSelect={this._onSelect}
-                onMove={this._scrollTo}
-                messages={{
-                  emptyList: data.length
-                    ? messages.emptyFilter
-                    : messages.emptyList
-                }}/>
-            }
+            <List
+              ref={(ref) => this.listRef = ref}
+              {...listProps}
+              id={listID}
+              data={items}
+              selected={selectedItem}
+              focused ={focusedItem}
+              aria-hidden={!open}
+              aria-labelledby={inputID}
+              aria-live={open && 'polite'}
+              onSelect={this._onSelect}
+              onMove={this._scrollTo}
+              messages={{
+                emptyList: data.length
+                  ? messages.emptyFilter
+                  : messages.emptyList
+              }}/>
             {afterListComponent && (
               React.cloneElement(
                 afterListComponent,
@@ -262,7 +258,7 @@ var ComboBox = createReactClass({
               )
             )}
           </div>
-        </PopupComponent>
+        </PopupComponent>}
       </div>
     )
   },
