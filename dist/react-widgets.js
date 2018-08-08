@@ -2496,8 +2496,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      valueItem = _utilDataHelpers.dataItem(data, value, valueField); // take value from the raw data
 	    }
 
-	    var shouldRenderList = _utilWidgetHelpers.isFirstFocusedRender(this) || open;
-
 	    messages = msgs(messages);
 
 	    return _react2['default'].createElement(
@@ -2556,7 +2554,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          placeholder
 	        ) : this.props.valueComponent ? _react2['default'].createElement(ValueComponent, { item: valueItem }) : _utilDataHelpers.dataText(valueItem, textField)
 	      ),
-	      _react2['default'].createElement(
+	      open && _react2['default'].createElement(
 	        PopupComponent,
 	        babelHelpers._extends({}, popupProps, {
 	          className: popupClassName,
@@ -2579,7 +2577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          null,
 	          filter && this._renderFilter(messages),
 	          beforeListComponent && _react2['default'].cloneElement(beforeListComponent, { value: value, searchTerm: searchTerm, data: data, onChange: onChange }),
-	          shouldRenderList && _react2['default'].createElement(List, babelHelpers._extends({ ref: function (ref) {
+	          _react2['default'].createElement(List, babelHelpers._extends({ ref: function (ref) {
 	              return _this.listRef = ref;
 	            }
 	          }, listProps, {

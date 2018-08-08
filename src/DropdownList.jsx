@@ -169,8 +169,6 @@ var DropdownList = createReactClass({
       valueItem = dataItem(data, value, valueField) // take value from the raw data
     }
 
-    let shouldRenderList = isFirstFocusedRender(this) || open;
-
     messages = msgs(messages);
 
     return (
@@ -217,25 +215,25 @@ var DropdownList = createReactClass({
               : dataText(valueItem, textField)
           }
         </div>
-        <PopupComponent {...popupProps}
-          className={popupClassName}
-          getTetherFocus={filter ? () => this.filterRef : () => this.listRef.ulRef}
-          onOpen={tetherPopup ? this.handleFocus : this.focus}
-          onKeyDown={this._keyDown}
-          onBlur={this._focus.bind(null, false)}
-          onOpening={() => this.listRef.forceUpdate()}
-          onRequestClose={this.close}
-          popupStyle={popupStyle}
-        >
-          <div>
-            { filter && this._renderFilter(messages) }
-            {beforeListComponent && (
-              React.cloneElement(
-                beforeListComponent,
-                { value, searchTerm, data, onChange }
-              )
-            )}
-            { shouldRenderList && (
+        { open &&
+          (<PopupComponent {...popupProps}
+            className={popupClassName}
+            getTetherFocus={filter ? () => this.filterRef : () => this.listRef.ulRef}
+            onOpen={tetherPopup ? this.handleFocus : this.focus}
+            onKeyDown={this._keyDown}
+            onBlur={this._focus.bind(null, false)}
+            onOpening={() => this.listRef.forceUpdate()}
+            onRequestClose={this.close}
+            popupStyle={popupStyle}
+          >
+            <div>
+              { filter && this._renderFilter(messages) }
+              {beforeListComponent && (
+                React.cloneElement(
+                  beforeListComponent,
+                  { value, searchTerm, data, onChange }
+                )
+              )}
               <List ref={(ref) => this.listRef = ref}
                 {...listProps}
                 data={items}
@@ -253,15 +251,15 @@ var DropdownList = createReactClass({
                     : messages.emptyList
                   }}
               />
-            )}
-            {afterListComponent && (
-              React.cloneElement(
-                afterListComponent,
-                { value, searchTerm, data, onChange }
-              )
-            )}
-          </div>
-        </PopupComponent>
+              {afterListComponent && (
+                React.cloneElement(
+                  afterListComponent,
+                  { value, searchTerm, data, onChange }
+                )
+              )}
+            </div>
+          </PopupComponent>)
+        }
       </div>
     )
   },
