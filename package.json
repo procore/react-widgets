@@ -73,8 +73,8 @@
     "warning": "^2.0.0"
   },
   "optionalDependencies": {
-    "format-number-with-string": "0.0.1",
-    "deconstruct-number-format": "0.0.1"
+    "deconstruct-number-format": "0.0.1",
+    "format-number-with-string": "0.0.1"
   },
   "devDependencies": {
     "babel-core": "^5.8.21",
