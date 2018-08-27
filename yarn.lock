@@ -4736,7 +4736,7 @@ uncontrollable@^3.1.1:
   dependencies:
     invariant "^2.1.0"
 
-uncontrollable@procore/uncontrollable.git:
+uncontrollable@procore/uncontrollable.git#606e0f22dc2c77de4cf68a00fc0e5f4898d0cd47:
   version "4.0.0"
   resolved "https://codeload.github.com/procore/uncontrollable/tar.gz/606e0f22dc2c77de4cf68a00fc0e5f4898d0cd47"
   dependencies:
