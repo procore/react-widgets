@@ -4726,9 +4726,9 @@ uncontrollable@^3.1.1:
   dependencies:
     invariant "^2.1.0"
 
-uncontrollable@procore/uncontrollable.git#606e0f22dc2c77de4cf68a00fc0e5f4898d0cd47:
-  version "4.0.0"
-  resolved "https://codeload.github.com/procore/uncontrollable/tar.gz/606e0f22dc2c77de4cf68a00fc0e5f4898d0cd47"
+uncontrollable@procore/uncontrollable.git:
+  version "4.1.0"
+  resolved "https://codeload.github.com/procore/uncontrollable/tar.gz/f589d1dade33090e661e2be4848923a0441af6b7"
   dependencies:
     create-react-class "^15.6.3"
     invariant "^2.1.0"
