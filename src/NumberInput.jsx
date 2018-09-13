@@ -1,25 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import CustomPropTypes from './util/propTypes';
 import { number as numberLocalizer }  from './util/localizers';
 
 var format = props => numberLocalizer.getFormat('default', props.format)
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'NumberPickerInput',
 
   propTypes: {
-    value:        React.PropTypes.number,
-    placeholder: React.PropTypes.string,
+    value:        PropTypes.number,
+    placeholder: PropTypes.string,
 
     format:       CustomPropTypes.numberFormat,
-    parse:        React.PropTypes.func.isRequired,
-    culture:      React.PropTypes.string,
+    parse:        PropTypes.func.isRequired,
+    culture:      PropTypes.string,
 
-    min:          React.PropTypes.number,
+    min:          PropTypes.number,
 
-    onChange:     React.PropTypes.func.isRequired,
-    onKeyDown:    React.PropTypes.func
+    onChange:     PropTypes.func.isRequired,
+    onKeyDown:    PropTypes.func
   },
 
   getDefaultProps(){

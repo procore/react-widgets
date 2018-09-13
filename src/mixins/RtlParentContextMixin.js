@@ -1,18 +1,19 @@
 'use strict';
 var React = require('react')
+import PropTypes from 'prop-types';
 
 module.exports = {
 
   propTypes: {
-    isRtl: React.PropTypes.bool
+    isRtl: PropTypes.bool
   },
 
   contextTypes: {
-    isRtl: React.PropTypes.bool
+    isRtl: PropTypes.bool
   },
 
   childContextTypes: {
-    isRtl: React.PropTypes.bool
+    isRtl: PropTypes.bool
   },
 
   getChildContext() {

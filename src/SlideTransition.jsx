@@ -1,5 +1,7 @@
 'use strict';
 var React   = require('react')
+  , PropTypes = require('prop-types')
+  , createReactClass = require('create-react-class')
   , ReplaceTransitionGroup  = require('./ReplaceTransitionGroup')
   , compat = require('./util/compat')
   , css = require('dom-helpers/style')
@@ -7,11 +9,11 @@ var React   = require('react')
   , config = require('./util/configuration');
 
 
-var SlideChildGroup = React.createClass({
+var SlideChildGroup = createReactClass({
 
   propTypes: {
-    direction: React.PropTypes.oneOf(['left', 'right']),
-    duration:  React.PropTypes.number
+    direction: PropTypes.oneOf(['left', 'right']),
+    duration:  PropTypes.number
   },
 
   componentWillEnter: function(done) {
@@ -66,11 +68,11 @@ var SlideChildGroup = React.createClass({
 })
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   propTypes: {
-    direction: React.PropTypes.oneOf(['left', 'right']),
-    duration:  React.PropTypes.number
+    direction: PropTypes.oneOf(['left', 'right']),
+    duration:  PropTypes.number
   },
 
   getDefaultProps: function(){
@@ -97,7 +99,7 @@ module.exports = React.createClass({
     return (
       <ReplaceTransitionGroup
         {...props}
-        ref='container'
+        ref={(ref) => this.containerRef = ref}
         childFactory={this._wrapChild}
         style={style}
         component={'div'}>
@@ -106,7 +108,6 @@ module.exports = React.createClass({
   },
 
   isTransitioning: function(){
-    return this.isMounted() && this.refs.container.isTransitioning()
+    return this.isMounted() && this.containerRef.isTransitioning()
   }
 });
-

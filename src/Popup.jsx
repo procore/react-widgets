@@ -1,4 +1,6 @@
 import React, { cloneElement } from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import css from 'dom-helpers/style';
 import getHeight from 'dom-helpers/query/height';
 import config from './util/configuration';
@@ -16,7 +18,7 @@ function properties(prop, value){
   return { [prop]: value }
 }
 
-var PopupContent = React.createClass({
+var PopupContent = createReactClass({
   render: function(){
     var child = this.props.children;
 
@@ -31,20 +33,20 @@ var PopupContent = React.createClass({
 })
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   displayName: 'Popup',
 
   propTypes: {
-    open:           React.PropTypes.bool,
-    dropUp:         React.PropTypes.bool,
-    duration:       React.PropTypes.number,
+    open:           PropTypes.bool,
+    dropUp:         PropTypes.bool,
+    duration:       PropTypes.number,
 
-    onRequestClose: React.PropTypes.func.isRequired,
-    onClosing:      React.PropTypes.func,
-    onOpening:      React.PropTypes.func,
-    onClose:        React.PropTypes.func,
-    onOpen:         React.PropTypes.func
+    onRequestClose: PropTypes.func.isRequired,
+    onClosing:      PropTypes.func,
+    onOpening:      PropTypes.func,
+    onClose:        PropTypes.func,
+    onOpen:         PropTypes.func
   },
 
   getInitialState(){ return {} },
@@ -104,7 +106,7 @@ module.exports = React.createClass({
         }}
         className={cn(className, 'rw-popup-container', { 'rw-dropup': dropUp })}
       >
-        <PopupContent ref='content'>
+        <PopupContent ref={(ref) => this.contentRef = ref}>
           { this.props.children }
         </PopupContent>
       </div>
@@ -113,7 +115,7 @@ module.exports = React.createClass({
 
   reset(){
     var container = compat.findDOMNode(this)
-      , content   = compat.findDOMNode(this.refs.content)
+      , content   = compat.findDOMNode(this.contentRef)
       , style = { display: 'block', overflow: 'hidden'}
 
     css(container, style)
@@ -123,7 +125,7 @@ module.exports = React.createClass({
 
   height(){
     var el = compat.findDOMNode(this)
-      , content = compat.findDOMNode(this.refs.content)
+      , content = compat.findDOMNode(this.contentRef)
       , margin = parseInt(css(content, 'margin-top'), 10)
                + parseInt(css(content, 'margin-bottom'), 10);
 
@@ -138,7 +140,7 @@ module.exports = React.createClass({
   open() {
     var self = this
       , anim = compat.findDOMNode(this)
-      , el   = compat.findDOMNode(this.refs.content);
+      , el   = compat.findDOMNode(this.contentRef);
 
     this.ORGINAL_POSITION = css(el, 'position')
     this._isOpening = true
@@ -174,7 +176,7 @@ module.exports = React.createClass({
 
   close(dur) {
     var self = this
-      , el   = compat.findDOMNode(this.refs.content)
+      , el   = compat.findDOMNode(this.contentRef)
       , anim = compat.findDOMNode(this);
 
     this.ORGINAL_POSITION = css(el, 'position')

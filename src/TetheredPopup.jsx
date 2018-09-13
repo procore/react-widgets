@@ -1,6 +1,8 @@
 import React, { cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import css from 'dom-helpers/style';
 import getHeight from 'dom-helpers/query/height';
+import createReactClass from 'create-react-class';
 import config from './util/configuration';
 import cn from 'classnames';
 import compat from './util/compat';
@@ -18,7 +20,7 @@ function properties(prop, value){
   return { [prop]: value }
 }
 
-var PopupContent = React.createClass({
+var PopupContent = createReactClass({
   render: function(){
     const props = this.props;
     var child = props.children;
@@ -35,23 +37,23 @@ var PopupContent = React.createClass({
 })
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   displayName: 'TetheredPopup',
 
   propTypes: {
-    open:           React.PropTypes.bool,
-    dropUp:         React.PropTypes.bool,
-    duration:       React.PropTypes.number,
+    open:           PropTypes.bool,
+    dropUp:         PropTypes.bool,
+    duration:       PropTypes.number,
 
-    onRequestClose: React.PropTypes.func.isRequired,
-    onClosing:      React.PropTypes.func,
-    onOpening:      React.PropTypes.func,
-    onClose:        React.PropTypes.func,
-    onOpen:         React.PropTypes.func,
-    onKeyDown:      React.PropTypes.func,
-    dropDownHeight: React.PropTypes.number,
-    onClickScrim:   React.PropTypes.func
+    onRequestClose: PropTypes.func.isRequired,
+    onClosing:      PropTypes.func,
+    onOpening:      PropTypes.func,
+    onClose:        PropTypes.func,
+    onOpen:         PropTypes.func,
+    onKeyDown:      PropTypes.func,
+    dropDownHeight: PropTypes.number,
+    onClickScrim:   PropTypes.func
   },
 
   getDefaultProps(){
@@ -83,8 +85,7 @@ module.exports = React.createClass({
   },
 
   componentDidMount(){
-    const { placeholder } = this.refs;
-
+    const placeholder = this.placeholderRef;
     const placeholderEl = compat.findDOMNode(placeholder);
     if(!placeholder) return null;
     const width = placeholderEl.offsetWidth;
@@ -96,7 +97,7 @@ module.exports = React.createClass({
     var closing =  pvProps.open && !this.props.open
       , opening = !pvProps.open && this.props.open
 
-    const { placeholder } = this.refs;
+    const placeholder = this.placeholderRef;
 
     const placeholderEl = compat.findDOMNode(placeholder);
 
@@ -127,8 +128,6 @@ module.exports = React.createClass({
     const opacity = open ? 1 : 0;
     const { width } = this.state;
 
-    if (!open) return null;
-
     return (
       <div {...props}
         style={{
@@ -138,7 +137,7 @@ module.exports = React.createClass({
       >
         <TetherTarget
           tether={
-            <PopupContent className={className} tabIndex={1} ref='content' style={{ width, opacity, ...popupStyle }}>
+            <PopupContent className={className} tabIndex={1} ref={(ref) => this.contentRef = ref} style={{ width, opacity, ...popupStyle }}>
               { this.props.children }
             </PopupContent>
           }
@@ -150,7 +149,7 @@ module.exports = React.createClass({
           }}
           >
           {open && <div onClick={this._onClickScrim} className='rw-tether-scrim'/>}
-          <div ref='placeholder' style={{ width: '100%'}} />
+          <div ref={(ref) => this.placeholderRef = ref} style={{ width: '100%'}} />
         </TetherTarget>
       </div>
     )
@@ -158,7 +157,7 @@ module.exports = React.createClass({
 
   onResize(){
 
-    const { placeholder } = this.refs;
+    const placeholder = this.placeholderRef;
 
     if(!placeholder) return false;
 
@@ -172,7 +171,7 @@ module.exports = React.createClass({
 
   reset(){
     var container = compat.findDOMNode(this)
-      , content   = compat.findDOMNode(this.refs.content)
+      , content   = compat.findDOMNode(this.contentRef)
       , style = { display: 'block', overflow: 'hidden'}
 
     css(container, style);
@@ -181,10 +180,9 @@ module.exports = React.createClass({
 
 
   open() {
-    const { content } = this.refs;
     var self = this
       , anim = compat.findDOMNode(this)
-      , contentEl   = compat.findDOMNode(content);
+      , contentEl   = compat.findDOMNode(this.contentRef);
 
     const { onOpen, onKeyDown, getTetherFocus } = this.props;
 
@@ -222,7 +220,7 @@ module.exports = React.createClass({
 
   close(dur) {
     var self = this
-      , el   = compat.findDOMNode(this.refs.content)
+      , el   = compat.findDOMNode(this.contentRef)
       , anim = compat.findDOMNode(this);
 
     this._isOpening = false;

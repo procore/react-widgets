@@ -1,4 +1,6 @@
 import React   from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import ListOption from './ListOption';
 import CustomPropTypes from './util/propTypes';
 import compat from './util/compat';
@@ -187,7 +189,7 @@ function _getOrderedIndex(item, object) {
   return result.foundIndex || -1;
 }
 
-export default React.createClass({
+export default createReactClass({
   displayName: 'List',
 
   mixins: [
@@ -196,25 +198,25 @@ export default React.createClass({
   ],
 
   propTypes: {
-    data:           React.PropTypes.array,
-    onSelect:       React.PropTypes.func,
-    onMove:         React.PropTypes.func,
+    data:           PropTypes.array,
+    onSelect:       PropTypes.func,
+    onMove:         PropTypes.func,
 
     optionComponent: CustomPropTypes.elementType,
     itemComponent:   CustomPropTypes.elementType,
     groupComponent:  CustomPropTypes.elementType,
 
-    selected:       React.PropTypes.any,
-    focused:        React.PropTypes.any,
+    selected:       PropTypes.any,
+    focused:        PropTypes.any,
 
-    valueField:     React.PropTypes.string,
+    valueField:     PropTypes.string,
     textField:      CustomPropTypes.accessor,
 
-    optID:          React.PropTypes.string,
+    optID:          PropTypes.string,
 
     groupBy:        CustomPropTypes.multiAccessor,
 
-    messages:       React.PropTypes.shape({
+    messages:       PropTypes.shape({
       emptyList:    CustomPropTypes.message
     })
   },
@@ -296,7 +298,7 @@ export default React.createClass({
 
     return (
       <ul
-        ref='scrollable'
+        ref={(ref) => this.scrollableRef = ref}
         id={id}
         tabIndex='-1'
         className={cn(className, 'rw-list', 'rw-list-grouped')}

@@ -1,7 +1,8 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import cn from 'classnames';
 
-export default React.createClass({
+export default createReactClass({
 
   render(){
     var { className, children, ...props} = this.props;

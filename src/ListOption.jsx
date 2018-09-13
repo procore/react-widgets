@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
+import createReactClass from 'create-react-class';
 
-let ListOption = React.createClass({
+let ListOption = createReactClass({
   propTypes: {
-    dataItem: React.PropTypes.any,
-    focused:  React.PropTypes.bool,
-    selected: React.PropTypes.bool
+    dataItem: PropTypes.any,
+    focused:  PropTypes.bool,
+    selected: PropTypes.bool
   },
 
   render() {

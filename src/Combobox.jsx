@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
+import createReactClass from 'create-react-class';
 import _  from './util/_';
 import filter from './util/filter';
 import Popup           from './Popup';
@@ -22,49 +24,49 @@ let { omit, pick } = _;
 
 let propTypes = {
       //-- controlled props -----------
-      value:          React.PropTypes.any,
-      onChange:       React.PropTypes.func,
-      open:           React.PropTypes.bool,
-      onToggle:       React.PropTypes.func,
+      value:          PropTypes.any,
+      onChange:       PropTypes.func,
+      open:           PropTypes.bool,
+      onToggle:       PropTypes.func,
       //------------------------------------
 
       itemComponent:  CustomPropTypes.elementType,
       listComponent:  CustomPropTypes.elementType,
-      afterListComponent: React.PropTypes.any,
+      afterListComponent: PropTypes.any,
       groupComponent: CustomPropTypes.elementType,
       groupBy:        CustomPropTypes.multiAccessor,
 
-      data:           React.PropTypes.array,
-      valueField:     React.PropTypes.string,
+      data:           PropTypes.array,
+      valueField:     PropTypes.string,
       textField:      CustomPropTypes.accessor,
-      name:           React.PropTypes.string,
+      name:           PropTypes.string,
 
-      onSelect:       React.PropTypes.func,
+      onSelect:       PropTypes.func,
 
-      autoFocus:      React.PropTypes.bool,
+      autoFocus:      PropTypes.bool,
       disabled:       CustomPropTypes.disabled,
       readOnly:       CustomPropTypes.readOnly,
 
       suggest:        CustomPropTypes.filter,
       filter:         CustomPropTypes.filter,
 
-      busy:           React.PropTypes.bool,
+      busy:           PropTypes.bool,
 
-      tetherPopup:    React.PropTypes.bool,
+      tetherPopup:    PropTypes.bool,
 
-      dropUp:         React.PropTypes.bool,
-      duration:       React.PropTypes.number, //popup
+      dropUp:         PropTypes.bool,
+      duration:       PropTypes.number, //popup
 
-      placeholder:    React.PropTypes.string,
+      placeholder:    PropTypes.string,
 
-      messages:       React.PropTypes.shape({
+      messages:       PropTypes.shape({
         open:         CustomPropTypes.message,
         emptyList:    CustomPropTypes.message,
         emptyFilter:  CustomPropTypes.message
       })
     };
 
-var ComboBox = React.createClass({
+var ComboBox = createReactClass({
 
   displayName: 'ComboBox',
 
@@ -108,11 +110,11 @@ var ComboBox = React.createClass({
   },
 
   componentDidUpdate() {
-    this.refs.list && validateList(this.refs.list)
+    this.listRef && validateList(this.listRef)
   },
 
   shouldComponentUpdate(nextProps, nextState){
-    var isSuggesting = this.refs.input && this.refs.input.isSuggesting()
+    var isSuggesting = this.inputRef && this.inputRef.isSuggesting()
       , stateChanged = !_.isShallowEqual(nextState, this.state)
       , valueChanged = !_.isShallowEqual(nextProps, this.props)
 
@@ -124,7 +126,7 @@ var ComboBox = React.createClass({
 
     var rawIdx = dataIndexOf(data, value, valueField)
       , valueItem = rawIdx === -1 ? nextProps.value : nextProps.data[rawIdx]
-      , isSuggesting = this.refs.input.isSuggesting()
+      , isSuggesting = this.inputRef.isSuggesting()
       , items = this.process(
           nextProps.data
         , nextProps.value
@@ -170,14 +172,12 @@ var ComboBox = React.createClass({
           ? filter ? 'both' : 'inline'
           : filter ? 'list' : '';
 
-    let shouldRenderList = isFirstFocusedRender(this) || open;
-
     messages = msgs(messages)
 
     return (
       <div
         {...elementProps}
-        ref="element"
+        ref={(ref) => this.elementRef = ref}
         onKeyDown={this._keyDown}
         onFocus={this._focus.bind(null, true)}
         onBlur ={tetherPopup ? () => this.setState({focused: false}) : this._focus.bind(null, false)}
@@ -204,7 +204,7 @@ var ComboBox = React.createClass({
           </i>
         </Btn>
         <Input
-          ref='input'
+          ref={(ref) => this.inputRef = ref}
           id={inputID}
           autoFocus={autoFocus}
           tabIndex={tabIndex}
@@ -224,34 +224,33 @@ var ComboBox = React.createClass({
           onChange={this._inputTyping}
           onKeyDown={this._inputKeyDown}
         />
-        <PopupComponent
+        {open && <PopupComponent
           {...popupProps}
-          onOpening={() => this.refs.list.forceUpdate()}
-          getTetherFocus={() => this.refs.list.refs.ul}
+          onOpening={() => this.listRef.forceUpdate()}
+          getTetherFocus={() => this.listRef.ulRef}
           onBlur={this._focus.bind(null, false)}
           onOpen={this.focus}
           onRequestClose={this.close}
           popupStyle={popupStyle}
         >
           <div>
-            { shouldRenderList &&
-              <List ref="list"
-                {...listProps}
-                id={listID}
-                data={items}
-                selected={selectedItem}
-                focused ={focusedItem}
-                aria-hidden={!open}
-                aria-labelledby={inputID}
-                aria-live={open && 'polite'}
-                onSelect={this._onSelect}
-                onMove={this._scrollTo}
-                messages={{
-                  emptyList: data.length
-                    ? messages.emptyFilter
-                    : messages.emptyList
-                }}/>
-            }
+            <List
+              ref={(ref) => this.listRef = ref}
+              {...listProps}
+              id={listID}
+              data={items}
+              selected={selectedItem}
+              focused ={focusedItem}
+              aria-hidden={!open}
+              aria-labelledby={inputID}
+              aria-live={open && 'polite'}
+              onSelect={this._onSelect}
+              onMove={this._scrollTo}
+              messages={{
+                emptyList: data.length
+                  ? messages.emptyFilter
+                  : messages.emptyList
+              }}/>
             {afterListComponent && (
               React.cloneElement(
                 afterListComponent,
@@ -259,7 +258,7 @@ var ComboBox = React.createClass({
               )
             )}
           </div>
-        </PopupComponent>
+        </PopupComponent>}
       </div>
     )
   },
@@ -302,13 +301,13 @@ var ComboBox = React.createClass({
   },
 
   focus() {
-    this.refs.input.focus()
+    this.inputRef.focus()
   },
 
   @widgetEnabled
   _focus(focused, e){
 
-    !focused && this.refs.input.accept() //not suggesting anymore
+    !focused && this.inputRef.accept() //not suggesting anymore
 
     this.setTimeout('focus', () => {
 
@@ -326,7 +325,7 @@ var ComboBox = React.createClass({
     var self = this
       , key  = e.key
       , alt  = e.altKey
-      , list = this.refs.list
+      , list = this.listRef
       , focusedItem = this.state.focusedItem
       , selectedItem = this.state.selectedItem
       , isOpen = this.props.open;
@@ -370,9 +369,9 @@ var ComboBox = React.createClass({
 
     function select(item, fromList) {
       if(!item)
-        return self.change(compat.findDOMNode(self.refs.input).value, false)
+        return self.change(compat.findDOMNode(self.inputRef).value, false)
 
-      self.refs.input.accept(true); //removes caret
+      self.inputRef.accept(true); //removes caret
 
       if(fromList)
         return self._onSelect(item)

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import _  from './util/_';
 import cx from 'classnames';
 import createUncontrolledWidget from 'uncontrollable';
@@ -23,37 +25,37 @@ let { omit, pick } = _;
 
 let propTypes = {
 
-    data:           React.PropTypes.array,
-    value:          React.PropTypes.oneOfType([
-                      React.PropTypes.any,
-                      React.PropTypes.array
+    data:           PropTypes.array,
+    value:          PropTypes.oneOfType([
+                      PropTypes.any,
+                      PropTypes.array
                     ]),
-    onChange:       React.PropTypes.func,
-    onMove:         React.PropTypes.func,
+    onChange:       PropTypes.func,
+    onMove:         PropTypes.func,
 
-    multiple:       React.PropTypes.bool,
+    multiple:       PropTypes.bool,
 
     itemComponent:  CustomPropTypes.elementType,
     listComponent:  CustomPropTypes.elementType,
 
-    valueField:     React.PropTypes.string,
+    valueField:     PropTypes.string,
     textField:      CustomPropTypes.accessor,
 
-    busy:           React.PropTypes.bool,
+    busy:           PropTypes.bool,
 
-    filter:         React.PropTypes.string,
-    delay:          React.PropTypes.number,
+    filter:         PropTypes.string,
+    delay:          PropTypes.number,
 
     disabled:       CustomPropTypes.disabled.acceptsArray,
     readOnly:       CustomPropTypes.readOnly.acceptsArray,
 
-    messages:       React.PropTypes.shape({
-      emptyList:    React.PropTypes.string
+    messages:       PropTypes.shape({
+      emptyList:    PropTypes.string
     })
   }
 
 
-var SelectList = React.createClass({
+var SelectList = createReactClass({
 
   propTypes: propTypes,
 
@@ -104,7 +106,7 @@ var SelectList = React.createClass({
   },
 
   componentDidMount() {
-    validateList(this.refs.list)
+    validateList(this.listRef)
   },
 
   render() {
@@ -147,7 +149,7 @@ var SelectList = React.createClass({
       >
         <List
           {...listProps}
-          ref='list'
+          ref={(ref) => this.listRef = ref}
           id={listID}
           role={'radiogroup'}
           tabIndex={tabIndex || '0'}
@@ -177,7 +179,7 @@ var SelectList = React.createClass({
   _keyDown(e) {
     var key = e.key
       , { valueField, multiple } = this.props
-      , list = this.refs.list
+      , list = this.listRef
       , focusedItem = this.state.focusedItem
       , props = this.props;
 
@@ -270,7 +272,7 @@ var SelectList = React.createClass({
   @widgetEnabled
   _focus(focused, e) {
 
-    if( focused) compat.findDOMNode(this.refs.list).focus()
+    if( focused) compat.findDOMNode(this.listRef).focus()
 
     this.setTimeout('focus', () => {
       if( focused !== this.state.focused){
@@ -282,7 +284,7 @@ var SelectList = React.createClass({
 
   search(character) {
     var word = ((this._searchTerm || '') + character).toLowerCase()
-      , list = this.refs.list;
+      , list = this.listRef;
 
     this._searchTerm = word
 
@@ -312,7 +314,7 @@ var SelectList = React.createClass({
 
 function getListItem(parent){
 
-  return React.createClass({
+  return createReactClass({
 
     displayName: 'SelectItem',
 

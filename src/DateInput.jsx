@@ -1,21 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
+import createReactClass from 'create-react-class';
 import compat from './util/compat';
 import { date as dateLocalizer } from './util/localizers';
 import CustomPropTypes from './util/propTypes';
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'DatePickerInput',
 
   propTypes: {
     format:       CustomPropTypes.dateFormat.isRequired,
     editFormat:   CustomPropTypes.dateFormat,
-    parse:        React.PropTypes.func.isRequired,
+    parse:        PropTypes.func.isRequired,
 
-    value:        React.PropTypes.instanceOf(Date),
-    onChange:     React.PropTypes.func.isRequired,
-    culture:      React.PropTypes.string
+    value:        PropTypes.instanceOf(Date),
+    onChange:     PropTypes.func.isRequired,
+    culture:      PropTypes.string
   },
 
   getDefaultProps(){

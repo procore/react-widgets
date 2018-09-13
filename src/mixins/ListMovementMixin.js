@@ -1,12 +1,13 @@
 'use strict';
 import React from 'react';
+import PropTypes from 'prop-types';
 import filter from '../util/filter';
 import { dataText } from '../util/dataHelpers';
 
 module.exports = {
 
   propTypes: {
-    textField:  React.PropTypes.string
+    textField:  PropTypes.string
   },
 
   first() {

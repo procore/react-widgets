@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
+import createReactClass from 'create-react-class';
 import dates from './util/dates';
 import { date as dateLocalizer } from './util/localizers';
 import CustomPropTypes from './util/propTypes';
@@ -12,13 +14,13 @@ var dayFormat = props => dateLocalizer.getFormat('weekday', props.dayFormat)
 let optionId = (id, date) => `${id}__month_${dates.month(date)}-${dates.date(date)}`;
 
 let propTypes = {
-  optionID:         React.PropTypes.func,
+  optionID:         PropTypes.func,
 
-  culture:          React.PropTypes.string,
-  value:            React.PropTypes.instanceOf(Date),
-  focused:          React.PropTypes.instanceOf(Date),
-  min:              React.PropTypes.instanceOf(Date),
-  max:              React.PropTypes.instanceOf(Date),
+  culture:          PropTypes.string,
+  value:            PropTypes.instanceOf(Date),
+  focused:          PropTypes.instanceOf(Date),
+  min:              PropTypes.instanceOf(Date),
+  max:              PropTypes.instanceOf(Date),
 
   dayComponent:     CustomPropTypes.elementType,
 
@@ -26,12 +28,12 @@ let propTypes = {
   dateFormat:       CustomPropTypes.dateFormat,
   footerFormat:     CustomPropTypes.dateFormat,
 
-  onChange:         React.PropTypes.func.isRequired
+  onChange:         PropTypes.func.isRequired
 };
 
 let isEqual = (dateA, dateB) => dates.eq(dateA, dateB, 'day')
 
-let MonthView = React.createClass({
+let MonthView = createReactClass({
 
   displayName: 'MonthView',
 

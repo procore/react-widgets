@@ -1,14 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import caretPos from './util/caret';
 import compat from './util/compat';
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'ComboboxInput',
 
   propTypes: {
-    value:        React.PropTypes.string,
-    onChange:     React.PropTypes.func.isRequired
+    value:        PropTypes.string,
+    onChange:     PropTypes.func.isRequired
   },
 
   componentDidUpdate() {

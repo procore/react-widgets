@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
+import createReactClass from 'create-react-class';
 import _  from './util/_';
 import Popup from './Popup';
 import SelectInput from './MultiselectInput';
@@ -19,19 +21,19 @@ var compatCreate = (props, msgs) => typeof msgs.createNew === 'function'
 let { omit, pick, splat } = _;
 
 var propTypes = {
-      data:            React.PropTypes.array,
+      data:            PropTypes.array,
       //-- controlled props --
-      value:           React.PropTypes.array,
-      onChange:        React.PropTypes.func,
+      value:           PropTypes.array,
+      onChange:        PropTypes.func,
 
-      searchTerm:      React.PropTypes.string,
-      onSearch:        React.PropTypes.func,
+      searchTerm:      PropTypes.string,
+      onSearch:        PropTypes.func,
 
-      open:            React.PropTypes.bool,
-      onToggle:        React.PropTypes.func,
+      open:            PropTypes.bool,
+      onToggle:        PropTypes.func,
       //-------------------------------------------
 
-      valueField:      React.PropTypes.string,
+      valueField:      PropTypes.string,
       textField:       CustomPropTypes.accessor,
 
       tagComponent:    CustomPropTypes.elementType,
@@ -43,23 +45,23 @@ var propTypes = {
 
       createComponent: CustomPropTypes.elementType,
 
-      onSelect:        React.PropTypes.func,
-      onCreate:        React.PropTypes.oneOfType([
-                         React.PropTypes.oneOf([false]),
-                         React.PropTypes.func
+      onSelect:        PropTypes.func,
+      onCreate:        PropTypes.oneOfType([
+                         PropTypes.oneOf([false]),
+                         PropTypes.func
                        ]),
 
-      dropUp:          React.PropTypes.bool,
-      duration:        React.PropTypes.number, //popup
+      dropUp:          PropTypes.bool,
+      duration:        PropTypes.number, //popup
 
-      placeholder:     React.PropTypes.string,
+      placeholder:     PropTypes.string,
 
-      autoFocus:      React.PropTypes.bool,
+      autoFocus:      PropTypes.bool,
       disabled:       CustomPropTypes.disabled.acceptsArray,
       readOnly:       CustomPropTypes.readOnly.acceptsArray,
 
 
-      messages:        React.PropTypes.shape({
+      messages:        PropTypes.shape({
         open:          CustomPropTypes.message,
         emptyList:     CustomPropTypes.message,
         emptyFilter:   CustomPropTypes.message,
@@ -67,7 +69,7 @@ var propTypes = {
       })
     };
 
-var Multiselect = React.createClass({
+var Multiselect = createReactClass({
 
   displayName: 'Multiselect',
 
@@ -130,7 +132,7 @@ var Multiselect = React.createClass({
     this.ariaActiveDescendant(
       instanceId(this, '__createlist_option'))
 
-    this.refs.list && validateList(this.refs.list)
+    this.listRef && validateList(this.listRef)
   },
 
   componentWillReceiveProps(nextProps) {
@@ -190,7 +192,7 @@ var Multiselect = React.createClass({
 
     return (
       <div {...elementProps}
-        ref="element"
+        ref={(ref) => this.elementRef = ref}
         id={instanceId(this)}
         onKeyDown={this._keyDown}
         onFocus={this._focus.bind(null, true)}
@@ -206,7 +208,7 @@ var Multiselect = React.createClass({
         })}>
 
         <span
-          ref='status'
+          ref={(ref) => this.statusRef = ref}
           id={instanceId(this, '__notify')}
           role="status"
           className='rw-sr'
@@ -217,13 +219,13 @@ var Multiselect = React.createClass({
           { notify }
         </span>
 
-        <div className='rw-multiselect-wrapper' ref='wrapper'>
+        <div className='rw-multiselect-wrapper' ref={(ref) => this.wrapperRef = ref}>
           <span className={classIconParent}>
             <i className="rw-i rw-loading"></i>
           </span>
           <div className={cx({hidden: !shouldRenderTags})}>
             <TagList {...tagsProps}
-              ref='tagList'
+              ref={(ref) => this.tagListRef = ref}
               id={tagsID}
               busy={!!busy}
               aria-label={messages.tagsLabel}
@@ -238,7 +240,7 @@ var Multiselect = React.createClass({
           </div>
           <SelectInput
             {...inputProps}
-            ref='input'
+            ref={(ref) => this.inputRef = ref}
             tabIndex={tabIndex || 0}
             role='listbox'
             aria-expanded={open}
@@ -264,12 +266,12 @@ var Multiselect = React.createClass({
           />
         </div>
         <Popup {...popupProps}
-          onOpening={()=> this.refs.list.forceUpdate()}
+          onOpening={()=> this.listRef.forceUpdate()}
           onRequestClose={this.close}
         >
           <div>
           { shouldRenderPopup && [
-              <List ref="list"
+              <List ref={(ref) => this.listRef = ref}
                 key={0}
                 {...listProps}
                 readOnly={!!readOnly}
@@ -329,11 +331,11 @@ var Multiselect = React.createClass({
     if (this.props.disabled === true )
       return
 
-    if(focused) this.refs.input.focus()
+    if(focused) this.inputRef.focus()
 
     this.setTimeout('focus', () => {
       if(!focused)
-        this.refs.tagList && this.setState({ focusedTag: null })
+        this.tagListRef && this.setState({ focusedTag: null })
 
       if(focused !== this.state.focused) {
         focused
@@ -398,7 +400,8 @@ var Multiselect = React.createClass({
       , isOpen  = this.props.open;
 
     let { focusedTag, focusedItem } = this.state;
-    let { list, tagList } = this.refs;
+    let list = this.listRef;
+    let tagList = this.tagListRef;
     let nullTag = { focusedTag: null };
 
     notify(this.props.onKeyDown, [e])

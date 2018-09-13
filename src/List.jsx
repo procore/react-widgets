@@ -1,4 +1,6 @@
 import React   from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import ListOption from './ListOption';
 import CustomPropTypes from './util/propTypes';
 import compat from './util/compat';
@@ -9,7 +11,7 @@ import { instanceId, notify } from './util/widgetHelpers';
 
 let optionId = (id, idx)=> `${id}__option__${idx}`;
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'List',
 
@@ -19,23 +21,23 @@ export default React.createClass({
   ],
 
   propTypes: {
-    data:          React.PropTypes.array,
-    onSelect:      React.PropTypes.func,
-    onMove:        React.PropTypes.func,
+    data:          PropTypes.array,
+    onSelect:      PropTypes.func,
+    onMove:        PropTypes.func,
 
     optionComponent: CustomPropTypes.elementType,
     itemComponent:   CustomPropTypes.elementType,
 
-    selectedIndex: React.PropTypes.number,
-    focusedIndex:  React.PropTypes.number,
-    valueField:    React.PropTypes.string,
+    selectedIndex: PropTypes.number,
+    focusedIndex:  PropTypes.number,
+    valueField:    PropTypes.string,
     textField:     CustomPropTypes.accessor,
 
-    focused:       React.PropTypes.element,
+    focused:       PropTypes.element,
 
-    optionID:      React.PropTypes.func,
+    optionID:      PropTypes.func,
 
-    messages:      React.PropTypes.shape({
+    messages:      PropTypes.shape({
       emptyList:   CustomPropTypes.message
     })
   },
@@ -110,7 +112,7 @@ export default React.createClass({
 
     return (
       <ul
-        ref="ul"
+        ref={(ref) => this.ulRef = ref}
         id={id}
         tabIndex='-1'
         className={cn(className, 'rw-list')}

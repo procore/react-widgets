@@ -1,5 +1,7 @@
 'use strict';
 import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import dates from './util/dates';
 import List from './List';
 import { date as dateLocalizer } from './util/localizers';
@@ -7,20 +9,20 @@ import CustomPropTypes from './util/propTypes';
 
 var format = props => dateLocalizer.getFormat('time', props.format)
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'TimeList',
 
   propTypes: {
-    value:          React.PropTypes.instanceOf(Date),
-    min:            React.PropTypes.instanceOf(Date),
-    max:            React.PropTypes.instanceOf(Date),
-    step:           React.PropTypes.number,
+    value:          PropTypes.instanceOf(Date),
+    min:            PropTypes.instanceOf(Date),
+    max:            PropTypes.instanceOf(Date),
+    step:           PropTypes.number,
     itemComponent:  CustomPropTypes.elementType,
     format:         CustomPropTypes.dateFormat,
-    onSelect:       React.PropTypes.func,
-    preserveDate:   React.PropTypes.bool,
-    culture:        React.PropTypes.string
+    onSelect:       PropTypes.func,
+    preserveDate:   PropTypes.bool,
+    culture:        PropTypes.string
   },
 
   mixins: [
@@ -73,7 +75,7 @@ export default React.createClass({
 
     return (
       <List {...props}
-        ref="list"
+        ref={(ref) => this.listRef = ref}
         data={times}
         textField='label'
         valueField='date'
@@ -153,7 +155,7 @@ export default React.createClass({
     var key = e.key
       , character = String.fromCharCode(e.keyCode)
       , focusedItem  = this.state.focusedItem
-      , list = this.refs.list;
+      , list = this.listRef;
 
     if ( key === 'End' )
       this.setState({ focusedItem: list.last() })
@@ -182,8 +184,8 @@ export default React.createClass({
   },
 
   scrollTo(){
-    this.refs.list.move
-      && this.refs.list.move()
+    this.listRef.move
+      && this.listRef.move()
   },
 
   search(character, cb){
@@ -192,7 +194,7 @@ export default React.createClass({
     this._searchTerm = word
 
     this.setTimeout('search', () => {
-      var list = this.refs.list
+      var list = this.listRef
         , item = list.next(this.state.focusedItem, word);
 
       this._searchTerm = ''

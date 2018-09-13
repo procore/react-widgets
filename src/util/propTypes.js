@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import localizers from './localizers';
 import filters from'./filter';
 
@@ -27,7 +28,7 @@ module.exports = {
         if (typeof props[propName] !== 'string')
           return new Error(
             'Invalid prop `' + propName + '` specified in  `' + componentName + '`.' +
-            ' Expected an Element `type` such as a tag name or return value of React.createClass(...)')
+            ' Expected an Element `type` such as a tag name or return value of createReactClass(...)')
       }
       return null
     }),
@@ -41,26 +42,26 @@ module.exports = {
   disabled: getInteractionPropType('disabled'),
   readOnly: getInteractionPropType('readOnly'),
 
-  accessor:     React.PropTypes.oneOfType([
-                    React.PropTypes.string,
-                    React.PropTypes.func,
+  accessor:     PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.func,
                   ]),
 
-  multiAccessor: React.PropTypes.oneOfType([
-                    React.PropTypes.string,
-                    React.PropTypes.func,
-                    React.PropTypes.array,
+  multiAccessor: PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.func,
+                    PropTypes.array,
                   ]),
 
-  message:      React.PropTypes.oneOfType([
-                  React.PropTypes.func,
-                  React.PropTypes.string
+  message:      PropTypes.oneOfType([
+                  PropTypes.func,
+                  PropTypes.string
                 ]),
 
-  filter:       React.PropTypes.oneOfType([
-                  React.PropTypes.func,
-                  React.PropTypes.bool,
-                  React.PropTypes.oneOf(filterTypes)
+  filter:       PropTypes.oneOfType([
+                  PropTypes.func,
+                  PropTypes.bool,
+                  PropTypes.oneOf(filterTypes)
                 ])
 }
 

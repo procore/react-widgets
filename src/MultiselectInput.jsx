@@ -1,17 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import compat from './util/compat';
 import CustomPropTypes from './util/propTypes';
 
 
-export default React.createClass({
+export default createReactClass({
 
   displayName: 'MultiselectInput',
 
   propTypes: {
-    value:        React.PropTypes.string,
-    maxLength:    React.PropTypes.number,
-    onChange:     React.PropTypes.func.isRequired,
-    onFocus:      React.PropTypes.func,
+    value:        PropTypes.string,
+    maxLength:    PropTypes.number,
+    onChange:     PropTypes.func.isRequired,
+    onFocus:      PropTypes.func,
 
     disabled:     CustomPropTypes.disabled,
     readOnly:     CustomPropTypes.readOnly

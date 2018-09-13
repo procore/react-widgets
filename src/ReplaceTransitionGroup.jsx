@@ -7,25 +7,27 @@
 'use strict';
 
 var React = require('react')
+  , PropTypes = require('prop-types')
   , css = require('dom-helpers/style')
+  , createReactClass = require('create-react-class')
   , height = require('dom-helpers/query/height')
   , width  = require('dom-helpers/query/width')
   , compat = require('./util/compat')
   , _     = require('./util/_');
 
-module.exports = React.createClass({
+module.exports = createReactClass({
 
   displayName: 'ReplaceTransitionGroup',
 
   propTypes: {
-    component:    React.PropTypes.oneOfType([
-                    React.PropTypes.element,
-                    React.PropTypes.string
+    component:    PropTypes.oneOfType([
+                    PropTypes.element,
+                    PropTypes.string
                   ]),
-    childFactory: React.PropTypes.func,
+    childFactory: PropTypes.func,
 
-    onAnimating:  React.PropTypes.func,
-    onAnimate:    React.PropTypes.func
+    onAnimating:  PropTypes.func,
+    onAnimate:    PropTypes.func
   },
 
   getDefaultProps: function() {
