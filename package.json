@@ -68,7 +68,7 @@
     "dom-helpers": "^2.2.4",
     "invariant": "^2.1.0",
     "react-window-mixins": "0.0.6",
-    "scriptjs": "^2.5.8",
+    "scriptjs": "^2.5.9",
     "tether": "^1.1.1",
     "uncontrollable": "procore/uncontrollable.git",
     "warning": "^2.0.0"
