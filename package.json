@@ -66,7 +66,7 @@
     "create-react-class": "^15.6.3",
     "date-arithmetic": "^3.0.0",
     "dom-helpers": "^2.2.4",
-    "invariant": "^2.1.0",
+    "invariant": "^2.2.4",
     "react-window-mixins": "0.0.6",
     "scriptjs": "^2.5.8",
     "tether": "^1.1.1",
