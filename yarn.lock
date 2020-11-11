@@ -3819,9 +3819,10 @@ react-router@1.0.0-beta3:
     qs "2.4.1"
     warning "^1.0.1"
 
-react-window-mixins@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-window-mixins/-/react-window-mixins-0.0.6.tgz#8eae2816020494b0ad3e64cbf1e47330abc29f53"
+react-window-mixins@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-window-mixins/-/react-window-mixins-0.0.7.tgz#3efe007d84a35edfb636b0671278fa43b7ad12ad"
+  integrity sha1-Pv4AfYSjXt+2NrBnEnj6Q7etEq0=
   dependencies:
     lodash.throttle "^2.4.1"
 
